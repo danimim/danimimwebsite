@@ -112,8 +112,8 @@ body {
 
 .about-photo {
   flex-shrink: 0;
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   border: 2px inset #c0c0c0;
   background: #f0f0f0;
   overflow: hidden;

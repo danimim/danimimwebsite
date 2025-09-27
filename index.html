@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows 95 - Desktop</title>
+    <title>danimim.eth</title>
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
 <body>
     <!-- Desktop -->
@@ -45,7 +51,7 @@
         <!-- Recycle Bin -->
         <button class="recycle-bin" data-window="recycle" aria-label="Recycle Bin">
             <img src="icons/recycle.png" alt="Recycle Bin" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>🗑️</span>'">
-            <span>Recycle Bin</span>
+            <span>Recycle bin</span>
         </button>
     </div>
 
@@ -220,13 +226,128 @@
     <!-- Hobbies Window -->
     <div class="window" id="hobbies" role="dialog" aria-modal="true" aria-labelledby="hobbies-title">
         <div class="window-header">
-            <span id="hobbies-title">Hobbies</span>
+            <span id="hobbies-title">My life</span>
             <div class="window-controls">
                 <button class="window-btn close" aria-label="Close"><span>×</span></button>
             </div>
         </div>
         <div class="window-content">
             <div id="hobbies-content"></div>
+        </div>
+    </div>
+
+    <!-- Success Window -->
+    <div class="window" id="message-success" role="dialog" aria-modal="true" aria-labelledby="success-title">
+        <div class="window-header">
+            <span id="success-title">Message sent</span>
+            <div class="window-controls">
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="error-content">
+                <div class="error-icon">
+                    <img src="icons/success.png" alt="Success" width="48" height="48" onerror="this.outerHTML='<span style=font-size:48px>✅</span>'">
+                </div>
+                <div class="error-text">
+                    <p><strong>Success!</strong></p>
+                    <p>Your message has been sent successfully!</p>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn success-ok">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Error Window -->
+    <div class="window error-window" id="message-error" role="dialog" aria-modal="true" aria-labelledby="message-error-title">
+        <div class="window-header">
+            <span id="message-error-title">Error</span>
+            <div class="window-controls">
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="error-content">
+                <div class="error-icon">
+                    <img src="icons/error.png" alt="Error" width="48" height="48" onerror="this.outerHTML='<span style=font-size:48px>⚠️</span>'">
+                </div>
+                <div class="error-text">
+                    <p><strong>Error sending message</strong></p>
+                    <p>Something went wrong. Please try again.</p>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn error-ok">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recycle Bin Window -->
+    <div class="window" id="recycle" role="dialog" aria-modal="true" aria-labelledby="recycle-title">
+        <div class="window-header">
+            <span id="recycle-title">Recycle Bin</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="recycle-content"></div>
+            <br>
+            <div style="display: flex; gap: 8px; justify-content: center;">
+                <button class="btn" id="restore-btn">Restore</button>
+                <button class="btn" id="empty-bin-btn">Empty Recycle Bin</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restore Error Window -->
+    <div class="window error-window" id="restore-error" role="dialog" aria-modal="true" aria-labelledby="restore-error-title">
+        <div class="window-header">
+            <span id="restore-error-title">Cannot Restore</span>
+            <div class="window-controls">
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="error-content">
+                <div class="error-icon">
+                    <img src="icons/wrong.png" alt="Error" width="64" height="64" onerror="this.outerHTML='<span style=font-size:48px>❌</span>'">
+                </div>
+                <div class="error-text">
+                    <p><strong>Cannot restore</strong></p>
+                    <p>File permanently damaged by fraud</p>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn error-ok">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty Bin Error Window -->
+    <div class="window error-window" id="empty-error" role="dialog" aria-modal="true" aria-labelledby="empty-error-title">
+        <div class="window-header">
+            <span id="empty-error-title">Empty Recycle Bin</span>
+            <div class="window-controls">
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="error-content">
+                <div class="error-icon">
+                    <img src="icons/empty.png" alt="Empty" width="64" height="64" onerror="this.outerHTML='<span style=font-size:48px>🗑️</span>'">
+                </div>
+                <div class="error-text">
+                    <p><strong>Already Empty</strong></p>
+                    <p>File already beyond empty</p>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn error-ok">OK</button>
+            </div>
         </div>
     </div>
 
@@ -259,48 +380,13 @@
             </div>
             <div class="start-menu-item" data-action="hobbies">
                 <span class="menu-icon">
-                    <img src="icons/hobbies.png" alt="Hobbies" width="48" height="48" onerror="this.outerHTML='<span style=font-size:18px>★</span>'">
+                    <img src="icons/hobbies.png" alt="My life" width="48" height="48" onerror="this.outerHTML='<span style=font-size:18px>★</span>'">
                 </span>
-                <span>Hobbies</span>
+                <span>My life</span>
             </div>
         </div>
 
         <div class="taskbar-clock" id="clock"></div>
-    </div>
-
-    <!-- Recycle Bin Window -->
-    <div class="window" id="recycle" role="dialog" aria-modal="true" aria-labelledby="recycle-title">
-        <div class="window-header">
-            <span id="recycle-title">Recycle Bin</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
-                <button class="window-btn close" aria-label="Close"><span>×</span></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div style="text-align: center; padding: 20px;">
-                <h3>🗑️ Items in Recycle Bin</h3>
-                <br>
-                <div style="border: 2px inset #c0c0c0; padding: 16px; background: #f0f0f0;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Sam_Bankman-Fried_2021.jpg/400px-Sam_Bankman-Fried_2021.jpg"
-                         alt="SBF"
-                         style="max-width: 200px; height: auto; border: 1px solid #000;">
-                    <br><br>
-                    <p><strong>📄 SBF_Credibility.exe</strong></p>
-                    <p><small>Deleted: November 11, 2022</small></p>
-                    <p><small>Size: 0 bytes</small></p>
-                    <br>
-                    <p style="color: #666; font-style: italic;">
-                        "I wasn't running Alameda" - File corrupted beyond recovery
-                    </p>
-                </div>
-                <br>
-                <div style="display: flex; gap: 8px; justify-content: center;">
-                    <button class="btn" onclick="alert('Cannot restore: File permanently damaged by fraud')">Restore</button>
-                    <button class="btn" onclick="alert('File already beyond empty')">Empty Recycle Bin</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Scripts -->

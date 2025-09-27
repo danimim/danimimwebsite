@@ -17,7 +17,6 @@ class Windows95Desktop {
     init() {
         this.setupEventListeners();
         this.populateContent();
-        this.updateClock();
         this.setClockInterval();
         this.positionWindows();
     }
@@ -39,6 +38,19 @@ class Windows95Desktop {
                 }
             });
         });
+
+        // Recycle bin click
+        const recycleBin = document.querySelector('.recycle-bin');
+        if (recycleBin) {
+            recycleBin.addEventListener('click', (e) => {
+                console.log('Recycle bin clicked!'); // Debug
+                const windowId = e.currentTarget.dataset.window;
+                console.log('Window ID:', windowId); // Debug
+                this.openWindow(windowId);
+            });
+        } else {
+            console.error('Recycle bin not found!');
+        }
 
         // Window controls
         document.querySelectorAll('.window-btn').forEach(btn => {
@@ -120,6 +132,35 @@ class Windows95Desktop {
             this.closeWindow('error');
         });
 
+        // Success OK button
+        document.querySelector('.success-ok').addEventListener('click', () => {
+            this.closeWindow('message-success');
+        });
+
+        // Message Error OK button
+        document.querySelector('#message-error .error-ok').addEventListener('click', () => {
+            this.closeWindow('message-error');
+        });
+
+        // Recycle bin buttons
+        document.getElementById('restore-btn').addEventListener('click', () => {
+            this.openWindow('restore-error');
+        });
+
+        document.getElementById('empty-bin-btn').addEventListener('click', () => {
+            this.openWindow('empty-error');
+        });
+
+        // Restore Error OK button
+        document.querySelector('#restore-error .error-ok').addEventListener('click', () => {
+            this.closeWindow('restore-error');
+        });
+
+        // Empty Error OK button
+        document.querySelector('#empty-error .error-ok').addEventListener('click', () => {
+            this.closeWindow('empty-error');
+        });
+
         // Message form
         document.getElementById('message-form').addEventListener('submit', (e) => {
             this.handleMessageSubmit(e);
@@ -167,6 +208,9 @@ class Windows95Desktop {
 
         // Cats
         this.populateCats(data.cats);
+
+        // Recycle
+        document.getElementById('recycle-content').innerHTML = data.recycle;
     }
 
     populateExperiences(experiences) {
@@ -192,8 +236,7 @@ class Windows95Desktop {
                 roleDiv.className = 'role-item';
                 roleDiv.innerHTML = `
                     <div class="role-title">${role.title}</div>
-                    <div class="role-years">${role.years}</div>
-                    <div class="role-skills">Skills: ${role.skills.join(', ')}</div>
+                    <div class="role-skills">Skills: ${role.description.join(",")}</div>
                 `;
                 content.appendChild(roleDiv);
             });
@@ -241,8 +284,18 @@ class Windows95Desktop {
         folders.forEach((folder, index) => {
             const folderBtn = document.createElement('button');
             folderBtn.className = 'folder-item';
+
+            // Determinar qual ícone usar baseado na configuração do data.js
+            let iconSrc = 'icons/folder.svg'; // fallback padrão
+
+            if (containerId === 'reading-content' && window.SITE_DATA.folderIcons && window.SITE_DATA.folderIcons.reading) {
+                iconSrc = `icons/${window.SITE_DATA.folderIcons.reading[index]}`;
+            } else if (containerId === 'articles-content' && window.SITE_DATA.folderIcons && window.SITE_DATA.folderIcons.articles) {
+                iconSrc = `icons/${window.SITE_DATA.folderIcons.articles[index]}`;
+            }
+
             folderBtn.innerHTML = `
-                <img src="icons/folder.svg" alt="Folder" width="32" height="32">
+                <img src="${iconSrc}" alt="Folder" width="64" height="64" onerror="this.src='icons/folder.svg'">
                 <span>${folder.folder}</span>
             `;
 
@@ -376,7 +429,7 @@ class Windows95Desktop {
     }
 
     positionWindows() {
-        const windows = document.querySelectorAll('.window');
+        const windows = document.querySelectorAll('.window:not(#recycle)');
         windows.forEach((window, index) => {
             const offset = index * 30;
             window.style.left = (100 + offset) + 'px';
@@ -442,15 +495,18 @@ class Windows95Desktop {
             })
             .then(response => {
                 if (response.ok) {
-                    alert('Mensagem enviada com sucesso!');
+                    // Show success popup
                     e.target.reset();
                     this.closeWindow('message');
+                    this.openWindow('message-success');
                 } else {
-                    alert('Erro ao enviar mensagem. Tente novamente.');
+                    // Show error popup
+                    this.openWindow('message-error');
                 }
             })
             .catch(() => {
-                alert('Erro ao enviar mensagem. Tente novamente.');
+                // Show error popup
+                this.openWindow('message-error');
             });
         } else {
             // Fallback to mailto
@@ -464,16 +520,26 @@ class Windows95Desktop {
 
     updateClock() {
         const clock = document.getElementById('clock');
-        const now = new Date();
-        const time = now.toLocaleTimeString('pt-BR', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-        clock.textContent = time;
+        console.log('Clock element:', clock); // Debug
+
+        if (clock) {
+            const now = new Date();
+            const time = now.toLocaleTimeString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            console.log('Updating clock to:', time); // Debug
+            clock.textContent = time;
+        } else {
+            console.error('Clock element not found!');
+        }
     }
 
     setClockInterval() {
-        // Update clock every minute
+        console.log('Setting up clock...'); // Debug
+        // Update clock immediately first
+        this.updateClock();
+        // Then set interval to update every minute
         setInterval(() => {
             this.updateClock();
         }, 60000);
