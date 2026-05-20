@@ -6,7 +6,7 @@ const SITE_DATA = {
     about: `
         <div class="about-container"">
             <div class="about-photo">
-                <img src="assets/img/perfil.png" alt="My photo" onerror="this.parentElement.innerHTML='<div class=about-fallback>👤</div>'">
+                <img src="assets/img/perfil.jpg" alt="My photo" onerror="this.parentElement.innerHTML='<div class=about-fallback>👤</div>'">
             </div>
             <div class="about-text">
             <p><strong>Hi! During the day, I work on making DAO governance safer, and at night, I'm Batman.</strong></p>
@@ -323,7 +323,7 @@ const SITE_DATA = {
             },
             {
                 title: "AI Security and Kendrick Lamar",
-                description: "Coming soon — out this week.",
+                description: "Out later this week.",
                 thumbnail: "/assets/img/groove/video-3.png",
                 url: ""
             }
