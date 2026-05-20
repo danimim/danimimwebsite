@@ -297,7 +297,63 @@ const SITE_DATA = {
 
     // ===== SPOTIFY PLAYLIST =====
     // Link to your playlist (opened from the Start menu)
-    SPOTIFY_PLAYLIST: "https://open.spotify.com/playlist/0eSQQn2x84pxmIMy4VueMj?si=e1a7435fb0714d93"
+    SPOTIFY_PLAYLIST: "https://open.spotify.com/playlist/0eSQQn2x84pxmIMy4VueMj?si=e1a7435fb0714d93",
+
+    // ===== GROOVE CRYPTO CLUB =====
+    // Content for the second page at /groove/.
+    // Everything below is PLACEHOLDER content — replace it with the real
+    // thing whenever you're ready. Image paths are root-absolute (start
+    // with "/") because the /groove/ page lives in a subfolder.
+    groove: {
+        // --- Instagram videos about Crypto & Vinyl ---
+        // Drop real thumbnails in assets/img/groove/ and update "thumbnail".
+        // If a thumbnail is missing, a fallback play button is shown instead.
+        videos: [
+            {
+                title: "O que é uma DAO? — em 60 segundos",
+                description: "A quick intro to DAOs and onchain governance.",
+                thumbnail: "/assets/img/groove/video-1.png",
+                url: "https://www.instagram.com/"
+            },
+            {
+                title: "Vinil & cripto: por que eu amo os dois",
+                description: "Why vinyl collecting and crypto have more in common than you think.",
+                thumbnail: "/assets/img/groove/video-2.png",
+                url: "https://www.instagram.com/"
+            },
+            {
+                title: "Governança onchain explicada com discos",
+                description: "Explaining DAO voting with my record collection.",
+                thumbnail: "/assets/img/groove/video-3.png",
+                url: "https://www.instagram.com/"
+            }
+        ],
+        videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
+
+        // --- Vinyl collection ---
+        vinyl: [
+            { album: "The Dark Side of the Moon", artist: "Pink Floyd", year: "1973", note: "Placeholder list — swap these for your real records." },
+            { album: "Racional Vol. 1", artist: "Tim Maia", year: "1975", note: "" },
+            { album: "Discovery", artist: "Daft Punk", year: "2001", note: "" },
+            { album: "Clube da Esquina", artist: "Milton Nascimento & Lô Borges", year: "1972", note: "" },
+            { album: "Rumours", artist: "Fleetwood Mac", year: "1977", note: "" },
+            { album: "Random Access Memories", artist: "Daft Punk", year: "2013", note: "" }
+        ],
+
+        // --- Newsletter ---
+        newsletter: {
+            intro: "Groove Crypto Club's monthly-ish dispatch — crypto, DAO governance, and the records I'm spinning. (Placeholder copy — replace when ready.)",
+            subscribeUrl: "#",
+            issues: [
+                { title: "Issue #001 — Welcome to the Groove", date: "Coming soon", url: "#" },
+                { title: "Issue #002 — Governance & B-sides", date: "Coming soon", url: "#" }
+            ]
+        },
+
+        // --- Spotify playlist embed (real, playable) ---
+        // Embed URL format: https://open.spotify.com/embed/playlist/<id>
+        playlistEmbed: "https://open.spotify.com/embed/playlist/0eSQQn2x84pxmIMy4VueMj?utm_source=generator"
+    }
 };
 
 // Expose globally

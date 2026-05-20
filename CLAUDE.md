@@ -60,6 +60,18 @@ div, content in `SITE_DATA`, and a corresponding `populate*` call.
 - The "Do you like cats?" Start-menu flow is an intentional gag: answering "No"
   opens an Error window instead of the gallery.
 
+### Second page: Groove Crypto Club
+
+`groove/` is a standalone second page served at `/groove/`, linked from the
+"Groove Crypto Club" desktop icon above the Recycle Bin on the main page. It
+reuses `assets/css/style.css` for the Win95 chrome and `assets/js/data.js` for
+content, but has its own `groove/groove.css` and `groove/groove.js` (the
+`GrooveDesktop` class — a trimmed copy of the main windowing logic). Its four
+windows — Videos, Newsletter, Vinyl, Playlist — are populated from
+`SITE_DATA.groove`. Because this page lives in a subfolder, asset paths in the
+`groove` data block and in `groove/index.html` are root-absolute (`/assets/...`,
+`/icons/...`) so they resolve correctly from `/groove/`.
+
 ## Conventions
 
 - UI text, code comments, and `console.log` debug strings are all in English.

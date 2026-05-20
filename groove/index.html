@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groove Crypto Club — danimim.xyz</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/groove/groove.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+</head>
+<body>
+    <!-- Desktop -->
+    <div class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <button class="desktop-icon" data-window="videos" aria-label="Videos">
+                <img src="/icons/groove-videos.png" alt="Videos" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>🎬</span>'">
+                <span>Videos</span>
+            </button>
+
+            <button class="desktop-icon" data-window="newsletter" aria-label="Newsletter">
+                <img src="/icons/groove-newsletter.png" alt="Newsletter" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>📰</span>'">
+                <span>Newsletter</span>
+            </button>
+
+            <button class="desktop-icon" data-window="vinyl" aria-label="My vinyl collection">
+                <img src="/icons/groove-vinyl.png" alt="Vinyl" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>💿</span>'">
+                <span>My vinyl collection</span>
+            </button>
+
+            <button class="desktop-icon" data-window="playlist" aria-label="Playlist">
+                <img src="/icons/playlist.png" alt="Playlist" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>♫</span>'">
+                <span>Playlist</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Windows (order: Videos, Newsletter, Vinyl, Playlist) -->
+
+    <!-- Videos Window -->
+    <div class="window" id="videos" role="dialog" aria-labelledby="videos-title">
+        <div class="window-header">
+            <span id="videos-title">Videos</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="videos-content"></div>
+        </div>
+    </div>
+
+    <!-- Newsletter Window -->
+    <div class="window" id="newsletter" role="dialog" aria-labelledby="newsletter-title">
+        <div class="window-header">
+            <span id="newsletter-title">Newsletter</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="newsletter-content"></div>
+        </div>
+    </div>
+
+    <!-- Vinyl Window -->
+    <div class="window" id="vinyl" role="dialog" aria-labelledby="vinyl-title">
+        <div class="window-header">
+            <span id="vinyl-title">My Vinyl Collection</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="vinyl-content"></div>
+        </div>
+    </div>
+
+    <!-- Playlist Window -->
+    <div class="window" id="playlist" role="dialog" aria-labelledby="playlist-title">
+        <div class="window-header">
+            <span id="playlist-title">Playlist</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="playlist-content"></div>
+        </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <button class="start-button" id="start-btn" aria-label="Start menu">
+            <span class="start-icon">⚑</span>
+            <span>Start</span>
+        </button>
+
+        <!-- Start Menu -->
+        <div class="start-menu" id="start-menu">
+            <div class="start-menu-item" data-window="videos">
+                <span class="menu-icon">🎬</span>
+                <span>Videos</span>
+            </div>
+            <div class="start-menu-item" data-window="newsletter">
+                <span class="menu-icon">📰</span>
+                <span>Newsletter</span>
+            </div>
+            <div class="start-menu-item" data-window="vinyl">
+                <span class="menu-icon">💿</span>
+                <span>My vinyl collection</span>
+            </div>
+            <div class="start-menu-item" data-window="playlist">
+                <span class="menu-icon">♫</span>
+                <span>Playlist</span>
+            </div>
+            <a class="start-menu-item start-menu-link" href="/">
+                <span class="menu-icon">🏠</span>
+                <span>Back to danimim.xyz</span>
+            </a>
+        </div>
+
+        <div class="taskbar-clock" id="clock"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/data.js"></script>
+    <script src="/groove/groove.js"></script>
+</body>
+</html>
