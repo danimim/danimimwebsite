@@ -285,8 +285,8 @@ class Windows95Desktop {
             const folderBtn = document.createElement('button');
             folderBtn.className = 'folder-item';
 
-            // Determinar qual ícone usar baseado na configuração do data.js
-            let iconSrc = 'icons/folder.svg'; // fallback padrão
+            // Determine which icon to use based on the data.js configuration
+            let iconSrc = 'icons/folder.svg'; // default fallback
 
             if (containerId === 'reading-content' && window.SITE_DATA.folderIcons && window.SITE_DATA.folderIcons.reading) {
                 iconSrc = `icons/${window.SITE_DATA.folderIcons.reading[index]}`;
@@ -510,9 +510,9 @@ class Windows95Desktop {
             });
         } else {
             // Fallback to mailto
-            const subject = encodeURIComponent('Mensagem do site');
+            const subject = encodeURIComponent('Message from the site');
             const body = encodeURIComponent(
-                `Nome: ${data.name}\nEmail: ${data.email}\n\nMensagem:\n${data.message}`
+                `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
             );
             window.location.href = `mailto:?subject=${subject}&body=${body}`;
         }

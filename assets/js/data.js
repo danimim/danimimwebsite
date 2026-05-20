@@ -1,12 +1,12 @@
-// Verificar se está carregando
+// Check that this file is loading
 console.log('Downloading data.js...');
 
 const SITE_DATA = {
-    // ===== SOBRE VOCÊ =====
+    // ===== ABOUT YOU =====
     about: `
         <div class="about-container"">
             <div class="about-photo">
-                <img src="assets/img/perfil.png" alt="Minha foto" onerror="this.parentElement.innerHTML='<div class=about-fallback>👤</div>'">
+                <img src="assets/img/perfil.png" alt="My photo" onerror="this.parentElement.innerHTML='<div class=about-fallback>👤</div>'">
             </div>
             <div class="about-text">
             <p><strong>Hi! During the day, I work on making DAO governance safer, and at night, I'm Batman.</strong></p>
@@ -41,7 +41,7 @@ const SITE_DATA = {
         </div>
     `,
 
-    // ===== EXPERIÊNCIAS PROFISSIONAIS =====
+    // ===== PROFESSIONAL EXPERIENCE =====
     experiences: [
         {
             company: "Blockful",
@@ -105,7 +105,7 @@ const SITE_DATA = {
         }
     ],
 
-    // ===== PALESTRAS E TALKS =====
+    // ===== TALKS =====
     talks: [
         {
             title: "Onchain Reputation: From Plutocracy to Valocracy (ETH Belgrade 2024)",
@@ -121,7 +121,7 @@ const SITE_DATA = {
         }
     ],
 
-    // ===== LINKS PARA REDES SOCIAIS =====
+    // ===== SOCIAL MEDIA LINKS =====
     links: [
         {
             label: "LinkedIn",
@@ -141,7 +141,7 @@ const SITE_DATA = {
         }
     ],
 
-    // ===== LISTA DE LEITURA (PASTAS POR TEMA) =====
+    // ===== READING LIST (FOLDERS BY TOPIC) =====
     reading: [
         {
             folder: "Governance",
@@ -179,6 +179,10 @@ const SITE_DATA = {
                 {
                     title: "Solve the most important problem that you can personally impact",
                     url: "https://invertedpassion.com/solve-important-problems/"
+                },
+                {
+                    title: "The Refusal String Attack",
+                    url: "https://clawtom.github.io/tom-blog/2026/03/09/the-refusal-string-attack/"
                 }
             ]
         }
@@ -193,7 +197,7 @@ const SITE_DATA = {
       </div>
     </div>`,
 
-    // ===== SEUS ARTIGOS (PASTAS POR TEMA) =====
+    // ===== MY ARTICLES (FOLDERS BY TOPIC) =====
     articles: [
         {
             folder: "Web3",
@@ -209,6 +213,14 @@ const SITE_DATA = {
                 {
                     title: "A Critique of the Machiavellian Narrative in DAO Governance",
                     url: "https://mirror.xyz/danimim.eth/T7GYtywIH6nksCMYMKYlUdHJMkwnCZRHOSqCNYB18nI"
+                },
+                {
+                    title: "Futureswap: The Cost of Unobserved Governance",
+                    url: "https://paragraph.com/@blockful/futureswap"
+                },
+                {
+                    title: "Lessons from Arbitrum DAO: The Architecture of Governance",
+                    url: "https://paragraph.com/@blockful/arbitrum-security-council"
                 }
             ]
         },
@@ -232,13 +244,13 @@ const SITE_DATA = {
         }
     ],
 
-    // ===== CONFIGURAÇÃO DOS ÍCONES DAS PASTAS =====
+    // ===== FOLDER ICON CONFIGURATION =====
     folderIcons: {
         reading: ['gov.png', 'philo.png', 'general.png'],
         articles: ['web3.png', 'thoughts.png', 'career.png']
     },
 
-    // ===== HOBBIES E VIDA PESSOAL =====
+    // ===== HOBBIES AND PERSONAL LIFE =====
     hobbies: `
         <p><strong>☕ Coffee Enthusiast:</strong> I love coffee, please invite me to grab one and yap.</p>
         <br>
@@ -253,43 +265,43 @@ const SITE_DATA = {
         <p><strong>🏝️ Island Life:</strong> I live in southern Brazil, on a paradise island.</p>
     `,
 
-    // ===== SEUS GATOS =====
+    // ===== MY CATS =====
     cats: [
         {
             name: "Merlot – Chief Executive Diva",
-            photo: "assets/img/cats/merlot.jpeg", // Crie esta pasta: assets/img/cats/
+            photo: "assets/img/cats/merlot.jpeg", // Create this folder: assets/img/cats/
             bio: "Runs my entire life with an iron paw. Demands meetings on her schedule only and insists on daily compliments. HR nightmare, but too beautiful to replace."
         },
         {
             name: "Nietzsche – Director of Chaos & Public Relations",
-            photo: "assets/img/cats/nietzsche.jpeg", // Crie esta pasta: assets/img/cats/
+            photo: "assets/img/cats/nietzsche.jpeg", // Create this folder: assets/img/cats/
             bio: "Beloved by everyone, sweet to a fault, but leaves trails of destruction wherever he goes. Runs the office morale program by climbing where he shouldn't."
         },
         {
             name: "Chardonnay – Head of Culinary Acquisitions",
-            photo: "assets/img/cats/chardonnay.jpeg", // Crie esta pasta: assets/img/cats/
+            photo: "assets/img/cats/chardonnay.jpeg", // Create this folder: assets/img/cats/
             bio: "Responsible for testing every snack 24/7. Knows how to sit and give a paw, which she shamelessly uses as a corporate manipulation tactic."
         },
         {
             name: "Kant – Chief Nap & Compliance Officer",
-            photo: "assets/img/cats/kant.jpeg", // Crie esta pasta: assets/img/cats/
+            photo: "assets/img/cats/kant.jpeg", // Create this folder: assets/img/cats/
             bio: "Specializes in long sleeping shifts and terrified of sudden noises but enforces mandatory cuddle policies. Overweight but it's strategic mass."
         }
     ],
 
-    // ===== CONFIGURAÇÃO DO FORMULÁRIO =====
-    // Crie conta no formspree.io e cole o endpoint aqui
-    // Exemplo: "https://formspree.io/f/abcd1234"
-    // Se deixar null, usará mailto como fallback
+    // ===== FORM CONFIGURATION =====
+    // Create an account at formspree.io and paste the endpoint here
+    // Example: "https://formspree.io/f/abcd1234"
+    // If left null, falls back to mailto
     FORMSPREE_ENDPOINT: "https://formspree.io/f/xyznkkla",
 
-    // ===== PLAYLIST DO SPOTIFY =====
-    // Link para sua playlist (editável no menu Start)
+    // ===== SPOTIFY PLAYLIST =====
+    // Link to your playlist (opened from the Start menu)
     SPOTIFY_PLAYLIST: "https://open.spotify.com/playlist/0eSQQn2x84pxmIMy4VueMj?si=e1a7435fb0714d93"
 };
 
-// Disponibilizar globalmente
+// Expose globally
 window.SITE_DATA = SITE_DATA;
 
 // Debug
-console.log('✅ data.js carregado!', SITE_DATA);
+console.log('✅ data.js loaded!', SITE_DATA);
