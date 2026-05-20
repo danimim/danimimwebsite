@@ -159,7 +159,7 @@ class GrooveDesktop {
             li.tabIndex = 0;
             const meta = [record.artist, record.year, record.genre].filter(Boolean).join(' &middot; ');
             li.innerHTML = `
-                <span class="vinyl-disc">&#128191;</span>
+                <span class="vinyl-cover">${record.cover ? `<img src="${record.cover}" alt="" onerror="this.remove()">` : ''}</span>
                 <span class="vinyl-info">
                     <span class="vinyl-album">${record.album || ''}</span>
                     <span class="vinyl-artist">${meta}</span>
@@ -186,6 +186,7 @@ class GrooveDesktop {
         turntable.className = 'turntable';
         turntable.innerHTML = `
             <div class="tt-deck">
+                <div class="tt-cover" id="tt-cover"></div>
                 <div class="tt-platter">
                     <div class="tt-record" id="tt-record">
                         <div class="tt-label" id="tt-label"><div class="tt-hole"></div></div>
@@ -351,6 +352,14 @@ class GrooveDesktop {
 
         recordEl.classList.toggle('spinning', this.ttState === 'playing');
         if (labelEl) labelEl.style.background = this.ttLabelColor(this.recordIndex);
+
+        const coverEl = document.getElementById('tt-cover');
+        if (coverEl) {
+            const album = record ? (record.album || '') : '';
+            coverEl.style.backgroundColor = this.ttLabelColor(this.recordIndex);
+            coverEl.innerHTML = `<span class="tt-cover-name">${album}</span>`
+                + (record && record.cover ? `<img src="${record.cover}" alt="${album}" onerror="this.remove()">` : '');
+        }
 
         const playBtn = document.querySelector('.player-btn[data-tt="play"]');
         const pauseBtn = document.querySelector('.player-btn[data-tt="pause"]');
