@@ -350,9 +350,20 @@ const SITE_DATA = {
             ]
         },
 
-        // --- Spotify playlist embed (real, playable) ---
-        // Embed URL format: https://open.spotify.com/embed/playlist/<id>
-        playlistEmbed: "https://open.spotify.com/embed/playlist/0eSQQn2x84pxmIMy4VueMj?utm_source=generator",
+        // --- Playlist (rendered as a Windows 95 media player) ---
+        // PLACEHOLDER tracks — the real song list / in-site streaming
+        // will be wired up later.
+        playlist: {
+            note: "🎵 In-site streaming is coming soon — for now, here's what's on rotation.",
+            tracks: [
+                { title: "Get Lucky", artist: "Daft Punk" },
+                { title: "Blue Monday", artist: "New Order" },
+                { title: "África Brasil", artist: "Tim Maia" },
+                { title: "Midnight City", artist: "M83" },
+                { title: "Tarde em Itapuã", artist: "Toquinho & Vinícius" },
+                { title: "One More Time", artist: "Daft Punk" }
+            ]
+        },
 
         // --- About the Groove Crypto Club (PLACEHOLDER) ---
         about: `
@@ -362,13 +373,11 @@ const SITE_DATA = {
             what it is, why you started it, and what people will find here.</p>
         `,
 
-        // --- Donation wallets (PLACEHOLDER addresses) ---
+        // --- Donation wallet ---
         donate: {
             intro: "If my videos or research help you, you can support more of it here. Every contribution funds independent governance research and content. 💜",
-            wallets: [
-                { chain: "Ethereum", address: "0xYOUR_ETHEREUM_ADDRESS_HERE", note: "ETH · USDC · any ERC-20 token" },
-                { chain: "Base", address: "0xYOUR_BASE_ADDRESS_HERE", note: "ETH · USDC on Base" }
-            ]
+            address: "0x81091b9E5D49e264C051d3aeb3023A4C170c6888",
+            note: "I accept donations on any EVM-compatible chain — Ethereum, Base, Arbitrum, Optimism, and more."
         }
     },
 
