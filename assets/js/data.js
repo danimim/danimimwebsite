@@ -310,20 +310,20 @@ const SITE_DATA = {
         // If a thumbnail is missing, a fallback play button is shown instead.
         videos: [
             {
-                title: "O que é uma DAO? — em 60 segundos",
-                description: "A quick intro to DAOs and onchain governance.",
+                title: "Wish You Were Here, Pink Floyd – The Nixon Shock",
+                description: "",
                 thumbnail: "/assets/img/groove/video-1.png",
                 url: "https://www.instagram.com/"
             },
             {
-                title: "Vinil & cripto: por que eu amo os dois",
-                description: "Why vinyl collecting and crypto have more in common than you think.",
+                title: "Episode 4: The Doors and DAOs",
+                description: "",
                 thumbnail: "/assets/img/groove/video-2.png",
                 url: "https://www.instagram.com/"
             },
             {
-                title: "Governança onchain explicada com discos",
-                description: "Explaining DAO voting with my record collection.",
+                title: "AI Security and Kendrick Lamar",
+                description: "",
                 thumbnail: "/assets/img/groove/video-3.png",
                 url: "https://www.instagram.com/"
             }
