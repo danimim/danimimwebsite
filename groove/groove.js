@@ -71,10 +71,10 @@ class GrooveDesktop {
             card.innerHTML = `
                 <div class="video-thumb">
                     <img src="${video.thumbnail || ''}" alt="${video.title || ''}" onerror="this.remove()">
-                    <span class="video-play">&#9654;</span>
                 </div>
                 <div class="video-title">${video.title || ''}</div>
-                <div class="video-desc">${video.description || ''}</div>
+                ${video.description ? `<div class="video-desc">${video.description}</div>` : ''}
+                <span class="video-cta">${hasUrl ? 'Watch on Instagram' : 'Coming soon'}</span>
             `;
             grid.appendChild(card);
         });
@@ -350,6 +350,13 @@ class GrooveDesktop {
             const idx = Number(li.dataset.index);
             li.classList.toggle('playing', idx === this.recordIndex && this.ttState !== 'stopped');
         });
+
+        const miniTrack = document.getElementById('mini-track');
+        const miniDisc = document.getElementById('mini-disc');
+        const miniToggle = document.getElementById('mini-toggle');
+        if (miniTrack) miniTrack.textContent = record ? (record.album || '') : 'No record';
+        if (miniDisc) miniDisc.classList.toggle('spinning', this.ttState === 'playing');
+        if (miniToggle) miniToggle.innerHTML = this.ttState === 'playing' ? '||' : '&#9658;';
     }
 
     ttLabelColor(index) {
@@ -496,6 +503,17 @@ class GrooveDesktop {
             requestForm.addEventListener('submit', (e) => this.handleRequestSubmit(e));
         }
 
+        // Mini player (shown while the Turntable is minimized)
+        const miniplayer = document.getElementById('miniplayer');
+        if (miniplayer) {
+            miniplayer.addEventListener('click', () => this.openWindow('turntable'));
+            document.getElementById('mini-toggle').addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (this.ttState === 'playing') this.ttPause();
+                else this.ttPlay();
+            });
+        }
+
         // Global keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
@@ -552,6 +570,7 @@ class GrooveDesktop {
         win.classList.add('active');
         win.classList.remove('minimized');
         this.focusWindow(windowId);
+        if (windowId === 'turntable') this.hideMiniplayer();
     }
 
     closeWindow(windowId) {
@@ -559,6 +578,10 @@ class GrooveDesktop {
         if (!win) return;
         win.classList.remove('active');
         if (this.activeWindow === windowId) this.activeWindow = null;
+        if (windowId === 'turntable') {
+            this.ttStop();
+            this.hideMiniplayer();
+        }
     }
 
     minimizeWindow(windowId) {
@@ -567,6 +590,17 @@ class GrooveDesktop {
         win.classList.add('minimized');
         win.classList.remove('active');
         if (this.activeWindow === windowId) this.activeWindow = null;
+        if (windowId === 'turntable') this.showMiniplayer();
+    }
+
+    showMiniplayer() {
+        const m = document.getElementById('miniplayer');
+        if (m) m.classList.add('active');
+    }
+
+    hideMiniplayer() {
+        const m = document.getElementById('miniplayer');
+        if (m) m.classList.remove('active');
     }
 
     focusWindow(windowId) {

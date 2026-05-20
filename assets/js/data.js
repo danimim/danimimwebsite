@@ -323,7 +323,7 @@ const SITE_DATA = {
             },
             {
                 title: "AI Security and Kendrick Lamar",
-                description: "Coming soon — out this week.",
+                description: "Out later this week.",
                 thumbnail: "/assets/img/groove/video-3.png",
                 url: ""
             }

@@ -38,6 +38,79 @@
   height: 120px;
 }
 
+/* Mini player (shown while the Turntable is minimized) */
+.miniplayer {
+  position: fixed;
+  left: 8px;
+  bottom: 44px;
+  z-index: 1500;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  width: 240px;
+  padding: 6px 8px;
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.miniplayer.active {
+  display: flex;
+}
+
+.mini-disc {
+  position: relative;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #181818;
+  background-image: repeating-radial-gradient(circle at center, #181818 0 2px, #2a2a2a 2px 3px);
+  border: 1px solid #000000;
+  animation: tt-spin 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.mini-disc.spinning {
+  animation-play-state: running;
+}
+
+.mini-disc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c0392b;
+}
+
+.mini-track {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-btn {
+  flex-shrink: 0;
+  width: 26px;
+  height: 22px;
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.mini-btn:active {
+  border: 2px inset #c0c0c0;
+}
+
 /* ===== Videos ===== */
 .video-grid {
   display: grid;
@@ -88,19 +161,19 @@
   object-fit: cover;
 }
 
-.video-play {
-  position: relative;
-  z-index: 1;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.video-cta {
+  display: block;
+  margin-top: 6px;
+  padding: 4px 6px;
   background: #c0c0c0;
   border: 2px outset #c0c0c0;
-  font-size: 14px;
+  text-align: center;
+  font-size: 11px;
   color: #000;
-  padding-left: 3px;
+}
+
+.video-card:active .video-cta {
+  border: 2px inset #c0c0c0;
 }
 
 .video-title {
