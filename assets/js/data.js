@@ -316,7 +316,7 @@ const SITE_DATA = {
                 url: "https://www.instagram.com/reel/DMtka28xA61wjnLIAyGq6jZkvCKuHHIaMsMoyY0/?igsh=MTExbW15NTY2aGkxdw=="
             },
             {
-                title: "Episode 4: The Doors and DAOs",
+                title: "The Doors and DAOs",
                 description: "",
                 thumbnail: "/assets/img/groove/video-2.png",
                 url: "https://www.instagram.com/reel/DOY2m1SDU-hDS9F-fGzV253XRgCEfEmT1WQ0mo0/?igsh=NTZueXl3ejFhZGwz"
@@ -382,13 +382,11 @@ const SITE_DATA = {
                     <img src="/assets/img/groove/daniela.jpg" alt="Daniela" onerror="this.parentElement.innerHTML='<div class=about-fallback>🎧</div>'">
                 </div>
                 <div class="about-text">
-                    <p><strong>Groove Crypto Club runs on one belief: you can live in the future without losing the present.</strong></p>
-                    <p>Crypto is where I chase what's next. Vinyl is what keeps me here, in my own life, right now. I refuse to pick one.</p>
-                    <p>I've been in crypto since 2018, long enough to know the grind can swallow you whole: the charts, the launches, the noise. Then I drop the needle on a record and the room comes back. The song reminds me there's a life happening around me.</p>
-                    <p>So here's the deal. If you love vinyl and crypto still feels like a closed door, I'll open it for you. If you live in crypto and forgot what a slow evening sounds like, put a record on and touch some grass.</p>
-                    <p>I only make a video when the idea genuinely excites me. Never to fill a feed. Always to share something I actually love.</p>
-                    <p>Crypto helped me build a life I once thought wasn't for me. Vinyl makes sure I'm present enough to live it. Groove Crypto Club is where those two finally sit in the same room.</p>
-                    <p>I'm Daniela, from Belo Horizonte, now on the Magic Island, Florianópolis. Pull up a chair. The record's already spinning.</p>
+                    <p>I'm Daniela, and I created Groove Crypto Club. I'm from Belo Horizonte, MG, and these days I live in Florianópolis, SC, the Magic Island.</p>
+                    <p>I've been in crypto since 2018, and this is where I share my two biggest passions on video: web3 and vinyl records.</p>
+                    <p>It started because people kept asking me to make videos. I only said yes once I knew I could do it in a way that genuinely excited me. This was never about posting just to post. It's about sharing the things I love.</p>
+                    <p>What I want to build is a space where vinyl lovers can get curious about crypto and tech, and where crypto people can step away from the screen, put on a record, and touch some grass.</p>
+                    <p>It's also a corner for my own thoughts, mostly about how I got here, because my life changed in two ways. Crypto pushed me to chase my dreams and actually reach some of them. And vinyl always brings me back to reality whenever I get lost in the crypto grind.</p>
                 </div>
             </div>
         `,
