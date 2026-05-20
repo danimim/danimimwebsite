@@ -45,7 +45,7 @@ const SITE_DATA = {
     experiences: [
         {
             company: "Blockful",
-            period: "2023 - Present",
+            period: "2023 - 2026",
             roles: [
                 {
                     title: "Growth and Governance Lead",
@@ -55,7 +55,7 @@ const SITE_DATA = {
         },
         {
             company: "Moonwell / Mamo",
-            period: "2025 - Present",
+            period: "2025 - 2026",
             roles: [
                 {
                     title: "Growth Lead",
