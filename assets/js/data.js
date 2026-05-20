@@ -382,11 +382,11 @@ const SITE_DATA = {
                     <img src="/assets/img/groove/daniela.jpg" alt="Daniela" onerror="this.parentElement.innerHTML='<div class=about-fallback>🎧</div>'">
                 </div>
                 <div class="about-text">
-                    <p>I'm Daniela, and I created Groove Crypto Club. I'm from Belo Horizonte, MG, and these days I live in Florianópolis, SC, the Magic Island.</p>
-                    <p>I've been in crypto since 2018, and this is where I share my two biggest passions on video: web3 and vinyl records.</p>
-                    <p>It started because people kept asking me to make videos. I only said yes once I knew I could do it in a way that genuinely excited me. This was never about posting just to post. It's about sharing the things I love.</p>
-                    <p>What I want to build is a space where vinyl lovers can get curious about crypto and tech, and where crypto people can step away from the screen, put on a record, and touch some grass.</p>
-                    <p>It's also a corner for my own thoughts, mostly about how I got here, because my life changed in two ways. Crypto pushed me to chase my dreams and actually reach some of them. And vinyl always brings me back to reality whenever I get lost in the crypto grind.</p>
+                    <p>Hi, I'm Daniela. I created Groove Crypto Club, and I run it from Florianópolis, the Magic Island, though my heart will always be in Belo Horizonte, where I'm from.</p>
+                    <p>I've been in crypto since 2018, and this is where I get to share my two biggest passions on video: web3 and vinyl records.</p>
+                    <p>It started when people kept asking me to make videos, but I only said yes once I figured out how to do it in a way that genuinely excited me. I never wanted to post just to post. For me it only works if I'm sharing something I truly love.</p>
+                    <p>I want this to be a space where vinyl lovers can get curious about crypto and tech, and where crypto people can step away from the screen for a bit, put on a record, and touch some grass.</p>
+                    <p>It's also where I share a little of my own story, mostly how I got here, because my life really did change in two ways: crypto pushed me to chase my dreams and actually reach some of them, and vinyl keeps me grounded, pulling me back to reality every time I get lost in the crypto grind.</p>
                 </div>
             </div>
         `,
