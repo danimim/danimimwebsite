@@ -60,11 +60,14 @@ class GrooveDesktop {
         grid.className = 'video-grid';
 
         (groove.videos || []).forEach(video => {
-            const card = document.createElement('a');
-            card.className = 'video-card';
-            card.href = video.url || '#';
-            card.target = '_blank';
-            card.rel = 'noopener';
+            const hasUrl = video.url && video.url !== '#';
+            const card = document.createElement(hasUrl ? 'a' : 'div');
+            card.className = hasUrl ? 'video-card' : 'video-card video-soon';
+            if (hasUrl) {
+                card.href = video.url;
+                card.target = '_blank';
+                card.rel = 'noopener';
+            }
             card.innerHTML = `
                 <div class="video-thumb">
                     <img src="${video.thumbnail || ''}" alt="${video.title || ''}" onerror="this.remove()">
