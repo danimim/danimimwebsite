@@ -62,7 +62,6 @@ div, content in `SITE_DATA`, and a corresponding `populate*` call.
 
 ## Conventions
 
-- UI text is English; code comments and `console.log` debug strings in `data.js`
-  / `app.js` are in Portuguese (`<html lang="pt-BR">`).
+- UI text, code comments, and `console.log` debug strings are all in English.
 - `data.js` and `app.js` contain leftover `console.log` debug statements — keep
   this in mind; they are not errors.
