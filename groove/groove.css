@@ -58,6 +58,15 @@
   background: #ffffff;
 }
 
+.video-card.video-soon {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.video-card.video-soon:hover {
+  background: #f0f0f0;
+}
+
 .video-thumb {
   position: relative;
   width: 100%;

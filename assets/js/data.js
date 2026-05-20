@@ -313,19 +313,19 @@ const SITE_DATA = {
                 title: "Wish You Were Here, Pink Floyd – The Nixon Shock",
                 description: "",
                 thumbnail: "/assets/img/groove/video-1.png",
-                url: "https://www.instagram.com/"
+                url: "https://www.instagram.com/reel/DMtka28xA61wjnLIAyGq6jZkvCKuHHIaMsMoyY0/?igsh=MTExbW15NTY2aGkxdw=="
             },
             {
                 title: "Episode 4: The Doors and DAOs",
                 description: "",
                 thumbnail: "/assets/img/groove/video-2.png",
-                url: "https://www.instagram.com/"
+                url: "https://www.instagram.com/reel/DOY2m1SDU-hDS9F-fGzV253XRgCEfEmT1WQ0mo0/?igsh=NTZueXl3ejFhZGwz"
             },
             {
                 title: "AI Security and Kendrick Lamar",
-                description: "",
+                description: "Coming soon — out this week.",
                 thumbnail: "/assets/img/groove/video-3.png",
-                url: "https://www.instagram.com/"
+                url: ""
             }
         ],
         videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
