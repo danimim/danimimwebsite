@@ -330,14 +330,16 @@ const SITE_DATA = {
         ],
         videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
 
-        // --- Vinyl collection ---
+        // --- Vinyl collection (also the Turntable's records) ---
+        // PLACEHOLDER — replace with your real collection. Each record's
+        // "youtube" is the audio played on the Turntable: a YouTube video
+        // ID or full URL. Leave it "" if a record has no audio yet.
         vinyl: [
-            { album: "The Dark Side of the Moon", artist: "Pink Floyd", year: "1973", note: "Placeholder list — swap these for your real records." },
-            { album: "Racional Vol. 1", artist: "Tim Maia", year: "1975", note: "" },
-            { album: "Discovery", artist: "Daft Punk", year: "2001", note: "" },
-            { album: "Clube da Esquina", artist: "Milton Nascimento & Lô Borges", year: "1972", note: "" },
-            { album: "Rumours", artist: "Fleetwood Mac", year: "1977", note: "" },
-            { album: "Random Access Memories", artist: "Daft Punk", year: "2013", note: "" }
+            { album: "Discovery", artist: "Daft Punk", year: "2001", youtube: "FGBhQbmPwH8" },
+            { album: "Blue Monday", artist: "New Order", year: "1983", youtube: "9GMjH1nR0ds" },
+            { album: "The Dark Side of the Moon", artist: "Pink Floyd", year: "1973", youtube: "" },
+            { album: "Racional Vol. 1", artist: "Tim Maia", year: "1975", youtube: "" },
+            { album: "Random Access Memories", artist: "Daft Punk", year: "2013", youtube: "" }
         ],
 
         // --- Newsletter ---
@@ -347,21 +349,6 @@ const SITE_DATA = {
             issues: [
                 { title: "Issue #001 — Welcome to the Groove", date: "Coming soon", url: "#" },
                 { title: "Issue #002 — Governance & B-sides", date: "Coming soon", url: "#" }
-            ]
-        },
-
-        // --- Playlist (rendered as a Windows 95 media player) ---
-        // PLACEHOLDER tracks — the real song list / in-site streaming
-        // will be wired up later.
-        playlist: {
-            note: "🎵 In-site streaming is coming soon — for now, here's what's on rotation.",
-            tracks: [
-                { title: "Get Lucky", artist: "Daft Punk" },
-                { title: "Blue Monday", artist: "New Order" },
-                { title: "África Brasil", artist: "Tim Maia" },
-                { title: "Midnight City", artist: "M83" },
-                { title: "Tarde em Itapuã", artist: "Toquinho & Vinícius" },
-                { title: "One More Time", artist: "Daft Punk" }
             ]
         },
 

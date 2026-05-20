@@ -30,9 +30,9 @@
                 <span>My vinyl collection</span>
             </button>
 
-            <button class="desktop-icon" data-window="playlist" aria-label="Playlist">
-                <img src="/icons/playlist.png" alt="Playlist" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>♫</span>'">
-                <span>Playlist</span>
+            <button class="desktop-icon" data-window="turntable" aria-label="Turntable">
+                <img src="/icons/playlist.png" alt="Turntable" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>♫</span>'">
+                <span>Turntable</span>
             </button>
 
             <button class="desktop-icon" data-window="about" aria-label="About the Groove Crypto Club">
@@ -99,17 +99,17 @@
         </div>
     </div>
 
-    <!-- Playlist Window -->
-    <div class="window" id="playlist" role="dialog" aria-labelledby="playlist-title">
+    <!-- Turntable Window -->
+    <div class="window" id="turntable" role="dialog" aria-labelledby="turntable-title">
         <div class="window-header">
-            <span id="playlist-title">Playlist</span>
+            <span id="turntable-title">Turntable</span>
             <div class="window-controls">
                 <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
                 <button class="window-btn close" aria-label="Close"><span>×</span></button>
             </div>
         </div>
         <div class="window-content">
-            <div id="playlist-content"></div>
+            <div id="turntable-content"></div>
         </div>
     </div>
 
@@ -206,9 +206,9 @@
                 <span class="menu-icon"><img src="/icons/groove-vinyl.png" alt="" width="24" height="24" onerror="this.outerHTML='💿'"></span>
                 <span>My vinyl collection</span>
             </div>
-            <div class="start-menu-item" data-window="playlist">
+            <div class="start-menu-item" data-window="turntable">
                 <span class="menu-icon"><img src="/icons/playlist.png" alt="" width="24" height="24" onerror="this.outerHTML='♫'"></span>
-                <span>Playlist</span>
+                <span>Turntable</span>
             </div>
             <div class="start-menu-item" data-window="about">
                 <span class="menu-icon"><img src="/icons/aboutgroove.png" alt="" width="24" height="24" onerror="this.outerHTML='ℹ️'"></span>
@@ -231,8 +231,12 @@
         <div class="taskbar-clock" id="clock"></div>
     </div>
 
+    <!-- Hidden YouTube audio engine for the Turntable -->
+    <div id="yt-audio"></div>
+
     <!-- Scripts -->
     <script src="/assets/js/data.js"></script>
     <script src="/groove/groove.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
