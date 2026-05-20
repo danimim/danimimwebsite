@@ -331,38 +331,38 @@ const SITE_DATA = {
         videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
 
         // --- Vinyl collection (also the Turntable's records) ---
-        // To play a record on the Turntable, give it a "youtube" value: a
-        // YouTube video ID or full URL. Records with "" still load on the
-        // deck (it spins) but have no audio yet.
+        // "youtube" is the audio played on the Turntable (a YouTube video ID
+        // or URL). Most are full-album uploads found by search — feel free to
+        // swap any. Records with "" still load on the deck but have no audio.
         vinyl: [
-            { artist: "Sade", album: "The Best of Sade", year: "", genre: "", youtube: "" },
-            { artist: "ABBA", album: "Golden Hits", year: "1983", genre: "Pop", youtube: "" },
-            { artist: "Led Zeppelin", album: "The Song Remains the Same (soundtrack)", year: "1976", genre: "Rock", youtube: "" },
+            { artist: "Sade", album: "The Best of Sade", year: "", genre: "", youtube: "tfHZlZ994c0" },
+            { artist: "ABBA", album: "Golden Hits", year: "1983", genre: "Pop", youtube: "f0woW91PR1Q" },
+            { artist: "Led Zeppelin", album: "The Song Remains the Same (soundtrack)", year: "1976", genre: "Rock", youtube: "FFW-_2-gPEI" },
             { artist: "Jorge Ben Jor", album: "Ao Vivo no Rio (Som Livre)", year: "1991", genre: "MPB", youtube: "" },
-            { artist: "Trilha Sonora", album: "The Great Gatsby (Nelson Riddle)", year: "1974", genre: "Trilha Sonora", youtube: "" },
-            { artist: "Black Sabbath", album: "Paranoid", year: "1970", genre: "Heavy Metal", youtube: "" },
-            { artist: "Frank Sinatra", album: "Star Collection", year: "1977", genre: "Jazz/Pop", youtube: "" },
-            { artist: "Djavan", album: "Luz", year: "1982", genre: "MPB", youtube: "" },
-            { artist: "The Cure", album: "Standing on a Beach – The Singles", year: "1986", genre: "Post-punk / New Wave", youtube: "" },
-            { artist: "Joy Division", album: "Unknown Pleasures", year: "1979", genre: "Post-punk", youtube: "" },
-            { artist: "Simply Red", album: "The Best of Simply Red", year: "", genre: "Pop/Soul", youtube: "" },
-            { artist: "Trilha Sonora", album: "Miami Vice II", year: "", genre: "Trilha Sonora", youtube: "" },
-            { artist: "Ten Years After", album: "Ssssh.", year: "1969", genre: "Blues Rock", youtube: "" },
-            { artist: "A-ha", album: "Stay on These Roads", year: "1988", genre: "Pop", youtube: "" },
-            { artist: "Michael Jackson", album: "Bad", year: "1987", genre: "Pop", youtube: "" },
-            { artist: "Kendrick Lamar", album: "Good Kid, M.A.A.D City", year: "2012", genre: "Hip-Hop / Rap", youtube: "" },
-            { artist: "Pink Floyd", album: "Wish You Were Here", year: "", genre: "", youtube: "" },
-            { artist: "The Police", album: "The Very Best of... Sting & The Police", year: "", genre: "", youtube: "" },
-            { artist: "The Doors", album: "L.A. Woman", year: "", genre: "", youtube: "" },
-            { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "", youtube: "" },
-            { artist: "Pink Floyd", album: "Animals", year: "", genre: "", youtube: "" },
+            { artist: "Trilha Sonora", album: "The Great Gatsby (Nelson Riddle)", year: "1974", genre: "Trilha Sonora", youtube: "rI2_JI4ZL6c" },
+            { artist: "Black Sabbath", album: "Paranoid", year: "1970", genre: "Heavy Metal", youtube: "6nImynXu9rg" },
+            { artist: "Frank Sinatra", album: "Star Collection", year: "1977", genre: "Jazz/Pop", youtube: "1GA5cJT7jiM" },
+            { artist: "Djavan", album: "Luz", year: "1982", genre: "MPB", youtube: "U2Ce-bMkGK8" },
+            { artist: "The Cure", album: "Standing on a Beach – The Singles", year: "1986", genre: "Post-punk / New Wave", youtube: "0Y-OUO8JqN8" },
+            { artist: "Joy Division", album: "Unknown Pleasures", year: "1979", genre: "Post-punk", youtube: "7J9YtpUCYpI" },
+            { artist: "Simply Red", album: "The Best of Simply Red", year: "", genre: "Pop/Soul", youtube: "f8jYslkV-2E" },
+            { artist: "Trilha Sonora", album: "Miami Vice II", year: "", genre: "Trilha Sonora", youtube: "lFaWXix-ARA" },
+            { artist: "Ten Years After", album: "Ssssh.", year: "1969", genre: "Blues Rock", youtube: "Adgh3bT0BRA" },
+            { artist: "A-ha", album: "Stay on These Roads", year: "1988", genre: "Pop", youtube: "gBGXPafi_9s" },
+            { artist: "Michael Jackson", album: "Bad", year: "1987", genre: "Pop", youtube: "Odkk1424WP4" },
+            { artist: "Kendrick Lamar", album: "Good Kid, M.A.A.D City", year: "2012", genre: "Hip-Hop / Rap", youtube: "y6ubvVJEa_8" },
+            { artist: "Pink Floyd", album: "Wish You Were Here", year: "", genre: "", youtube: "lWUKXCp3D00" },
+            { artist: "The Police", album: "The Very Best of... Sting & The Police", year: "", genre: "", youtube: "5PtHxV7G-Bs" },
+            { artist: "The Doors", album: "L.A. Woman", year: "", genre: "", youtube: "91vU3kHtnoU" },
+            { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "", youtube: "tpgmlk7OVg4" },
+            { artist: "Pink Floyd", album: "Animals", year: "", genre: "", youtube: "7NLQYYnjVyU" },
             { artist: "Hozier", album: "Wasteland, Baby!", year: "", genre: "", youtube: "" },
             { artist: "J. Cole", album: "Forest Hills Drive", year: "", genre: "", youtube: "" },
             { artist: "Arctic Monkeys", album: "AM", year: "2013", genre: "", youtube: "" },
-            { artist: "Pink Floyd", album: "The Dark Side of the Moon", year: "", genre: "", youtube: "" },
-            { artist: "Queen", album: "A Kind of Magic", year: "", genre: "", youtube: "" },
-            { artist: "Dire Straits", album: "Brothers in Arms", year: "", genre: "", youtube: "" },
-            { artist: "Sonic Youth", album: "Goo", year: "", genre: "", youtube: "" }
+            { artist: "Pink Floyd", album: "The Dark Side of the Moon", year: "", genre: "", youtube: "cuKVhVb8VRw" },
+            { artist: "Queen", album: "A Kind of Magic", year: "", genre: "", youtube: "zTC-ZJ6-rxg" },
+            { artist: "Dire Straits", album: "Brothers in Arms", year: "", genre: "", youtube: "p0D-w-HhB64" },
+            { artist: "Sonic Youth", album: "Goo", year: "", genre: "", youtube: "eySTnQt5jCE" }
         ],
 
         // --- Newsletter ---
