@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--
+  Open Graph card template for danimim.xyz.
+  Rendered at 1200x630 and screenshotted to assets/img/og*.png.
+  Override via query params, e.g.
+    og-card.html?title=Groove%20Crypto%20Club&icon=/icons/groove.webp&sub=...
+-->
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: #008080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, sans-serif;
+    image-rendering: pixelated;
+  }
+  .og-window {
+    width: 980px;
+    background: #c0c0c0;
+    border: 4px outset #c0c0c0;
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.28);
+  }
+  .og-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 26px;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .og-controls { display: flex; gap: 6px; }
+  .og-controls span {
+    width: 38px; height: 32px;
+    background: #c0c0c0;
+    border: 2px outset #c0c0c0;
+    color: #000000;
+    font-size: 20px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .og-body {
+    padding: 60px 60px 68px;
+    display: flex;
+    align-items: center;
+    gap: 52px;
+  }
+  .og-icon {
+    width: 210px; height: 210px;
+    flex-shrink: 0;
+    image-rendering: pixelated;
+  }
+  .og-text { min-width: 0; }
+  .og-title {
+    font-size: 74px;
+    font-weight: bold;
+    color: #000000;
+    line-height: 1.05;
+  }
+  .og-sub {
+    font-size: 28px;
+    color: #000080;
+    margin-top: 22px;
+  }
+</style>
+</head>
+<body>
+  <div class="og-window">
+    <div class="og-titlebar">
+      <span id="og-tbtext">danimim.eth</span>
+      <span class="og-controls"><span>_</span><span>&#9633;</span><span>&times;</span></span>
+    </div>
+    <div class="og-body">
+      <img class="og-icon" id="og-icon" src="/favicon.png" alt="">
+      <div class="og-text">
+        <div class="og-title" id="og-title">danimim.eth</div>
+        <div class="og-sub" id="og-sub">Web3, DAO governance, and a Windows 95 desktop.</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var q = new URLSearchParams(location.search);
+    if (q.get('title')) {
+      document.getElementById('og-title').textContent = q.get('title');
+      document.getElementById('og-tbtext').textContent = q.get('title');
+    }
+    if (q.get('sub')) document.getElementById('og-sub').textContent = q.get('sub');
+    if (q.get('icon')) document.getElementById('og-icon').src = q.get('icon');
+  </script>
+</body>
+</html>
