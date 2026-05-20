@@ -395,9 +395,26 @@ class GrooveDesktop {
             this.openWindow('videos');
             return;
         }
-        // Only Videos and Newsletter open by default (Videos ends up on top).
+        // Only Videos and Newsletter open by default, stacked so neither
+        // covers the other (Videos ends up focused on top).
         this.openWindow('newsletter');
         this.openWindow('videos');
+        this.layoutDefaultWindows();
+    }
+
+    layoutDefaultWindows() {
+        const newsletter = document.getElementById('newsletter');
+        const videos = document.getElementById('videos');
+        if (!newsletter || !videos) return;
+
+        const margin = 24;
+        const centerLeft = (win) => Math.max(margin, Math.round((window.innerWidth - win.offsetWidth) / 2));
+
+        newsletter.style.left = centerLeft(newsletter) + 'px';
+        newsletter.style.top = margin + 'px';
+
+        videos.style.left = centerLeft(videos) + 'px';
+        videos.style.top = (margin + newsletter.offsetHeight + 16) + 'px';
     }
 
     toggleStartMenu() {
