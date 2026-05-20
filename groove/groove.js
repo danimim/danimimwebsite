@@ -29,7 +29,7 @@ class GrooveDesktop {
         this.ytPlayer = null;
         this.ytReady = false;
         this.ytPending = null;
-        this.ytLoadedId = '';
+        this.ytLoadedKey = '';
 
         this.init();
     }
@@ -254,13 +254,13 @@ class GrooveDesktop {
         this.recordIndex = index;
         this.ttState = 'playing';
 
-        const id = this.ytId(record.youtube);
-        if (id) {
-            this.ytLoad(id, true);
-            this.ytLoadedId = id;
+        const source = this.ytParse(record.youtube);
+        if (source) {
+            this.ytLoad(source, true);
+            this.ytLoadedKey = record.youtube;
         } else {
             this.ytStop();
-            this.ytLoadedId = '';
+            this.ytLoadedKey = '';
         }
 
         this.openWindow('turntable');
@@ -279,7 +279,7 @@ class GrooveDesktop {
 
     ttPlay() {
         if (!this.records.length) return;
-        if (this.ytLoadedId) {
+        if (this.ytLoadedKey) {
             this.ttState = 'playing';
             this.ytResume();
             this.ttRender();
@@ -298,7 +298,7 @@ class GrooveDesktop {
     ttStop() {
         this.ttState = 'stopped';
         this.ytStop();
-        this.ytLoadedId = '';
+        this.ytLoadedKey = '';
         this.ttRender();
     }
 
@@ -326,7 +326,7 @@ class GrooveDesktop {
             titleEl.textContent = 'No record loaded';
         }
 
-        const hasAudio = record && this.ytId(record.youtube);
+        const hasAudio = record && this.ytParse(record.youtube);
         let status = '&#9632; STOPPED';
         if (this.ttState === 'playing') {
             status = hasAudio ? '&#9658; PLAYING' : '&#9658; SPINNING (no audio linked)';
@@ -375,7 +375,7 @@ class GrooveDesktop {
                     if (this.ytPending) {
                         const pending = this.ytPending;
                         this.ytPending = null;
-                        this.ytLoad(pending.id, pending.autoplay);
+                        this.ytLoad(pending.source, pending.autoplay);
                     }
                 },
                 onStateChange: (e) => {
@@ -385,12 +385,17 @@ class GrooveDesktop {
         });
     }
 
-    ytLoad(id, autoplay) {
+    ytLoad(source, autoplay) {
         if (this.ytPlayer && this.ytReady) {
-            if (autoplay) this.ytPlayer.loadVideoById(id);
-            else this.ytPlayer.cueVideoById(id);
+            if (source.type === 'playlist') {
+                if (autoplay) this.ytPlayer.loadPlaylist({ list: source.id, listType: 'playlist' });
+                else this.ytPlayer.cuePlaylist({ list: source.id, listType: 'playlist' });
+            } else {
+                if (autoplay) this.ytPlayer.loadVideoById(source.id);
+                else this.ytPlayer.cueVideoById(source.id);
+            }
         } else {
-            this.ytPending = { id: id, autoplay: autoplay };
+            this.ytPending = { source: source, autoplay: autoplay };
         }
     }
 
@@ -406,12 +411,16 @@ class GrooveDesktop {
         if (this.ytPlayer && this.ytReady) this.ytPlayer.stopVideo();
     }
 
-    ytId(value) {
-        if (!value) return '';
+    ytParse(value) {
+        if (!value) return null;
         const s = String(value).trim();
-        if (/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
-        const match = s.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
-        return match ? match[1] : '';
+        const listMatch = s.match(/[?&]list=([A-Za-z0-9_-]+)/);
+        if (listMatch) return { type: 'playlist', id: listMatch[1] };
+        if (/^[A-Za-z0-9_-]{11}$/.test(s)) return { type: 'video', id: s };
+        if (/^(PL|OLAK5uy|RD)[A-Za-z0-9_-]{12,}$/.test(s)) return { type: 'playlist', id: s };
+        const vMatch = s.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+        if (vMatch) return { type: 'video', id: vMatch[1] };
+        return null;
     }
 
     setupEventListeners() {
