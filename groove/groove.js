@@ -124,14 +124,18 @@ class GrooveDesktop {
         container.appendChild(list);
     }
 
-    populateVinyl(groove) {
+    populateVinyl() {
         const container = document.getElementById('vinyl-content');
 
         const intro = document.createElement('p');
         intro.className = 'vinyl-intro';
-        intro.textContent = 'Click a record to drop it on the Turntable.';
+        intro.textContent = 'Click any record to play it on the Turntable.';
         container.appendChild(intro);
 
+        container.appendChild(this.buildRecordList());
+    }
+
+    buildRecordList() {
         const list = document.createElement('ul');
         list.className = 'vinyl-list';
 
@@ -139,7 +143,7 @@ class GrooveDesktop {
             const li = document.createElement('li');
             li.dataset.index = i;
             li.tabIndex = 0;
-            const meta = [record.artist, record.year].filter(Boolean).join(' &middot; ');
+            const meta = [record.artist, record.year, record.genre].filter(Boolean).join(' &middot; ');
             li.innerHTML = `
                 <span class="vinyl-disc">&#128191;</span>
                 <span class="vinyl-info">
@@ -158,7 +162,7 @@ class GrooveDesktop {
             list.appendChild(li);
         });
 
-        container.appendChild(list);
+        return list;
     }
 
     populateTurntable(groove) {
@@ -189,9 +193,10 @@ class GrooveDesktop {
                 <button class="player-btn" data-tt="stop" aria-label="Stop">&#9632;</button>
                 <button class="player-btn" data-tt="next" aria-label="Next">&#9658;|</button>
             </div>
-            <p class="player-note">Pick a record in <strong>My vinyl collection</strong> to drop it on the turntable.</p>
+            <div class="tt-pick">Pick a record to play it:</div>
         `;
         container.appendChild(turntable);
+        turntable.appendChild(this.buildRecordList());
 
         turntable.querySelectorAll('.player-btn').forEach(btn => {
             btn.addEventListener('click', () => this.ttControl(btn.dataset.tt));
@@ -338,8 +343,9 @@ class GrooveDesktop {
         if (playBtn) playBtn.classList.toggle('pressed', this.ttState === 'playing');
         if (pauseBtn) pauseBtn.classList.toggle('pressed', this.ttState === 'paused');
 
-        document.querySelectorAll('.vinyl-list li').forEach((li, i) => {
-            li.classList.toggle('playing', i === this.recordIndex && this.ttState !== 'stopped');
+        document.querySelectorAll('.vinyl-list li').forEach((li) => {
+            const idx = Number(li.dataset.index);
+            li.classList.toggle('playing', idx === this.recordIndex && this.ttState !== 'stopped');
         });
     }
 
