@@ -352,7 +352,24 @@ const SITE_DATA = {
 
         // --- Spotify playlist embed (real, playable) ---
         // Embed URL format: https://open.spotify.com/embed/playlist/<id>
-        playlistEmbed: "https://open.spotify.com/embed/playlist/0eSQQn2x84pxmIMy4VueMj?utm_source=generator"
+        playlistEmbed: "https://open.spotify.com/embed/playlist/0eSQQn2x84pxmIMy4VueMj?utm_source=generator",
+
+        // --- About the Groove Crypto Club (PLACEHOLDER) ---
+        about: `
+            <p><strong>Groove Crypto Club</strong> is where my two obsessions meet:
+            crypto and music.</p>
+            <p>Placeholder copy — replace this with the real story of the club:
+            what it is, why you started it, and what people will find here.</p>
+        `,
+
+        // --- Donation wallets (PLACEHOLDER addresses) ---
+        donate: {
+            intro: "If my videos or research help you, you can support more of it here. Every contribution funds independent governance research and content. 💜",
+            wallets: [
+                { chain: "Ethereum", address: "0xYOUR_ETHEREUM_ADDRESS_HERE", note: "ETH · USDC · any ERC-20 token" },
+                { chain: "Base", address: "0xYOUR_BASE_ADDRESS_HERE", note: "ETH · USDC on Base" }
+            ]
+        }
     },
 
     // ===== RESUME / CV =====

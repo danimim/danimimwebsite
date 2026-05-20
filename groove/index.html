@@ -34,10 +34,28 @@
                 <img src="/icons/playlist.png" alt="Playlist" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>♫</span>'">
                 <span>Playlist</span>
             </button>
+
+            <button class="desktop-icon" data-window="about" aria-label="About the Groove Crypto Club">
+                <img src="/icons/about.png" alt="About" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>ℹ️</span>'">
+                <span>About</span>
+            </button>
+        </div>
+
+        <!-- Side icons (right side, highlighted call-to-action) -->
+        <div class="side-icons">
+            <button class="desktop-icon" data-window="donate" aria-label="Donate">
+                <img src="/icons/groove-donate.png" alt="Donate" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>🪙</span>'">
+                <span>Donate</span>
+            </button>
+
+            <button class="desktop-icon" data-window="request" aria-label="Request a video or research">
+                <img src="/icons/groove-request.png" alt="Request" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>✉️</span>'">
+                <span>Requests</span>
+            </button>
         </div>
     </div>
 
-    <!-- Windows (order: Videos, Newsletter, Vinyl, Playlist) -->
+    <!-- Windows (order matters: Videos & Newsletter open by default) -->
 
     <!-- Videos Window -->
     <div class="window" id="videos" role="dialog" aria-labelledby="videos-title">
@@ -95,6 +113,74 @@
         </div>
     </div>
 
+    <!-- Donate Window -->
+    <div class="window" id="donate" role="dialog" aria-labelledby="donate-title">
+        <div class="window-header">
+            <span id="donate-title">Donate — Support the research</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="donate-content"></div>
+        </div>
+    </div>
+
+    <!-- Request Window -->
+    <div class="window" id="request" role="dialog" aria-labelledby="request-title">
+        <div class="window-header">
+            <span id="request-title">Request a video or research</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <p class="request-intro">Want a video on a topic, or have a research idea worth digging into? Send it over.</p>
+            <form id="request-form">
+                <input type="hidden" name="_subject" value="New Groove Crypto Club request">
+                <div class="form-group">
+                    <label for="request-type">I'd like to request:</label>
+                    <select id="request-type" name="request_type">
+                        <option value="Video">A video</option>
+                        <option value="Research">A research / deep dive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="request-name">Name:</label>
+                    <input type="text" id="request-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="request-email">Email:</label>
+                    <input type="email" id="request-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="request-message">Details:</label>
+                    <textarea id="request-message" name="message" rows="4" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Send request</button>
+                </div>
+            </form>
+            <div id="request-status" class="request-status"></div>
+        </div>
+    </div>
+
+    <!-- About Window -->
+    <div class="window" id="about" role="dialog" aria-labelledby="about-title">
+        <div class="window-header">
+            <span id="about-title">About the Groove Crypto Club</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="about-content"></div>
+        </div>
+    </div>
+
     <!-- Taskbar -->
     <div class="taskbar">
         <button class="start-button" id="start-btn" aria-label="Start menu">
@@ -119,6 +205,18 @@
             <div class="start-menu-item" data-window="playlist">
                 <span class="menu-icon">♫</span>
                 <span>Playlist</span>
+            </div>
+            <div class="start-menu-item" data-window="about">
+                <span class="menu-icon">ℹ️</span>
+                <span>About</span>
+            </div>
+            <div class="start-menu-item" data-window="donate">
+                <span class="menu-icon">🪙</span>
+                <span>Donate</span>
+            </div>
+            <div class="start-menu-item" data-window="request">
+                <span class="menu-icon">✉️</span>
+                <span>Request a video or research</span>
             </div>
             <a class="start-menu-item start-menu-link" href="/">
                 <span class="menu-icon">🏠</span>
