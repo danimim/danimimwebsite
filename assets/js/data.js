@@ -393,9 +393,9 @@ const SITE_DATA = {
 
         // --- Donation wallet ---
         donate: {
-            intro: "If my videos or research help you, you can support more of it here. Every contribution funds independent governance research and content. 💜",
+            intro: "If my videos or research help you, you can support more of it here. Every contribution funds independent governance research and content.",
             address: "0x81091b9E5D49e264C051d3aeb3023A4C170c6888",
-            note: "I accept donations on any EVM-compatible chain — Ethereum, Base, Arbitrum, Optimism, and more."
+            note: "I accept donations on any EVM-compatible chain, like Ethereum, Base, Arbitrum, Optimism, and more."
         }
     },
 
