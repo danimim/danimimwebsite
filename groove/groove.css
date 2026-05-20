@@ -8,6 +8,12 @@
   color: inherit;
 }
 
+/* Start menu icons */
+.menu-icon img {
+  width: 24px;
+  height: 24px;
+}
+
 /* Side icons (right-side call-to-action stack) */
 .side-icons {
   position: absolute;
@@ -169,15 +175,94 @@
   margin-top: 2px;
 }
 
-/* ===== Playlist ===== */
-.playlist-intro {
+/* ===== Playlist — Win95 media player ===== */
+.player-display {
+  border: 2px inset #c0c0c0;
+  background: #000000;
+  padding: 8px;
   margin-bottom: 8px;
 }
 
-.spotify-embed {
-  width: 100%;
-  border: 0;
-  display: block;
+.player-lcd {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.player-track-num {
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.player-track-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-status {
+  margin-top: 4px;
+  color: #00cc52;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+}
+
+.player-controls {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.player-btn {
+  flex: 1;
+  padding: 6px 0;
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.player-btn:active,
+.player-btn.pressed {
+  border: 2px inset #c0c0c0;
+  background: #b0b0b0;
+}
+
+.player-playlist {
+  list-style: none;
+  margin-bottom: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 2px inset #c0c0c0;
+}
+
+.player-track {
+  padding: 3px 6px;
+  cursor: pointer;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-track:hover {
+  background: #d8d8ff;
+}
+
+.player-track.selected {
+  background: #000080;
+  color: #ffffff;
+}
+
+.player-note {
+  font-size: 10px;
+  color: #404040;
 }
 
 /* ===== Donate ===== */

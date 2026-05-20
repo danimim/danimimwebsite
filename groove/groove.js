@@ -15,6 +15,10 @@ class GrooveDesktop {
         this.dragOffset = { x: 0, y: 0 };
         this.isStartMenuOpen = false;
 
+        this.playerTracks = [];
+        this.playerIndex = 0;
+        this.playerState = 'stopped';
+
         this.init();
     }
 
@@ -130,24 +134,113 @@ class GrooveDesktop {
 
     populatePlaylist(groove) {
         const container = document.getElementById('playlist-content');
+        const playlist = groove.playlist || {};
+        this.playerTracks = playlist.tracks || [];
+        this.playerIndex = 0;
+        this.playerState = 'stopped';
 
-        const intro = document.createElement('p');
-        intro.className = 'playlist-intro';
-        intro.textContent = 'Hit play and vibe while you browse.';
-        container.appendChild(intro);
+        const player = document.createElement('div');
+        player.className = 'player';
+        player.innerHTML = `
+            <div class="player-display">
+                <div class="player-lcd">
+                    <span class="player-track-num" id="player-num">--</span>
+                    <span class="player-track-title" id="player-title">No tracks</span>
+                </div>
+                <div class="player-status" id="player-status">&#9632; STOPPED</div>
+            </div>
+            <div class="player-controls">
+                <button class="player-btn" data-action="prev" aria-label="Previous">|&#9668;</button>
+                <button class="player-btn" data-action="play" aria-label="Play">&#9658;</button>
+                <button class="player-btn" data-action="pause" aria-label="Pause">||</button>
+                <button class="player-btn" data-action="stop" aria-label="Stop">&#9632;</button>
+                <button class="player-btn" data-action="next" aria-label="Next">&#9658;|</button>
+            </div>
+            <ul class="player-playlist" id="player-playlist"></ul>
+            <p class="player-note">${playlist.note || ''}</p>
+        `;
+        container.appendChild(player);
 
-        if (groove.playlistEmbed) {
-            const iframe = document.createElement('iframe');
-            iframe.className = 'spotify-embed';
-            iframe.src = groove.playlistEmbed;
-            iframe.width = '100%';
-            iframe.height = '380';
-            iframe.loading = 'lazy';
-            iframe.setAttribute('frameborder', '0');
-            iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
-            iframe.setAttribute('allowfullscreen', '');
-            container.appendChild(iframe);
+        const list = player.querySelector('#player-playlist');
+        this.playerTracks.forEach((track, i) => {
+            const li = document.createElement('li');
+            li.className = 'player-track';
+            li.dataset.index = i;
+            const num = String(i + 1).padStart(2, '0');
+            li.textContent = `${num}. ${track.title || ''}${track.artist ? ' — ' + track.artist : ''}`;
+            li.addEventListener('click', () => this.playerSelect(i));
+            list.appendChild(li);
+        });
+
+        player.querySelectorAll('.player-btn').forEach(btn => {
+            btn.addEventListener('click', () => this.playerControl(btn.dataset.action));
+        });
+
+        this.playerRender();
+    }
+
+    playerSelect(index) {
+        this.playerIndex = index;
+        this.playerState = 'playing';
+        this.playerRender();
+    }
+
+    playerControl(action) {
+        if (!this.playerTracks.length) return;
+        const last = this.playerTracks.length - 1;
+        switch (action) {
+            case 'play':
+                this.playerState = 'playing';
+                break;
+            case 'pause':
+                if (this.playerState === 'playing') this.playerState = 'paused';
+                break;
+            case 'stop':
+                this.playerState = 'stopped';
+                this.playerIndex = 0;
+                break;
+            case 'prev':
+                this.playerIndex = this.playerIndex === 0 ? last : this.playerIndex - 1;
+                this.playerState = 'playing';
+                break;
+            case 'next':
+                this.playerIndex = this.playerIndex === last ? 0 : this.playerIndex + 1;
+                this.playerState = 'playing';
+                break;
         }
+        this.playerRender();
+    }
+
+    playerRender() {
+        const numEl = document.getElementById('player-num');
+        const titleEl = document.getElementById('player-title');
+        const statusEl = document.getElementById('player-status');
+        if (!numEl || !titleEl || !statusEl) return;
+
+        const track = this.playerTracks[this.playerIndex];
+        if (track) {
+            numEl.textContent = String(this.playerIndex + 1).padStart(2, '0');
+            titleEl.textContent = `${track.title || ''}${track.artist ? ' — ' + track.artist : ''}`;
+        } else {
+            numEl.textContent = '--';
+            titleEl.textContent = 'No tracks';
+        }
+
+        const labels = {
+            stopped: '&#9632; STOPPED',
+            playing: '&#9658; PLAYING',
+            paused: '|| PAUSED'
+        };
+        statusEl.innerHTML = labels[this.playerState] || labels.stopped;
+
+        document.querySelectorAll('.player-track').forEach(el => {
+            el.classList.toggle('selected', Number(el.dataset.index) === this.playerIndex);
+        });
+
+        const playBtn = document.querySelector('.player-btn[data-action="play"]');
+        const pauseBtn = document.querySelector('.player-btn[data-action="pause"]');
+        if (playBtn) playBtn.classList.toggle('pressed', this.playerState === 'playing');
+        if (pauseBtn) pauseBtn.classList.toggle('pressed', this.playerState === 'paused');
     }
 
     populateDonate(groove) {
@@ -159,24 +252,19 @@ class GrooveDesktop {
         intro.textContent = donate.intro || '';
         container.appendChild(intro);
 
-        const list = document.createElement('div');
-        list.className = 'wallet-list';
-        (donate.wallets || []).forEach(wallet => {
-            const item = document.createElement('div');
-            item.className = 'wallet-item';
-            item.innerHTML = `
-                <div class="wallet-chain">${wallet.chain || ''}</div>
-                ${wallet.note ? `<div class="wallet-note">${wallet.note}</div>` : ''}
-                <div class="wallet-row">
-                    <code class="wallet-address">${wallet.address || ''}</code>
-                    <button type="button" class="btn wallet-copy">Copy</button>
-                </div>
-            `;
-            const copyBtn = item.querySelector('.wallet-copy');
-            copyBtn.addEventListener('click', () => this.copyToClipboard(wallet.address || '', copyBtn));
-            list.appendChild(item);
-        });
-        container.appendChild(list);
+        const item = document.createElement('div');
+        item.className = 'wallet-item';
+        item.innerHTML = `
+            <div class="wallet-chain">Donation address</div>
+            ${donate.note ? `<div class="wallet-note">${donate.note}</div>` : ''}
+            <div class="wallet-row">
+                <code class="wallet-address">${donate.address || ''}</code>
+                <button type="button" class="btn wallet-copy">Copy</button>
+            </div>
+        `;
+        const copyBtn = item.querySelector('.wallet-copy');
+        copyBtn.addEventListener('click', () => this.copyToClipboard(donate.address || '', copyBtn));
+        container.appendChild(item);
     }
 
     populateAbout(groove) {
