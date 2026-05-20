@@ -1,11 +1,26 @@
 /* Groove Crypto Club — page-specific styles.
    The Windows 95 chrome comes from /assets/css/style.css; this file only
-   styles the content inside the four Groove windows. */
+   styles the content inside the Groove windows and the side icons. */
 
 /* Start menu "Back to danimim.xyz" link */
 .start-menu-link {
   text-decoration: none;
   color: inherit;
+}
+
+/* Side icons (right-side call-to-action stack) */
+.side-icons {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-icons .desktop-icon {
+  height: auto;
+  min-height: 120px;
 }
 
 /* ===== Videos ===== */
@@ -163,4 +178,97 @@
   width: 100%;
   border: 0;
   display: block;
+}
+
+/* ===== Donate ===== */
+.donate-intro {
+  margin-bottom: 12px;
+}
+
+.wallet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wallet-item {
+  background: #f0f0f0;
+  border: 2px inset #c0c0c0;
+  padding: 8px;
+}
+
+.wallet-chain {
+  font-weight: bold;
+}
+
+.wallet-note {
+  font-size: 10px;
+  color: #404040;
+  margin-bottom: 6px;
+}
+
+.wallet-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wallet-address {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  background: white;
+  border: 2px inset #c0c0c0;
+  padding: 3px 5px;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+}
+
+.wallet-copy {
+  flex-shrink: 0;
+  min-width: 56px;
+}
+
+/* ===== Request form ===== */
+.request-intro {
+  margin-bottom: 10px;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 2px 4px;
+  border: 2px inset #c0c0c0;
+  background: white;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.request-status {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.request-status.success {
+  padding: 6px 8px;
+  background: #e0ffe0;
+  border: 1px solid #008000;
+}
+
+.request-status.error {
+  padding: 6px 8px;
+  background: #ffe0e0;
+  border: 1px solid #c00000;
+}
+
+/* ===== About ===== */
+#about-content p {
+  margin-bottom: 8px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .side-icons {
+    top: 10px;
+    right: 10px;
+  }
 }

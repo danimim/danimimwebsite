@@ -32,6 +32,8 @@ class GrooveDesktop {
         this.populateNewsletter(groove);
         this.populateVinyl(groove);
         this.populatePlaylist(groove);
+        this.populateDonate(groove);
+        this.populateAbout(groove);
     }
 
     populateVideos(groove) {
@@ -148,8 +150,53 @@ class GrooveDesktop {
         }
     }
 
+    populateDonate(groove) {
+        const container = document.getElementById('donate-content');
+        const donate = groove.donate || {};
+
+        const intro = document.createElement('p');
+        intro.className = 'donate-intro';
+        intro.textContent = donate.intro || '';
+        container.appendChild(intro);
+
+        const list = document.createElement('div');
+        list.className = 'wallet-list';
+        (donate.wallets || []).forEach(wallet => {
+            const item = document.createElement('div');
+            item.className = 'wallet-item';
+            item.innerHTML = `
+                <div class="wallet-chain">${wallet.chain || ''}</div>
+                ${wallet.note ? `<div class="wallet-note">${wallet.note}</div>` : ''}
+                <div class="wallet-row">
+                    <code class="wallet-address">${wallet.address || ''}</code>
+                    <button type="button" class="btn wallet-copy">Copy</button>
+                </div>
+            `;
+            const copyBtn = item.querySelector('.wallet-copy');
+            copyBtn.addEventListener('click', () => this.copyToClipboard(wallet.address || '', copyBtn));
+            list.appendChild(item);
+        });
+        container.appendChild(list);
+    }
+
+    populateAbout(groove) {
+        const container = document.getElementById('about-content');
+        container.innerHTML = groove.about || '';
+    }
+
+    copyToClipboard(text, button) {
+        const done = () => {
+            const original = button.textContent;
+            button.textContent = 'Copied!';
+            setTimeout(() => { button.textContent = original; }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(() => {});
+        }
+    }
+
     setupEventListeners() {
-        // Desktop icons
+        // Desktop icons (grid + side icons)
         document.querySelectorAll('.desktop-icon').forEach(icon => {
             icon.addEventListener('click', () => this.openWindow(icon.dataset.window));
             icon.addEventListener('keydown', (e) => {
@@ -212,12 +259,59 @@ class GrooveDesktop {
             }
         });
 
+        // Request form
+        const requestForm = document.getElementById('request-form');
+        if (requestForm) {
+            requestForm.addEventListener('submit', (e) => this.handleRequestSubmit(e));
+        }
+
         // Global keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 if (this.activeWindow) this.closeWindow(this.activeWindow);
                 this.closeStartMenu();
             }
+        });
+    }
+
+    handleRequestSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const status = document.getElementById('request-status');
+        const endpoint = window.SITE_DATA && window.SITE_DATA.FORMSPREE_ENDPOINT;
+        const formData = new FormData(form);
+
+        if (!endpoint) {
+            const data = Object.fromEntries(formData);
+            const subject = encodeURIComponent('Groove Crypto Club request: ' + (data.request_type || ''));
+            const body = encodeURIComponent(
+                `Request type: ${data.request_type}\nName: ${data.name}\nEmail: ${data.email}\n\nDetails:\n${data.message}`
+            );
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            return;
+        }
+
+        status.className = 'request-status';
+        status.textContent = 'Sending...';
+
+        fetch(endpoint, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                form.reset();
+                status.className = 'request-status success';
+                status.textContent = '✅ Request sent — thank you! I will be in touch.';
+            } else {
+                status.className = 'request-status error';
+                status.textContent = '⚠️ Something went wrong. Please try again.';
+            }
+        })
+        .catch(() => {
+            status.className = 'request-status error';
+            status.textContent = '⚠️ Something went wrong. Please try again.';
         });
     }
 
@@ -284,21 +378,26 @@ class GrooveDesktop {
             if (isMobile) {
                 win.style.left = '8px';
                 win.style.top = (8 + index * 6) + 'px';
+            } else if (win.id === 'request') {
+                // The Request form opens on the right side, to highlight it.
+                win.style.left = Math.max(40, window.innerWidth - 620) + 'px';
+                win.style.top = '80px';
             } else {
-                win.style.left = (60 + index * 48) + 'px';
-                win.style.top = (32 + index * 32) + 'px';
+                win.style.left = (50 + index * 44) + 'px';
+                win.style.top = (28 + index * 30) + 'px';
             }
         });
     }
 
     openInitialWindows() {
-        // On phones, opening four cascaded windows is messy — show just one.
+        // On phones, opening multiple cascaded windows is messy — show just one.
         if (window.innerWidth <= 768) {
             this.openWindow('videos');
             return;
         }
-        // Open last-to-first so "Videos" ends up focused on top.
-        ['playlist', 'vinyl', 'newsletter', 'videos'].forEach(id => this.openWindow(id));
+        // Only Videos and Newsletter open by default (Videos ends up on top).
+        this.openWindow('newsletter');
+        this.openWindow('videos');
     }
 
     toggleStartMenu() {
