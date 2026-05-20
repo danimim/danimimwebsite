@@ -144,7 +144,7 @@
 .video-thumb {
   position: relative;
   width: 100%;
-  height: 110px;
+  aspect-ratio: 4 / 3;
   background: linear-gradient(135deg, #000080, #1084d0);
   border: 1px solid #808080;
   display: flex;
