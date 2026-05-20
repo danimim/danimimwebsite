@@ -29,6 +29,15 @@
   min-height: 120px;
 }
 
+/* Hidden YouTube audio engine for the Turntable */
+#yt-audio {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+  width: 200px;
+  height: 120px;
+}
+
 /* ===== Videos ===== */
 .video-grid {
   display: grid;
@@ -133,19 +142,38 @@
   margin-top: 2px;
 }
 
-/* ===== Vinyl ===== */
+/* ===== Vinyl collection ===== */
+.vinyl-intro {
+  margin-bottom: 8px;
+}
+
 .vinyl-list {
   list-style: none;
 }
 
 .vinyl-list li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
   margin-bottom: 6px;
   padding: 6px;
   background: #f0f0f0;
   border: 1px inset #c0c0c0;
+  cursor: pointer;
+}
+
+.vinyl-list li:hover {
+  background: #ffffff;
+}
+
+.vinyl-list li:focus {
+  outline: 1px dotted #000080;
+  outline-offset: -3px;
+}
+
+.vinyl-list li.playing {
+  background: #000080;
+  color: #ffffff;
 }
 
 .vinyl-disc {
@@ -157,6 +185,8 @@
 .vinyl-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .vinyl-album {
@@ -168,14 +198,124 @@
   color: #404040;
 }
 
-.vinyl-note {
-  font-size: 10px;
-  color: #606060;
-  font-style: italic;
-  margin-top: 2px;
+.vinyl-list li.playing .vinyl-artist {
+  color: #c0c0c0;
 }
 
-/* ===== Playlist — Win95 media player ===== */
+.vinyl-play {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #008000;
+}
+
+.vinyl-list li.playing .vinyl-play {
+  color: #00ff66;
+}
+
+/* ===== Turntable ===== */
+.tt-deck {
+  height: 210px;
+  background: #b8b8b8;
+  border: 2px inset #c0c0c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.tt-platter {
+  position: relative;
+  width: 172px;
+  height: 172px;
+  border-radius: 50%;
+  background: #d0d0d0;
+  border: 2px outset #c0c0c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tt-record {
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  background-color: #141414;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.12) 0 38%, transparent 39%),
+    repeating-radial-gradient(circle, #101010 0 3px, #1e1e1e 3px 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  animation: tt-spin 2.6s linear infinite;
+  animation-play-state: paused;
+}
+
+.tt-record.spinning {
+  animation-play-state: running;
+}
+
+@keyframes tt-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.tt-label {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #c0392b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.tt-hole {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b8b8b8;
+  border: 1px solid #808080;
+}
+
+.tt-arm {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  width: 8px;
+  height: 104px;
+  background: linear-gradient(90deg, #777, #d8d8d8 45%, #777);
+  border: 1px solid #5a5a5a;
+  transform-origin: 50% 6px;
+  transform: rotate(28deg);
+}
+
+.tt-arm::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+}
+
+.tt-arm::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: -3px;
+  width: 14px;
+  height: 10px;
+  background: #6a6a6a;
+  border: 1px solid #4a4a4a;
+}
+
+/* Player display (LCD) — shared by the Turntable */
 .player-display {
   border: 2px inset #c0c0c0;
   background: #000000;
@@ -233,33 +373,6 @@
   background: #b0b0b0;
 }
 
-.player-playlist {
-  list-style: none;
-  margin-bottom: 8px;
-  max-height: 180px;
-  overflow-y: auto;
-  background: #ffffff;
-  border: 2px inset #c0c0c0;
-}
-
-.player-track {
-  padding: 3px 6px;
-  cursor: pointer;
-  font-size: 11px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.player-track:hover {
-  background: #d8d8ff;
-}
-
-.player-track.selected {
-  background: #000080;
-  color: #ffffff;
-}
-
 .player-note {
   font-size: 10px;
   color: #404040;
@@ -268,12 +381,6 @@
 /* ===== Donate ===== */
 .donate-intro {
   margin-bottom: 12px;
-}
-
-.wallet-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .wallet-item {

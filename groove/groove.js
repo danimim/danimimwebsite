@@ -2,12 +2,17 @@
  * Groove Crypto Club — second page (/groove/)
  * Trimmed copy of the main Windows95Desktop windowing logic. Content is read
  * from window.SITE_DATA.groove (defined in /assets/js/data.js).
+ *
+ * The Turntable uses a hidden YouTube IFrame player as its audio engine, so
+ * the visible UI stays fully Windows 95 styled.
  */
 
 console.log('Loading groove.js...');
 
 class GrooveDesktop {
     constructor() {
+        window.grooveDesktop = this;
+
         this.zIndexCounter = 100;
         this.activeWindow = null;
         this.isDragging = false;
@@ -15,9 +20,16 @@ class GrooveDesktop {
         this.dragOffset = { x: 0, y: 0 };
         this.isStartMenuOpen = false;
 
-        this.playerTracks = [];
-        this.playerIndex = 0;
-        this.playerState = 'stopped';
+        // Turntable state
+        this.records = [];
+        this.recordIndex = 0;
+        this.ttState = 'stopped';
+
+        // YouTube audio engine state
+        this.ytPlayer = null;
+        this.ytReady = false;
+        this.ytPending = null;
+        this.ytLoadedId = '';
 
         this.init();
     }
@@ -28,14 +40,16 @@ class GrooveDesktop {
         this.positionWindows();
         this.setClockInterval();
         this.openInitialWindows();
+        this.initYouTube();
     }
 
     populateContent() {
         const groove = (window.SITE_DATA && window.SITE_DATA.groove) || {};
+        this.records = groove.vinyl || [];
         this.populateVideos(groove);
         this.populateNewsletter(groove);
         this.populateVinyl(groove);
-        this.populatePlaylist(groove);
+        this.populateTurntable(groove);
         this.populateDonate(groove);
         this.populateAbout(groove);
     }
@@ -112,135 +126,78 @@ class GrooveDesktop {
 
     populateVinyl(groove) {
         const container = document.getElementById('vinyl-content');
+
+        const intro = document.createElement('p');
+        intro.className = 'vinyl-intro';
+        intro.textContent = 'Click a record to drop it on the Turntable.';
+        container.appendChild(intro);
+
         const list = document.createElement('ul');
         list.className = 'vinyl-list';
 
-        (groove.vinyl || []).forEach(record => {
+        this.records.forEach((record, i) => {
             const li = document.createElement('li');
+            li.dataset.index = i;
+            li.tabIndex = 0;
             const meta = [record.artist, record.year].filter(Boolean).join(' &middot; ');
             li.innerHTML = `
                 <span class="vinyl-disc">&#128191;</span>
                 <span class="vinyl-info">
                     <span class="vinyl-album">${record.album || ''}</span>
                     <span class="vinyl-artist">${meta}</span>
-                    ${record.note ? `<span class="vinyl-note">${record.note}</span>` : ''}
                 </span>
+                <span class="vinyl-play">&#9658;</span>
             `;
+            li.addEventListener('click', () => this.playRecord(i));
+            li.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.playRecord(i);
+                }
+            });
             list.appendChild(li);
         });
 
         container.appendChild(list);
     }
 
-    populatePlaylist(groove) {
-        const container = document.getElementById('playlist-content');
-        const playlist = groove.playlist || {};
-        this.playerTracks = playlist.tracks || [];
-        this.playerIndex = 0;
-        this.playerState = 'stopped';
+    populateTurntable(groove) {
+        const container = document.getElementById('turntable-content');
 
-        const player = document.createElement('div');
-        player.className = 'player';
-        player.innerHTML = `
+        const turntable = document.createElement('div');
+        turntable.className = 'turntable';
+        turntable.innerHTML = `
+            <div class="tt-deck">
+                <div class="tt-platter">
+                    <div class="tt-record" id="tt-record">
+                        <div class="tt-label" id="tt-label"><div class="tt-hole"></div></div>
+                    </div>
+                    <div class="tt-arm"></div>
+                </div>
+            </div>
             <div class="player-display">
                 <div class="player-lcd">
-                    <span class="player-track-num" id="player-num">--</span>
-                    <span class="player-track-title" id="player-title">No tracks</span>
+                    <span class="player-track-num" id="tt-num">--</span>
+                    <span class="player-track-title" id="tt-title">No record loaded</span>
                 </div>
-                <div class="player-status" id="player-status">&#9632; STOPPED</div>
+                <div class="player-status" id="tt-status">&#9632; STOPPED</div>
             </div>
             <div class="player-controls">
-                <button class="player-btn" data-action="prev" aria-label="Previous">|&#9668;</button>
-                <button class="player-btn" data-action="play" aria-label="Play">&#9658;</button>
-                <button class="player-btn" data-action="pause" aria-label="Pause">||</button>
-                <button class="player-btn" data-action="stop" aria-label="Stop">&#9632;</button>
-                <button class="player-btn" data-action="next" aria-label="Next">&#9658;|</button>
+                <button class="player-btn" data-tt="prev" aria-label="Previous">|&#9668;</button>
+                <button class="player-btn" data-tt="play" aria-label="Play">&#9658;</button>
+                <button class="player-btn" data-tt="pause" aria-label="Pause">||</button>
+                <button class="player-btn" data-tt="stop" aria-label="Stop">&#9632;</button>
+                <button class="player-btn" data-tt="next" aria-label="Next">&#9658;|</button>
             </div>
-            <ul class="player-playlist" id="player-playlist"></ul>
-            <p class="player-note">${playlist.note || ''}</p>
+            <p class="player-note">Pick a record in <strong>My vinyl collection</strong> to drop it on the turntable.</p>
         `;
-        container.appendChild(player);
+        container.appendChild(turntable);
 
-        const list = player.querySelector('#player-playlist');
-        this.playerTracks.forEach((track, i) => {
-            const li = document.createElement('li');
-            li.className = 'player-track';
-            li.dataset.index = i;
-            const num = String(i + 1).padStart(2, '0');
-            li.textContent = `${num}. ${track.title || ''}${track.artist ? ' — ' + track.artist : ''}`;
-            li.addEventListener('click', () => this.playerSelect(i));
-            list.appendChild(li);
+        turntable.querySelectorAll('.player-btn').forEach(btn => {
+            btn.addEventListener('click', () => this.ttControl(btn.dataset.tt));
         });
 
-        player.querySelectorAll('.player-btn').forEach(btn => {
-            btn.addEventListener('click', () => this.playerControl(btn.dataset.action));
-        });
-
-        this.playerRender();
-    }
-
-    playerSelect(index) {
-        this.playerIndex = index;
-        this.playerState = 'playing';
-        this.playerRender();
-    }
-
-    playerControl(action) {
-        if (!this.playerTracks.length) return;
-        const last = this.playerTracks.length - 1;
-        switch (action) {
-            case 'play':
-                this.playerState = 'playing';
-                break;
-            case 'pause':
-                if (this.playerState === 'playing') this.playerState = 'paused';
-                break;
-            case 'stop':
-                this.playerState = 'stopped';
-                this.playerIndex = 0;
-                break;
-            case 'prev':
-                this.playerIndex = this.playerIndex === 0 ? last : this.playerIndex - 1;
-                this.playerState = 'playing';
-                break;
-            case 'next':
-                this.playerIndex = this.playerIndex === last ? 0 : this.playerIndex + 1;
-                this.playerState = 'playing';
-                break;
-        }
-        this.playerRender();
-    }
-
-    playerRender() {
-        const numEl = document.getElementById('player-num');
-        const titleEl = document.getElementById('player-title');
-        const statusEl = document.getElementById('player-status');
-        if (!numEl || !titleEl || !statusEl) return;
-
-        const track = this.playerTracks[this.playerIndex];
-        if (track) {
-            numEl.textContent = String(this.playerIndex + 1).padStart(2, '0');
-            titleEl.textContent = `${track.title || ''}${track.artist ? ' — ' + track.artist : ''}`;
-        } else {
-            numEl.textContent = '--';
-            titleEl.textContent = 'No tracks';
-        }
-
-        const labels = {
-            stopped: '&#9632; STOPPED',
-            playing: '&#9658; PLAYING',
-            paused: '|| PAUSED'
-        };
-        statusEl.innerHTML = labels[this.playerState] || labels.stopped;
-
-        document.querySelectorAll('.player-track').forEach(el => {
-            el.classList.toggle('selected', Number(el.dataset.index) === this.playerIndex);
-        });
-
-        const playBtn = document.querySelector('.player-btn[data-action="play"]');
-        const pauseBtn = document.querySelector('.player-btn[data-action="pause"]');
-        if (playBtn) playBtn.classList.toggle('pressed', this.playerState === 'playing');
-        if (pauseBtn) pauseBtn.classList.toggle('pressed', this.playerState === 'paused');
+        this.ttRender();
     }
 
     populateDonate(groove) {
@@ -281,6 +238,174 @@ class GrooveDesktop {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(done).catch(() => {});
         }
+    }
+
+    /* ===== Turntable ===== */
+
+    playRecord(index) {
+        const record = this.records[index];
+        if (!record) return;
+
+        this.recordIndex = index;
+        this.ttState = 'playing';
+
+        const id = this.ytId(record.youtube);
+        if (id) {
+            this.ytLoad(id, true);
+            this.ytLoadedId = id;
+        } else {
+            this.ytStop();
+            this.ytLoadedId = '';
+        }
+
+        this.openWindow('turntable');
+        this.ttRender();
+    }
+
+    ttControl(action) {
+        switch (action) {
+            case 'play': this.ttPlay(); break;
+            case 'pause': this.ttPause(); break;
+            case 'stop': this.ttStop(); break;
+            case 'prev': this.ttStep(-1); break;
+            case 'next': this.ttStep(1); break;
+        }
+    }
+
+    ttPlay() {
+        if (!this.records.length) return;
+        if (this.ytLoadedId) {
+            this.ttState = 'playing';
+            this.ytResume();
+            this.ttRender();
+        } else {
+            this.playRecord(this.recordIndex);
+        }
+    }
+
+    ttPause() {
+        if (this.ttState !== 'playing') return;
+        this.ttState = 'paused';
+        this.ytPause();
+        this.ttRender();
+    }
+
+    ttStop() {
+        this.ttState = 'stopped';
+        this.ytStop();
+        this.ytLoadedId = '';
+        this.ttRender();
+    }
+
+    ttStep(direction) {
+        if (!this.records.length) return;
+        const count = this.records.length;
+        const index = (this.recordIndex + direction + count) % count;
+        this.playRecord(index);
+    }
+
+    ttRender() {
+        const record = this.records[this.recordIndex];
+        const numEl = document.getElementById('tt-num');
+        const titleEl = document.getElementById('tt-title');
+        const statusEl = document.getElementById('tt-status');
+        const recordEl = document.getElementById('tt-record');
+        const labelEl = document.getElementById('tt-label');
+        if (!numEl || !titleEl || !statusEl || !recordEl) return;
+
+        if (record) {
+            numEl.textContent = String(this.recordIndex + 1).padStart(2, '0');
+            titleEl.textContent = `${record.album || ''}${record.artist ? ' — ' + record.artist : ''}`;
+        } else {
+            numEl.textContent = '--';
+            titleEl.textContent = 'No record loaded';
+        }
+
+        const hasAudio = record && this.ytId(record.youtube);
+        let status = '&#9632; STOPPED';
+        if (this.ttState === 'playing') {
+            status = hasAudio ? '&#9658; PLAYING' : '&#9658; SPINNING (no audio linked)';
+        } else if (this.ttState === 'paused') {
+            status = '|| PAUSED';
+        }
+        statusEl.innerHTML = status;
+
+        recordEl.classList.toggle('spinning', this.ttState === 'playing');
+        if (labelEl) labelEl.style.background = this.ttLabelColor(this.recordIndex);
+
+        const playBtn = document.querySelector('.player-btn[data-tt="play"]');
+        const pauseBtn = document.querySelector('.player-btn[data-tt="pause"]');
+        if (playBtn) playBtn.classList.toggle('pressed', this.ttState === 'playing');
+        if (pauseBtn) pauseBtn.classList.toggle('pressed', this.ttState === 'paused');
+
+        document.querySelectorAll('.vinyl-list li').forEach((li, i) => {
+            li.classList.toggle('playing', i === this.recordIndex && this.ttState !== 'stopped');
+        });
+    }
+
+    ttLabelColor(index) {
+        const colors = ['#c0392b', '#2c3e7a', '#1f7a4d', '#b8860b', '#7a2c6e', '#0f6f8c'];
+        return colors[index % colors.length];
+    }
+
+    /* ===== YouTube audio engine (hidden player) ===== */
+
+    initYouTube() {
+        if (window.YT && window.YT.Player) {
+            this.createYTPlayer();
+        }
+        // Otherwise the global onYouTubeIframeAPIReady callback handles it.
+    }
+
+    createYTPlayer() {
+        if (this.ytPlayer || !window.YT || !window.YT.Player) return;
+        this.ytPlayer = new YT.Player('yt-audio', {
+            height: '120',
+            width: '200',
+            playerVars: { playsinline: 1 },
+            events: {
+                onReady: () => {
+                    this.ytReady = true;
+                    if (this.ytPending) {
+                        const pending = this.ytPending;
+                        this.ytPending = null;
+                        this.ytLoad(pending.id, pending.autoplay);
+                    }
+                },
+                onStateChange: (e) => {
+                    if (e.data === YT.PlayerState.ENDED) this.ttStep(1);
+                }
+            }
+        });
+    }
+
+    ytLoad(id, autoplay) {
+        if (this.ytPlayer && this.ytReady) {
+            if (autoplay) this.ytPlayer.loadVideoById(id);
+            else this.ytPlayer.cueVideoById(id);
+        } else {
+            this.ytPending = { id: id, autoplay: autoplay };
+        }
+    }
+
+    ytResume() {
+        if (this.ytPlayer && this.ytReady) this.ytPlayer.playVideo();
+    }
+
+    ytPause() {
+        if (this.ytPlayer && this.ytReady) this.ytPlayer.pauseVideo();
+    }
+
+    ytStop() {
+        if (this.ytPlayer && this.ytReady) this.ytPlayer.stopVideo();
+    }
+
+    ytId(value) {
+        if (!value) return '';
+        const s = String(value).trim();
+        if (/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
+        const match = s.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+        return match ? match[1] : '';
     }
 
     setupEventListeners() {
@@ -483,8 +608,6 @@ class GrooveDesktop {
             this.openWindow('videos');
             return;
         }
-        // Only Videos and Newsletter open by default, stacked so neither
-        // covers the other (Videos ends up focused on top).
         this.openWindow('newsletter');
         this.openWindow('videos');
         this.layoutDefaultWindows();
@@ -541,6 +664,11 @@ class GrooveDesktop {
         setInterval(() => this.updateClock(), 60000);
     }
 }
+
+// The YouTube IFrame API calls this global when it finishes loading.
+window.onYouTubeIframeAPIReady = function () {
+    if (window.grooveDesktop) window.grooveDesktop.createYTPlayer();
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     new GrooveDesktop();
