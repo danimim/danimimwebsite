@@ -225,6 +225,24 @@
   margin-top: 2px;
 }
 
+.nl-soon {
+  border: 2px inset #c0c0c0;
+  background: #ffffff;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.nl-soon-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.nl-soon-text {
+  font-size: 11px;
+  color: #404040;
+}
+
 /* ===== Vinyl collection ===== */
 .vinyl-intro {
   margin-bottom: 8px;

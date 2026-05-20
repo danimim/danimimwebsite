@@ -93,6 +93,17 @@ class GrooveDesktop {
         const container = document.getElementById('newsletter-content');
         const nl = groove.newsletter || {};
 
+        if (nl.comingSoon) {
+            const soon = document.createElement('div');
+            soon.className = 'nl-soon';
+            soon.innerHTML = `
+                <div class="nl-soon-title">Newsletter coming soon</div>
+                <div class="nl-soon-text">I'm putting it together. Check back soon.</div>
+            `;
+            container.appendChild(soon);
+            return;
+        }
+
         const intro = document.createElement('p');
         intro.className = 'nl-intro';
         intro.textContent = nl.intro || '';
@@ -655,7 +666,7 @@ class GrooveDesktop {
     }
 
     openInitialWindows() {
-        // On phones, opening multiple cascaded windows is messy — show just one.
+        // On phones, cascaded windows are messy, so show just one.
         if (window.innerWidth <= 768) {
             this.openWindow('videos');
             return;
@@ -671,8 +682,6 @@ class GrooveDesktop {
         if (!newsletter || !videos) return;
 
         const margin = 24;
-        // Offset the two windows diagonally: Newsletter to the right of
-        // centre, Videos to the left — so they don't line up in a column.
         const place = (win, dir) => {
             const center = (window.innerWidth - win.offsetWidth) / 2;
             const offset = Math.max(0, Math.min(150, center - margin));
