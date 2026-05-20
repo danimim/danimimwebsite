@@ -24,17 +24,21 @@ class Windows95Desktop {
     setupEventListeners() {
         // Desktop icon clicks
         document.querySelectorAll('.desktop-icon').forEach(icon => {
-            icon.addEventListener('click', (e) => {
-                const windowId = icon.dataset.window;
-                this.openWindow(windowId);
-            });
+            const activate = () => {
+                if (icon.dataset.action === 'resume') {
+                    this.downloadResume();
+                } else {
+                    this.openWindow(icon.dataset.window);
+                }
+            };
+
+            icon.addEventListener('click', activate);
 
             // Keyboard support for icons
             icon.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    const windowId = icon.dataset.window;
-                    this.openWindow(windowId);
+                    activate();
                 }
             });
         });
@@ -476,6 +480,15 @@ class Windows95Desktop {
                 this.openWindow('hobbies');
                 break;
         }
+    }
+
+    downloadResume() {
+        const link = document.createElement('a');
+        link.href = window.SITE_DATA.RESUME;
+        link.download = 'Daniela_Zschaber_CV.pdf';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
     }
 
     handleMessageSubmit(e) {

@@ -297,7 +297,11 @@ const SITE_DATA = {
 
     // ===== SPOTIFY PLAYLIST =====
     // Link to your playlist (opened from the Start menu)
-    SPOTIFY_PLAYLIST: "https://open.spotify.com/playlist/0eSQQn2x84pxmIMy4VueMj?si=e1a7435fb0714d93"
+    SPOTIFY_PLAYLIST: "https://open.spotify.com/playlist/0eSQQn2x84pxmIMy4VueMj?si=e1a7435fb0714d93",
+
+    // ===== RESUME / CV =====
+    // PDF downloaded when the "hire me" desktop icon is clicked
+    RESUME: "assets/cv_daniela_zschaber.pdf"
 };
 
 // Expose globally
