@@ -493,6 +493,10 @@
   margin-bottom: 8px;
 }
 
+#about-content .about-photo img {
+  object-position: 50% 10%;
+}
+
 /* ===== Mobile ===== */
 @media (max-width: 768px) {
   .side-icons {
