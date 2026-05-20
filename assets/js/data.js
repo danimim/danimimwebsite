@@ -353,7 +353,11 @@ const SITE_DATA = {
         // --- Spotify playlist embed (real, playable) ---
         // Embed URL format: https://open.spotify.com/embed/playlist/<id>
         playlistEmbed: "https://open.spotify.com/embed/playlist/0eSQQn2x84pxmIMy4VueMj?utm_source=generator"
-    }
+    },
+
+    // ===== RESUME / CV =====
+    // PDF downloaded when the "hire me" desktop icon is clicked
+    RESUME: "assets/cv_daniela_zschaber.pdf"
 };
 
 // Expose globally
