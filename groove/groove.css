@@ -119,7 +119,8 @@
 }
 
 .video-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: #f0f0f0;
   border: 2px inset #c0c0c0;
   padding: 6px;
@@ -163,7 +164,7 @@
 
 .video-cta {
   display: block;
-  margin-top: 6px;
+  margin-top: auto;
   padding: 4px 6px;
   background: #c0c0c0;
   border: 2px outset #c0c0c0;
