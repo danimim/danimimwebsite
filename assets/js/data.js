@@ -331,14 +331,14 @@ const SITE_DATA = {
         videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
 
         // --- Vinyl collection (also the Turntable's records) ---
-        // "youtube" is the audio played on the Turntable (a YouTube video ID
-        // or URL). Most are full-album uploads found by search — feel free to
-        // swap any. Records with "" still load on the deck but have no audio.
+        // "youtube" is the audio played on the Turntable: a YouTube video ID,
+        // a video URL, or a playlist URL. Records with "" still load on the
+        // deck but have no audio.
         vinyl: [
             { artist: "Sade", album: "The Best of Sade", year: "", genre: "", youtube: "tfHZlZ994c0" },
             { artist: "ABBA", album: "Golden Hits", year: "1983", genre: "Pop", youtube: "f0woW91PR1Q" },
             { artist: "Led Zeppelin", album: "The Song Remains the Same (soundtrack)", year: "1976", genre: "Rock", youtube: "FFW-_2-gPEI" },
-            { artist: "Jorge Ben Jor", album: "Ao Vivo no Rio (Som Livre)", year: "1991", genre: "MPB", youtube: "" },
+            { artist: "Jorge Ben Jor", album: "Ao Vivo no Rio (Som Livre)", year: "1991", genre: "MPB", youtube: "https://www.youtube.com/playlist?list=PLkFXovfm9GncJ_hO581iaS1QFrT2xfEyH" },
             { artist: "Trilha Sonora", album: "The Great Gatsby (Nelson Riddle)", year: "1974", genre: "Trilha Sonora", youtube: "rI2_JI4ZL6c" },
             { artist: "Black Sabbath", album: "Paranoid", year: "1970", genre: "Heavy Metal", youtube: "6nImynXu9rg" },
             { artist: "Frank Sinatra", album: "Star Collection", year: "1977", genre: "Jazz/Pop", youtube: "1GA5cJT7jiM" },
@@ -356,9 +356,9 @@ const SITE_DATA = {
             { artist: "The Doors", album: "L.A. Woman", year: "", genre: "", youtube: "91vU3kHtnoU" },
             { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "", youtube: "tpgmlk7OVg4" },
             { artist: "Pink Floyd", album: "Animals", year: "", genre: "", youtube: "7NLQYYnjVyU" },
-            { artist: "Hozier", album: "Wasteland, Baby!", year: "", genre: "", youtube: "" },
-            { artist: "J. Cole", album: "Forest Hills Drive", year: "", genre: "", youtube: "" },
-            { artist: "Arctic Monkeys", album: "AM", year: "2013", genre: "", youtube: "" },
+            { artist: "Hozier", album: "Wasteland, Baby!", year: "", genre: "", youtube: "https://www.youtube.com/playlist?list=PLxA687tYuMWhc69s1hkKQtD_S31y5wrgx" },
+            { artist: "J. Cole", album: "Forest Hills Drive", year: "", genre: "", youtube: "https://www.youtube.com/playlist?list=PL19ZmUYeD1WQs5Xa2ArpVlr-o0dV9tsVZ" },
+            { artist: "Arctic Monkeys", album: "AM", year: "2013", genre: "", youtube: "https://www.youtube.com/playlist?list=PLOkPWZS9Q7ECOreiaeGJZ_dA8KlCtsvHN" },
             { artist: "Pink Floyd", album: "The Dark Side of the Moon", year: "", genre: "", youtube: "cuKVhVb8VRw" },
             { artist: "Queen", album: "A Kind of Magic", year: "", genre: "", youtube: "zTC-ZJ6-rxg" },
             { artist: "Dire Straits", album: "Brothers in Arms", year: "", genre: "", youtube: "p0D-w-HhB64" },
