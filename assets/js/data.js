@@ -328,7 +328,7 @@ const SITE_DATA = {
                 url: ""
             }
         ],
-        videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
+        videosNote: "Heads up: the videos above are in Portuguese.",
 
         // --- Vinyl collection (also the Turntable's records) ---
         // "youtube" is the audio played on the Turntable: a YouTube video ID,
@@ -367,6 +367,7 @@ const SITE_DATA = {
 
         // --- Newsletter ---
         newsletter: {
+            comingSoon: true,
             intro: "Groove Crypto Club's monthly-ish dispatch — crypto, DAO governance, and the records I'm spinning. (Placeholder copy — replace when ready.)",
             subscribeUrl: "#",
             issues: [
