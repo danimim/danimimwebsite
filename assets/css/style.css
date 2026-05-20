@@ -142,6 +142,11 @@ body {
 }
 
 /* Recycle Bin */
+.recycle-item {
+  display: flex;
+  justify-content: center;
+}
+
 .recycle-bin {
   position: absolute;
   bottom: 55px;
