@@ -408,12 +408,18 @@ class GrooveDesktop {
         if (!newsletter || !videos) return;
 
         const margin = 24;
-        const centerLeft = (win) => Math.max(margin, Math.round((window.innerWidth - win.offsetWidth) / 2));
+        // Offset the two windows diagonally: Newsletter to the right of
+        // centre, Videos to the left — so they don't line up in a column.
+        const place = (win, dir) => {
+            const center = (window.innerWidth - win.offsetWidth) / 2;
+            const offset = Math.max(0, Math.min(150, center - margin));
+            return Math.round(Math.max(margin, center + dir * offset));
+        };
 
-        newsletter.style.left = centerLeft(newsletter) + 'px';
+        newsletter.style.left = place(newsletter, 1) + 'px';
         newsletter.style.top = margin + 'px';
 
-        videos.style.left = centerLeft(videos) + 'px';
+        videos.style.left = place(videos, -1) + 'px';
         videos.style.top = (margin + newsletter.offsetHeight + 16) + 'px';
     }
 
