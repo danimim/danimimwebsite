@@ -331,15 +331,38 @@ const SITE_DATA = {
         videosNote: "⚠️ Heads up: the videos above are in Portuguese. 🇧🇷",
 
         // --- Vinyl collection (also the Turntable's records) ---
-        // PLACEHOLDER — replace with your real collection. Each record's
-        // "youtube" is the audio played on the Turntable: a YouTube video
-        // ID or full URL. Leave it "" if a record has no audio yet.
+        // To play a record on the Turntable, give it a "youtube" value: a
+        // YouTube video ID or full URL. Records with "" still load on the
+        // deck (it spins) but have no audio yet.
         vinyl: [
-            { album: "Discovery", artist: "Daft Punk", year: "2001", youtube: "FGBhQbmPwH8" },
-            { album: "Blue Monday", artist: "New Order", year: "1983", youtube: "9GMjH1nR0ds" },
-            { album: "The Dark Side of the Moon", artist: "Pink Floyd", year: "1973", youtube: "" },
-            { album: "Racional Vol. 1", artist: "Tim Maia", year: "1975", youtube: "" },
-            { album: "Random Access Memories", artist: "Daft Punk", year: "2013", youtube: "" }
+            { artist: "Sade", album: "The Best of Sade", year: "", genre: "", youtube: "" },
+            { artist: "ABBA", album: "Golden Hits", year: "1983", genre: "Pop", youtube: "" },
+            { artist: "Led Zeppelin", album: "The Song Remains the Same (soundtrack)", year: "1976", genre: "Rock", youtube: "" },
+            { artist: "Jorge Ben Jor", album: "Ao Vivo no Rio (Som Livre)", year: "1991", genre: "MPB", youtube: "" },
+            { artist: "Trilha Sonora", album: "The Great Gatsby (Nelson Riddle)", year: "1974", genre: "Trilha Sonora", youtube: "" },
+            { artist: "Black Sabbath", album: "Paranoid", year: "1970", genre: "Heavy Metal", youtube: "" },
+            { artist: "Frank Sinatra", album: "Star Collection", year: "1977", genre: "Jazz/Pop", youtube: "" },
+            { artist: "Djavan", album: "Luz", year: "1982", genre: "MPB", youtube: "" },
+            { artist: "The Cure", album: "Standing on a Beach – The Singles", year: "1986", genre: "Post-punk / New Wave", youtube: "" },
+            { artist: "Joy Division", album: "Unknown Pleasures", year: "1979", genre: "Post-punk", youtube: "" },
+            { artist: "Simply Red", album: "The Best of Simply Red", year: "", genre: "Pop/Soul", youtube: "" },
+            { artist: "Trilha Sonora", album: "Miami Vice II", year: "", genre: "Trilha Sonora", youtube: "" },
+            { artist: "Ten Years After", album: "Ssssh.", year: "1969", genre: "Blues Rock", youtube: "" },
+            { artist: "A-ha", album: "Stay on These Roads", year: "1988", genre: "Pop", youtube: "" },
+            { artist: "Michael Jackson", album: "Bad", year: "1987", genre: "Pop", youtube: "" },
+            { artist: "Kendrick Lamar", album: "Good Kid, M.A.A.D City", year: "2012", genre: "Hip-Hop / Rap", youtube: "" },
+            { artist: "Pink Floyd", album: "Wish You Were Here", year: "", genre: "", youtube: "" },
+            { artist: "The Police", album: "The Very Best of... Sting & The Police", year: "", genre: "", youtube: "" },
+            { artist: "The Doors", album: "L.A. Woman", year: "", genre: "", youtube: "" },
+            { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "", youtube: "" },
+            { artist: "Pink Floyd", album: "Animals", year: "", genre: "", youtube: "" },
+            { artist: "Hozier", album: "Wasteland, Baby!", year: "", genre: "", youtube: "" },
+            { artist: "J. Cole", album: "Forest Hills Drive", year: "", genre: "", youtube: "" },
+            { artist: "Arctic Monkeys", album: "AM", year: "2013", genre: "", youtube: "" },
+            { artist: "Pink Floyd", album: "The Dark Side of the Moon", year: "", genre: "", youtube: "" },
+            { artist: "Queen", album: "A Kind of Magic", year: "", genre: "", youtube: "" },
+            { artist: "Dire Straits", album: "Brothers in Arms", year: "", genre: "", youtube: "" },
+            { artist: "Sonic Youth", album: "Goo", year: "", genre: "", youtube: "" }
         ],
 
         // --- Newsletter ---
