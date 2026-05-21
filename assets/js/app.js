@@ -434,10 +434,16 @@ class Windows95Desktop {
 
     positionWindows() {
         const windows = document.querySelectorAll('.window:not(#recycle)');
-        windows.forEach((window, index) => {
-            const offset = index * 30;
-            window.style.left = (100 + offset) + 'px';
-            window.style.top = (50 + offset) + 'px';
+        const isMobile = window.innerWidth <= 768;
+        windows.forEach((win, index) => {
+            if (isMobile) {
+                win.style.left = '8px';
+                win.style.top = (8 + index * 8) + 'px';
+            } else {
+                const offset = index * 30;
+                win.style.left = (100 + offset) + 'px';
+                win.style.top = (50 + offset) + 'px';
+            }
         });
     }
 
