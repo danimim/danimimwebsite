@@ -30,6 +30,7 @@ class GrooveDesktop {
         this.ytReady = false;
         this.ytPending = null;
         this.ytLoadedKey = '';
+        this.currentSourceType = null;
 
         this.init();
     }
@@ -270,6 +271,7 @@ class GrooveDesktop {
         this.ttState = 'playing';
 
         const source = this.ytParse(record.youtube);
+        this.currentSourceType = source ? source.type : null;
         if (source) {
             this.ytLoad(source, true);
             this.ytLoadedKey = record.youtube;
@@ -409,7 +411,7 @@ class GrooveDesktop {
                     }
                 },
                 onStateChange: (e) => {
-                    if (e.data === YT.PlayerState.ENDED) this.ttStep(1);
+                    if (e.data === YT.PlayerState.ENDED && this.currentSourceType === 'video') this.ttStep(1);
                 }
             }
         });
