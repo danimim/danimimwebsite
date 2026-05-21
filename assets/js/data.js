@@ -323,9 +323,9 @@ const SITE_DATA = {
             },
             {
                 title: "AI Security and Kendrick Lamar",
-                description: "Out later this week.",
+                description: "",
                 thumbnail: "/assets/img/groove/video-3.png",
-                url: ""
+                url: "https://www.instagram.com/reel/DYmpQyjuvcR/?igsh=YjZjamNqZjJ5Ynlx"
             }
         ],
         videosNote: "Heads up: the videos above are in Portuguese.",
