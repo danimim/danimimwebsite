@@ -351,7 +351,7 @@ const SITE_DATA = {
             { artist: "A-ha", album: "Stay on These Roads", year: "1988", genre: "Pop", youtube: "gBGXPafi_9s", cover: "/assets/img/groove/covers/aha-stay-on-these-roads.png" },
             { artist: "Michael Jackson", album: "Bad", year: "1987", genre: "Pop", youtube: "Odkk1424WP4", cover: "/assets/img/groove/covers/michael-jackson-bad.png" },
             { artist: "Kendrick Lamar", album: "Good Kid, M.A.A.D City", year: "2012", genre: "Hip-Hop / Rap", youtube: "y6ubvVJEa_8", cover: "/assets/img/groove/covers/kendrick-lamar-gkmc.png" },
-            { artist: "Pink Floyd", album: "Wish You Were Here", year: "", genre: "", youtube: "lWUKXCp3D00", cover: "/assets/img/groove/covers/pink-floyd-wish-you-were-here.png" },
+            { artist: "Pink Floyd", album: "Wish You Were Here", year: "", genre: "", youtube: "https://www.youtube.com/playlist?list=OLAK5uy_klU9jB4SMO5SqEyFazPAVbDek2j0JVQxY", cover: "/assets/img/groove/covers/pink-floyd-wish-you-were-here.png" },
             { artist: "The Police", album: "The Very Best of... Sting & The Police", year: "", genre: "", youtube: "5PtHxV7G-Bs", cover: "/assets/img/groove/covers/the-police-very-best.png" },
             { artist: "The Doors", album: "L.A. Woman", year: "", genre: "", youtube: "91vU3kHtnoU", cover: "/assets/img/groove/covers/the-doors-la-woman.png" },
             { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "", youtube: "tpgmlk7OVg4", cover: "/assets/img/groove/covers/fleetwood-mac.png" },
