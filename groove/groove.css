@@ -8,12 +8,6 @@
   color: inherit;
 }
 
-/* Start menu icons */
-.menu-icon img {
-  width: 24px;
-  height: 24px;
-}
-
 /* Side icons (right-side call-to-action stack) */
 .side-icons {
   position: absolute;
