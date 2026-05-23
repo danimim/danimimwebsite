@@ -64,6 +64,11 @@
                 <img src="icons/hireme.png" alt="Hire me" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>🚪</span>'">
                 <span>Hire me</span>
             </button>
+
+            <button class="desktop-icon" data-window="minesweeper" aria-label="Minesweeper">
+                <img src="icons/minesweeper.png" alt="Minesweeper" width="80" height="80" onerror="this.outerHTML='<span style=font-size:70px>💣</span>'">
+                <span>Minesweeper</span>
+            </button>
         </div>
 
         <!-- Groove Crypto Club (links to the /groove/ page) -->
@@ -375,6 +380,20 @@
         </div>
     </div>
 
+    <!-- Minesweeper Window -->
+    <div class="window" id="minesweeper" role="dialog" aria-modal="true" aria-labelledby="minesweeper-title">
+        <div class="window-header">
+            <span id="minesweeper-title">Minesweeper</span>
+            <div class="window-controls">
+                <button class="window-btn minimize" aria-label="Minimize"><span>_</span></button>
+                <button class="window-btn close" aria-label="Close"><span>×</span></button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div id="minesweeper-content"></div>
+        </div>
+    </div>
+
     <!-- Taskbar -->
     <div class="taskbar">
         <button class="start-button" id="start-btn" aria-label="Start menu">
@@ -416,5 +435,6 @@
     <!-- Scripts -->
     <script src="assets/js/data.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/minesweeper.js"></script>
 </body>
 </html>
