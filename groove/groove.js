@@ -73,12 +73,9 @@ class GrooveDesktop {
                 <div class="video-thumb">
                     <img src="${video.thumbnail || ''}" alt="${video.title || ''}" onerror="this.remove()">
                 </div>
-                <div class="video-title">
-                    <span class="video-play-icon">&#9654;</span>
-                    <span>${video.title || ''}</span>
-                </div>
+                <div class="video-title">${video.title || ''}</div>
                 ${video.description ? `<div class="video-desc">${video.description}</div>` : ''}
-                <span class="video-cta">${hasUrl ? 'Watch on Instagram' : 'Coming soon'}</span>
+                <span class="video-cta">${hasUrl ? '&#9654; Watch on Instagram' : 'Coming soon'}</span>
             `;
             grid.appendChild(card);
         });
