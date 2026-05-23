@@ -74,7 +74,7 @@ class GrooveDesktop {
                     <img src="${video.thumbnail || ''}" alt="${video.title || ''}" onerror="this.remove()">
                 </div>
                 <div class="video-title">
-                    <img class="video-file-icon" src="/icons/groove-videos.png" alt="">
+                    <span class="video-play-icon">&#9654;</span>
                     <span>${video.title || ''}</span>
                 </div>
                 ${video.description ? `<div class="video-desc">${video.description}</div>` : ''}
