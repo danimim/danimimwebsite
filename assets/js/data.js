@@ -316,13 +316,13 @@ const SITE_DATA = {
                 url: "https://www.instagram.com/reel/DMtka28xA61wjnLIAyGq6jZkvCKuHHIaMsMoyY0/?igsh=MTExbW15NTY2aGkxdw=="
             },
             {
-                title: "The Doors and DAOs",
+                title: "The Doors and Centralized Power in DAOs",
                 description: "",
                 thumbnail: "/assets/img/groove/video-2.png",
                 url: "https://www.instagram.com/reel/DOY2m1SDU-hDS9F-fGzV253XRgCEfEmT1WQ0mo0/?igsh=NTZueXl3ejFhZGwz"
             },
             {
-                title: "AI Security and Kendrick Lamar",
+                title: "Kendrick Lamar, Money Tree, and AI Security",
                 description: "",
                 thumbnail: "/assets/img/groove/video-3.png",
                 url: "https://www.instagram.com/reel/DYmpQyjuvcR/?igsh=YjZjamNqZjJ5Ynlx"
@@ -335,7 +335,7 @@ const SITE_DATA = {
         // a video URL, or a playlist URL. Records with "" still load on the
         // deck but have no audio.
         vinyl: [
-            { artist: "Sade", album: "The Best of Sade", year: "", genre: "", youtube: "tfHZlZ994c0", cover: "/assets/img/groove/covers/sade-best-of.png" },
+            { artist: "Sade", album: "The Best of Sade", year: "1994", genre: "Soul / Sophisti-pop", youtube: "tfHZlZ994c0", cover: "/assets/img/groove/covers/sade-best-of.png" },
             { artist: "ABBA", album: "Golden Hits", year: "1983", genre: "Pop", youtube: "f0woW91PR1Q", cover: "/assets/img/groove/covers/abba-golden-hits.png" },
             { artist: "Led Zeppelin", album: "The Song Remains the Same (soundtrack)", year: "1976", genre: "Rock", youtube: "FFW-_2-gPEI", cover: "/assets/img/groove/covers/led-zeppelin-song-remains.png" },
             { artist: "Jorge Ben Jor", album: "Ao Vivo no Rio (Som Livre)", year: "1991", genre: "MPB", youtube: "https://www.youtube.com/playlist?list=PLkFXovfm9GncJ_hO581iaS1QFrT2xfEyH", cover: "/assets/img/groove/covers/jorge-ben-ao-vivo.png" },
@@ -345,24 +345,24 @@ const SITE_DATA = {
             { artist: "Djavan", album: "Luz", year: "1982", genre: "MPB", youtube: "U2Ce-bMkGK8", cover: "/assets/img/groove/covers/djavan-luz.png" },
             { artist: "The Cure", album: "Standing on a Beach – The Singles", year: "1986", genre: "Post-punk / New Wave", youtube: "0Y-OUO8JqN8", cover: "/assets/img/groove/covers/the-cure-standing-on-a-beach.png" },
             { artist: "Joy Division", album: "Unknown Pleasures", year: "1979", genre: "Post-punk", youtube: "7J9YtpUCYpI", cover: "/assets/img/groove/covers/joy-division-unknown-pleasures.png" },
-            { artist: "Simply Red", album: "The Best of Simply Red", year: "", genre: "Pop/Soul", youtube: "f8jYslkV-2E", cover: "/assets/img/groove/covers/simply-red-best-of.png" },
-            { artist: "Trilha Sonora", album: "Miami Vice II", year: "", genre: "Trilha Sonora", youtube: "lFaWXix-ARA", cover: "/assets/img/groove/covers/miami-vice-2.png" },
+            { artist: "Simply Red", album: "The Best of Simply Red", year: "1996", genre: "Pop/Soul", youtube: "f8jYslkV-2E", cover: "/assets/img/groove/covers/simply-red-best-of.png" },
+            { artist: "Trilha Sonora", album: "Miami Vice II", year: "1986", genre: "Trilha Sonora", youtube: "lFaWXix-ARA", cover: "/assets/img/groove/covers/miami-vice-2.png" },
             { artist: "Ten Years After", album: "Ssssh.", year: "1969", genre: "Blues Rock", youtube: "Adgh3bT0BRA", cover: "/assets/img/groove/covers/ten-years-after-ssssh.png" },
             { artist: "A-ha", album: "Stay on These Roads", year: "1988", genre: "Pop", youtube: "gBGXPafi_9s", cover: "/assets/img/groove/covers/aha-stay-on-these-roads.png" },
             { artist: "Michael Jackson", album: "Bad", year: "1987", genre: "Pop", youtube: "Odkk1424WP4", cover: "/assets/img/groove/covers/michael-jackson-bad.png" },
             { artist: "Kendrick Lamar", album: "Good Kid, M.A.A.D City", year: "2012", genre: "Hip-Hop / Rap", youtube: "y6ubvVJEa_8", cover: "/assets/img/groove/covers/kendrick-lamar-gkmc.png" },
-            { artist: "Pink Floyd", album: "Wish You Were Here", year: "", genre: "", youtube: "TMy_mYkwl4M", cover: "/assets/img/groove/covers/pink-floyd-wish-you-were-here.png" },
-            { artist: "The Police", album: "The Very Best of... Sting & The Police", year: "", genre: "", youtube: "5PtHxV7G-Bs", cover: "/assets/img/groove/covers/the-police-very-best.png" },
-            { artist: "The Doors", album: "L.A. Woman", year: "", genre: "", youtube: "91vU3kHtnoU", cover: "/assets/img/groove/covers/the-doors-la-woman.png" },
-            { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "", youtube: "tpgmlk7OVg4", cover: "/assets/img/groove/covers/fleetwood-mac.png" },
-            { artist: "Pink Floyd", album: "Animals", year: "", genre: "", youtube: "7NLQYYnjVyU", cover: "/assets/img/groove/covers/pink-floyd-animals.png" },
-            { artist: "Hozier", album: "Wasteland, Baby!", year: "", genre: "", youtube: "https://www.youtube.com/playlist?list=PLxA687tYuMWhc69s1hkKQtD_S31y5wrgx", cover: "/assets/img/groove/covers/hozier-wasteland-baby.png" },
-            { artist: "J. Cole", album: "Forest Hills Drive", year: "", genre: "", youtube: "https://www.youtube.com/playlist?list=PL19ZmUYeD1WQs5Xa2ArpVlr-o0dV9tsVZ", cover: "/assets/img/groove/covers/j-cole-forest-hills-drive.png" },
-            { artist: "Arctic Monkeys", album: "AM", year: "2013", genre: "", youtube: "https://www.youtube.com/playlist?list=PLOkPWZS9Q7ECOreiaeGJZ_dA8KlCtsvHN", cover: "/assets/img/groove/covers/arctic-monkeys-am.png" },
-            { artist: "Pink Floyd", album: "The Dark Side of the Moon", year: "", genre: "", youtube: "cuKVhVb8VRw", cover: "/assets/img/groove/covers/pink-floyd-dark-side-of-the-moon.png" },
-            { artist: "Queen", album: "A Kind of Magic", year: "", genre: "", youtube: "zTC-ZJ6-rxg", cover: "/assets/img/groove/covers/queen-a-kind-of-magic.png" },
-            { artist: "Dire Straits", album: "Brothers in Arms", year: "", genre: "", youtube: "p0D-w-HhB64", cover: "/assets/img/groove/covers/dire-straits-brothers-in-arms.png" },
-            { artist: "Sonic Youth", album: "Goo", year: "", genre: "", youtube: "eySTnQt5jCE", cover: "/assets/img/groove/covers/sonic-youth-goo.png" }
+            { artist: "Pink Floyd", album: "Wish You Were Here", year: "1975", genre: "Progressive Rock", youtube: "TMy_mYkwl4M", cover: "/assets/img/groove/covers/pink-floyd-wish-you-were-here.png" },
+            { artist: "The Police", album: "The Very Best of... Sting & The Police", year: "1997", genre: "Rock / New Wave", youtube: "5PtHxV7G-Bs", cover: "/assets/img/groove/covers/the-police-very-best.png" },
+            { artist: "The Doors", album: "L.A. Woman", year: "1971", genre: "Rock", youtube: "91vU3kHtnoU", cover: "/assets/img/groove/covers/the-doors-la-woman.png" },
+            { artist: "Fleetwood Mac", album: "Fleetwood Mac", year: "1975", genre: "Rock", youtube: "tpgmlk7OVg4", cover: "/assets/img/groove/covers/fleetwood-mac.png" },
+            { artist: "Pink Floyd", album: "Animals", year: "1977", genre: "Progressive Rock", youtube: "7NLQYYnjVyU", cover: "/assets/img/groove/covers/pink-floyd-animals.png" },
+            { artist: "Hozier", album: "Wasteland, Baby!", year: "2019", genre: "Indie Folk / Soul", youtube: "https://www.youtube.com/playlist?list=PLxA687tYuMWhc69s1hkKQtD_S31y5wrgx", cover: "/assets/img/groove/covers/hozier-wasteland-baby.png" },
+            { artist: "J. Cole", album: "Forest Hills Drive", year: "2014", genre: "Hip-Hop / Rap", youtube: "https://www.youtube.com/playlist?list=PL19ZmUYeD1WQs5Xa2ArpVlr-o0dV9tsVZ", cover: "/assets/img/groove/covers/j-cole-forest-hills-drive.png" },
+            { artist: "Arctic Monkeys", album: "AM", year: "2013", genre: "Indie Rock", youtube: "https://www.youtube.com/playlist?list=PLOkPWZS9Q7ECOreiaeGJZ_dA8KlCtsvHN", cover: "/assets/img/groove/covers/arctic-monkeys-am.png" },
+            { artist: "Pink Floyd", album: "The Dark Side of the Moon", year: "1973", genre: "Progressive Rock", youtube: "cuKVhVb8VRw", cover: "/assets/img/groove/covers/pink-floyd-dark-side-of-the-moon.png" },
+            { artist: "Queen", album: "A Kind of Magic", year: "1986", genre: "Rock", youtube: "zTC-ZJ6-rxg", cover: "/assets/img/groove/covers/queen-a-kind-of-magic.png" },
+            { artist: "Dire Straits", album: "Brothers in Arms", year: "1985", genre: "Rock", youtube: "p0D-w-HhB64", cover: "/assets/img/groove/covers/dire-straits-brothers-in-arms.png" },
+            { artist: "Sonic Youth", album: "Goo", year: "1990", genre: "Alternative Rock", youtube: "eySTnQt5jCE", cover: "/assets/img/groove/covers/sonic-youth-goo.png" }
         ],
 
         // --- Newsletter ---
