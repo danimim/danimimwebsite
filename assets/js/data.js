@@ -400,6 +400,581 @@ const SITE_DATA = {
         }
     },
 
+    // ===== GROWTH (second page at /growth/) =====
+    // Vista/Frutiger-Aero themed page. Where the GTM Engineering guide and
+    // future growth-engineering write-ups live.
+    growth: {
+        about: `
+            <p><strong>Hi, I'm Daniela.</strong> This is my Growth lab — a space where I learn in public, by doing.</p>
+            <p>Ten years in Growth, brand, and ecosystem (currently Growth Lead at Moonwell; prior: Balancer, Blockful). I know the strategy side of GTM cold. What's new — and where the market is moving fast — is the <strong>engineering side</strong> of GTM: turning intent into automated, AI-augmented workflows that compound.</p>
+            <p>This page is where I write down what I'm figuring out as I go: GTM engineering, growth experiments, the meta-loops behind shipped work, and the artifacts I build along the way.</p>
+            <p>First article is up — a living document on <strong>how I'm learning GTM Engineering while job-hunting</strong>. Open the <em>Articles</em> window to read it, or click the <em>GTM Engineering</em> shortcut on the desktop.</p>
+            <p>If anything here is useful to you, there's a <em>Donate</em> button on the right. It funds more writing like this.</p>
+        `,
+
+        articlesIntro: "Living documents and working notes on growth engineering. New posts land here.",
+
+        articles: [
+            {
+                id: 'gtm-engineering',
+                windowId: 'article-gtm',
+                title: "How I'm learning GTM Engineering while job-hunting",
+                status: 'Living document',
+                date: '2026-05-23',
+                summary: "A meta-document. The premise: my own job search is the first GTM Engineering project — ICP filter on myself, real CRM of target companies, enrichment in Clay, signals, and outbound — while learning the role on the way in.",
+                html: `
+<article class="growth-article">
+  <header class="article-header">
+    <div class="article-meta">
+      <span class="meta-pill">Living document</span>
+      <span>Last updated: 2026-05-23</span>
+      <span>Author: Daniela Zschaber</span>
+      <span>Domain: crypto / DeFi / institutional / governance / security</span>
+      <span>Mode: learn-by-doing</span>
+    </div>
+    <p class="article-subtitle">A meta-document. The premise: my own job search is the first GTM Engineering project. I run an ICP filter on myself, build a real CRM of target companies, enrich them in Clay, identify signals, and ship outbound — while learning the role on the way in.</p>
+  </header>
+
+  <nav class="article-toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#g-sec-0">Why this document exists</a></li>
+      <li><a href="#g-sec-1">The big questions I'm asking</a></li>
+      <li><a href="#g-sec-2">What GTM Engineering is</a></li>
+      <li><a href="#g-sec-3">The mental model — the four loops</a></li>
+      <li><a href="#g-sec-4">The job search as a GTM project</a></li>
+      <li><a href="#g-sec-5">Schemas — three diagrams</a></li>
+      <li><a href="#g-sec-6">Curriculum</a></li>
+      <li><a href="#g-sec-7">Materials I've collected</a></li>
+      <li><a href="#g-sec-8">Tools — the stack</a></li>
+      <li><a href="#g-sec-9">Open questions</a></li>
+      <li><a href="#g-sec-10">The 30-day plan</a></li>
+      <li><a href="#g-sec-11">Quick hyperlink index</a></li>
+      <li><a href="#g-sec-12">The principle behind it</a></li>
+    </ol>
+  </nav>
+
+  <section class="article-section" id="g-sec-0">
+    <h2>0. Why this document exists</h2>
+    <p>I have ten years in Growth, brand, and ecosystem (currently Growth Lead at Moonwell; prior: Balancer, Blockful). I know the strategy side of GTM cold. What's new — and where the market is moving fast — is the engineering side of GTM: turning intent into automated, AI-augmented workflows that compound.</p>
+    <p>This is the living guide I'm building for myself. It captures:</p>
+    <ul>
+      <li>the big questions I'm asking</li>
+      <li>the mental model behind the role (data → signal → enrichment → action)</li>
+      <li>the resources I'm working through (Clay, Maven, GTM Index)</li>
+      <li>the tools I'm experimenting with</li>
+      <li>the materials I've collected in conversation (Pierson Marks' Google Ads Skill, job postings, VC boards)</li>
+    </ul>
+    <p>If you're a GTM leader who learned by doing, this is the doc I wish I'd had at week one.</p>
+  </section>
+
+  <section class="article-section" id="g-sec-1">
+    <h2>1. The big questions I'm asking</h2>
+    <p>Five questions I keep returning to. The whole guide is structured around them.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Question</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td>What is a GTM Engineer, actually, and how is it different from RevOps / Growth Marketing / SDR-leader?</td><td>The title is hot but vague — I need a sharp definition before I can position myself or hire one.</td></tr>
+        <tr><td>Q2</td><td>How did Clay "mint" this role, and why?</td><td>Clay didn't just sell software — they manufactured the category. Understanding the playbook teaches both GTM and category design.</td></tr>
+        <tr><td>Q3</td><td>What are the thinking processes (not just tools) that separate a good GTM Engineer from a fancy automator?</td><td>Tools change every quarter. The thinking is the moat.</td></tr>
+        <tr><td>Q4</td><td>Can I treat my own job search as a GTM Engineering project — and use it as my portfolio artifact?</td><td>Hiring managers want shipped workflows with documented ROI. The job search is the most defensible portfolio I can ship right now.</td></tr>
+        <tr><td>Q5</td><td>Where is the role going next (agentic AI, MCP, vertical RevOps)?</td><td>I want to skate where the puck is going, especially given my DeFi/institutional network.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="article-section" id="g-sec-2">
+    <h2>2. What GTM Engineering is (and how Clay minted it)</h2>
+
+    <h3>2.1 Working definition</h3>
+    <p>A GTM Engineer is the person who turns the go-to-market funnel into a system of programmable workflows — combining customer data, enrichment, AI, and orchestration tools to do what an SDR team, an analyst, and an ops manager used to do separately, at a fraction of the cost and far higher precision.</p>
+    <blockquote class="callout">In one sentence: <em>revenue-aware software engineering applied to outbound, expansion, and lifecycle.</em></blockquote>
+
+    <h3>2.2 How Clay minted the role</h3>
+    <p>This is one of the best category-design plays of the last five years. The pattern:</p>
+    <ol>
+      <li><strong>Build a tool that's hard to categorize</strong> — Clay is part spreadsheet, part enrichment API aggregator, part AI agent platform.</li>
+      <li><strong>Name the persona that uses it well</strong> — "GTM Engineer".</li>
+      <li><strong>Make that name a status symbol</strong> — Clay University, certifications, cohorts, "GTM Engineer of the Year".</li>
+      <li><strong>Seed it through agencies and consultants</strong> — turn power users into evangelists who sell the role into enterprises.</li>
+      <li><strong>Let recruiters learn the term from the consultants</strong> — and now every B2B startup has "GTM Engineer" in their JDs.</li>
+    </ol>
+    <p>The role didn't exist meaningfully in 2022. By 2026 it's a line item on every modern revenue org chart. That's the playbook to study, not just the tool.</p>
+    <p class="reference"><strong>Reference reading:</strong> <a href="https://clay.com/blog/gtm-engineering" target="_blank" rel="noopener">Clay's own definition — GTM Engineering: What It Is and How to Hire in 2026</a></p>
+
+    <h3>2.3 What Clay (the product) actually does</h3>
+    <p>A compact mental model:</p>
+    <div class="aero-pipeline">
+      <div class="aero-pipeline-input">
+        <div class="aero-pipeline-title">Trigger / Intent</div>
+        <ul>
+          <li>companies, domains, contacts</li>
+          <li>LinkedIn URLs, RSS</li>
+          <li>intent signals</li>
+        </ul>
+      </div>
+      <div class="aero-pipeline-arrow" aria-hidden="true">&rarr;</div>
+      <div class="aero-pipeline-engine">
+        <div class="aero-pipeline-engine-title">Clay table</div>
+        <div class="aero-pipeline-engine-grid">
+          <div class="cell-head">inputs</div>
+          <div class="cell-head">recipe</div>
+          <div>HTTP &middot; Apollo &middot; Clearbit &middot; ZoomInfo</div>
+          <div>AI Prompt &middot; Find-Person</div>
+        </div>
+      </div>
+      <div class="aero-pipeline-arrow" aria-hidden="true">&rarr;</div>
+      <div class="aero-pipeline-output">
+        <div class="aero-pipeline-title">Enriched record</div>
+        <ul>
+          <li>outbound email</li>
+          <li>CRM update</li>
+          <li>Slack alert</li>
+          <li>HubSpot / Salesforce</li>
+          <li>Notion / Sheet</li>
+          <li>another Clay table</li>
+        </ul>
+      </div>
+    </div>
+    <p>The unit of work is a Clay table where every row is an entity (account, person, deal) and every column is either an input, an enrichment, an AI step, or an output destination. Hundreds of integrations sit behind those columns.</p>
+    <p><strong>Why it matters for the role:</strong> Clay isn't only the tool — it's the schema that GTM Engineers use to think. Once you internalize <em>table-as-pipeline</em>, the entire job becomes designing tables that compose into systems.</p>
+    <p>→ Live: <a href="https://clay.com" target="_blank" rel="noopener">clay.com</a> · <a href="https://university.clay.com" target="_blank" rel="noopener">Clay University</a> · <a href="https://university.clay.com/courses/clay-101" target="_blank" rel="noopener">Clay 101 (free)</a></p>
+  </section>
+
+  <section class="article-section" id="g-sec-3">
+    <h2>3. The mental model — the four loops of GTM Engineering</h2>
+    <p>The role lives at the intersection of four feedback loops. Mastering the role = being fluent in all four.</p>
+    <div class="aero-flow">
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">ICP definition</div>
+        <div class="aero-flow-note">strategy, marketing, founder</div>
+      </div>
+      <div class="aero-flow-arrow"><span>who counts as a target?</span></div>
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">Signal detection &amp; sourcing</div>
+        <div class="aero-flow-note">intent data, hiring posts, news, open-source contributions, funding</div>
+      </div>
+      <div class="aero-flow-arrow"><span>who is in-market right now?</span></div>
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">Enrichment &amp; scoring</div>
+        <div class="aero-flow-note">Clay, Apollo, Clearbit, AI prompts, proprietary heuristics</div>
+      </div>
+      <div class="aero-flow-arrow"><span>who deserves a touch this week?</span></div>
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">Action / activation</div>
+        <div class="aero-flow-note">outbound email, ABM ad, BD intro, partnership note, calendar invite</div>
+      </div>
+      <div class="aero-flow-arrow"><span>measure &rarr; attribute &rarr; learn &rarr; loop back to ICP &amp; Signals</span></div>
+    </div>
+    <p>Each loop has its own discipline:</p>
+    <ul>
+      <li><strong>ICP</strong> — the marketing/strategy mind: who, why, value, segment.</li>
+      <li><strong>Signal</strong> — the analytical mind: triggers, intent data, scraping, RSS, web hooks.</li>
+      <li><strong>Enrichment</strong> — the data-engineer mind: APIs, joins, scoring, deduping, schema design.</li>
+      <li><strong>Activation</strong> — the copywriter/operator mind: tone, sequence, calendar, deliverability, attribution.</li>
+    </ul>
+    <p>A great GTM Engineer is literate in all four and writes code, prompts, or SQL when the off-the-shelf tools run out.</p>
+  </section>
+
+  <section class="article-section" id="g-sec-4">
+    <h2>4. The job search as a GTM Engineering project</h2>
+    <p>This is the meta-loop. I'm running my own search as if I were the SDR of myself. Every step has a 1:1 mapping to GTM Engineering practice.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Job-search step (mine)</th><th>GTM-Engineering equivalent</th><th>Tool I used</th></tr></thead>
+      <tbody>
+        <tr><td>Define what a fit role looks like (remote, LATAM-eligible, Growth/governance/security, DeFi/institutional)</td><td>Define the ICP</td><td>a spec doc; my own CV as the buyer-persona inverse</td></tr>
+        <tr><td>Pull a list of crypto companies hiring</td><td>Build an account list</td><td>Web search across job boards + VC portfolio boards</td></tr>
+        <tr><td>Filter to "open NOW, region-eligible, posted &lt; 30 days, role fit"</td><td>Apply ICP signals + intent filters</td><td>A spreadsheet with an APPLY NOW (filtered) view</td></tr>
+        <tr><td>Enrich each company (size, funding, growth team, key contacts)</td><td>Clay enrichment pass</td><td>Clay find-and-enrich-company for ~11 highest-fit targets</td></tr>
+        <tr><td>Identify decision-makers and warm intros</td><td>Build the contact layer</td><td>Clay contacts response &mdash; names, titles, and likely warm-intro paths</td></tr>
+        <tr><td>Apply / send a warm note</td><td>Activation</td><td>Direct vaga links + LinkedIn warm intros</td></tr>
+        <tr><td>Track status (Applied / Rejected / Watch / Closed)</td><td>CRM-like pipeline</td><td>Tracker tab Targets + the filtered tab + posting recency</td></tr>
+        <tr><td>Re-run weekly with fresh openings</td><td>Build the routine</td><td>Schedulable task; eventually a Clay → Slack flow</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>The artifact:</strong> the spreadsheet I built during this session &mdash; with APPLY NOW (filtered), Targets, Boards to mine, and Summary tabs &mdash; is literally a small Clay-style GTM pipeline, built in a spreadsheet because I don't have a Clay seat yet. When I get one, I'll port it. That's my first GTM-Engineering portfolio piece.</p>
+  </section>
+
+  <section class="article-section" id="g-sec-5">
+    <h2>5. Schemas — three diagrams I keep in mind</h2>
+
+    <h3>5.1 GTM Engineer competency stack</h3>
+    <div class="aero-stack">
+      <div class="aero-stack-row level-4">
+        <span class="level-label">LEVEL 4</span>
+        <span class="level-title">Category design &middot; cross-functional GTM</span>
+        <span class="level-note">where Clay itself plays</span>
+      </div>
+      <div class="aero-stack-row level-3">
+        <span class="level-label">LEVEL 3</span>
+        <span class="level-title">Orchestration &amp; agents (MCP, n8n, Claude)</span>
+        <span class="level-note">the "engineer" verb</span>
+      </div>
+      <div class="aero-stack-row level-2">
+        <span class="level-label">LEVEL 2</span>
+        <span class="level-title">Data plumbing: enrichment, scoring, dedup</span>
+        <span class="level-note">Clay, Apollo, Clearbit</span>
+      </div>
+      <div class="aero-stack-row level-1">
+        <span class="level-label">LEVEL 1</span>
+        <span class="level-title">GTM literacy: ICP, segments, funnels, messaging, attribution</span>
+        <span class="level-note">decade of Growth = covered</span>
+      </div>
+    </div>
+    <p>My honest self-assessment: Level 1 strong, Level 2 intermediate, Level 3 actively learning, Level 4 strategic understanding. The leverage is in Levels 2–3.</p>
+
+    <h3>5.2 The "Clay row" mental schema</h3>
+    <div class="aero-tree">
+      <div class="aero-tree-root">ROW = ENTITY</div>
+      <ul class="aero-tree-branches">
+        <li><strong>input columns</strong> &rarr; domain, LinkedIn URL, name, segment</li>
+        <li><strong>enrichment columns</strong> &rarr; headcount, funding, tech stack, open jobs, news</li>
+        <li><strong>derived columns</strong> &rarr; score, fit-tier, AI summary, sequence-pick</li>
+        <li><strong>output columns</strong> &rarr; write to CRM, send email, post to Slack, branch to next table</li>
+      </ul>
+    </div>
+    <p>Every workflow I design from now on, I sketch it as a table first.</p>
+
+    <h3>5.3 Weekly cadence (where the discipline lives)</h3>
+    <div class="aero-week">
+      <div class="aero-day">
+        <div class="aero-day-name">Mon</div>
+        <div class="aero-day-task">refresh signal feed: new job posts, funding news, hiring posts</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Tue</div>
+        <div class="aero-day-task">enrich any new accounts; score; promote top 10</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Wed</div>
+        <div class="aero-day-task">build/refine one new automation (Clay table, prompt, or agent)</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Thu</div>
+        <div class="aero-day-task">ship activation: 25 outbound touches OR 3 warm intros</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Fri</div>
+        <div class="aero-day-task">audit: what worked, what didn't, what to delete</div>
+      </div>
+      <div class="aero-day weekend">
+        <div class="aero-day-name">Sat</div>
+        <div class="aero-day-task">learn: one Clay University module or one Maven session</div>
+      </div>
+      <div class="aero-day weekend">
+        <div class="aero-day-name">Sun</div>
+        <div class="aero-day-task">rest, or read GTM Index</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-section" id="g-sec-6">
+    <h2>6. Curriculum — what I'm working through (and in what order)</h2>
+    <p>I'm doing a "free first, then paid where the portfolio artifact justifies it" path.</p>
+
+    <h3>6.1 Free — start here</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Resource</th><th>Why I'm doing it</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Clay 101 (Clay University)</td><td>The canonical free intro. Tells me how Clay (and the role) sees the world.</td><td><a href="https://university.clay.com/courses/clay-101" target="_blank" rel="noopener">university.clay.com/courses/clay-101</a></td></tr>
+        <tr><td>Clay blog — "GTM Engineering: What It Is and How to Hire in 2026"</td><td>Read it once for content, twice for the category-design craft.</td><td><a href="https://clay.com/blog/gtm-engineering" target="_blank" rel="noopener">clay.com/blog/gtm-engineering</a></td></tr>
+        <tr><td>The GTM Index — Best Resources for GTM Engineers</td><td>Hand-curated, updated quarterly. Excellent breadth scan.</td><td><a href="https://thegtmindex.com/gtm-engineers" target="_blank" rel="noopener">thegtmindex.com/gtm-engineers</a></td></tr>
+        <tr><td>YouTube — "Everything You Need To Know To Become a GTM Engineer (Clay)"</td><td>1-hour overview before committing money.</td><td><a href="https://youtube.com/watch?v=HIrhiAJY3XU" target="_blank" rel="noopener">youtube.com/watch?v=HIrhiAJY3XU</a></td></tr>
+        <tr><td>The Signal — "How to Become a GTM Engineer (8 resources)"</td><td>Compact reading list.</td><td><a href="https://thesignal.club/p/how-to-become-a-gtm-engineer-8-resources" target="_blank" rel="noopener">thesignal.club</a></td></tr>
+        <tr><td>syncGTM — Best GTM Courses in 2026</td><td>Comparison piece — useful before paying for any course.</td><td><a href="https://syncgtm.com/blog/best-gtm-courses-2026" target="_blank" rel="noopener">syncgtm.com</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>6.2 Paid — once the free tier feels easy</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Resource</th><th>Format</th><th>Why</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Maven — GTM Engineer Foundations (Yash Tekriwal &amp; Bhaumik Patel)</td><td>6-week live cohort</td><td>Strongest portfolio artifact: shipped automations with documented ROI + a capstone demo.</td><td><a href="https://maven.com/atrium-academy/gtm-engineer-foundations" target="_blank" rel="noopener">maven.com</a></td></tr>
+        <tr><td>Maven — For GTM Engineers (course index)</td><td>Aggregated</td><td>Cohort calendar — pick one based on timing.</td><td><a href="https://maven.com/courses/for-gtm-engineers" target="_blank" rel="noopener">maven.com</a></td></tr>
+        <tr><td>Maven — AI GTM Engineering Bootcamp (Jack Brown &amp; Kish Sachdeva)</td><td>Bootcamp</td><td>Targets first GTM Engineering job — fits my pivot.</td><td><a href="https://maven.com/ai-with-3plus1-ai/ai-gtm-eng-bootcamp" target="_blank" rel="noopener">maven.com</a></td></tr>
+        <tr><td>Maven — AI GTM Engineering Certification (Manu Jayawardana &amp; Aki Wijesundara)</td><td>Cert</td><td>Weekly project format → agentic GTM workflows by week 4.</td><td><a href="https://maven.com/theaiinternship/gtm-engineering-certification" target="_blank" rel="noopener">maven.com</a></td></tr>
+        <tr><td>Clay Bootcamp — Full Stack GTM Engineers</td><td>Premium 1:1</td><td>Mentorship from top agency CEOs. Highest signal, highest cost.</td><td><a href="https://claybootcamp.com" target="_blank" rel="noopener">claybootcamp.com</a></td></tr>
+        <tr><td>Clay Cohorts (Clay University)</td><td>Live</td><td>Official Clay-led cohorts — closest to "from the source".</td><td><a href="https://university.clay.com/cohorts" target="_blank" rel="noopener">university.clay.com/cohorts</a></td></tr>
+        <tr><td>GTM Engineer School</td><td>Live sessions</td><td>Smaller community alternative.</td><td><a href="https://gtm-engineer-school.com" target="_blank" rel="noopener">gtm-engineer-school.com</a></td></tr>
+        <tr><td>Udemy — GTM Engineering B2B Playbook: Learn Clay from Scratch</td><td>Self-paced</td><td>Cheap, hands-on, good if I want a second angle.</td><td><a href="https://udemy.com/course/the-gtm-engineering-b2b-playbook-learn-clay-gui-stetelle" target="_blank" rel="noopener">udemy.com</a></td></tr>
+      </tbody>
+    </table></div>
+    <p class="reference"><strong>Decision rule:</strong> pick one live cohort (probably GTM Engineer Foundations on Maven) once I've shipped two Clay tables of my own.</p>
+  </section>
+
+  <section class="article-section" id="g-sec-7">
+    <h2>7. Materials I've collected in this conversation</h2>
+    <p>These are the artifacts already in my hands — and how each maps to GTM Engineering practice.</p>
+
+    <h3>7.1 Pierson Marks — google-search-ads-builder (Claude Skill)</h3>
+    <p>A reference implementation of "GTM Engineering applied to paid acquisition", and one of the cleanest examples I've seen of the new MCP-driven workflow design.</p>
+    <ul>
+      <li><strong>What it is:</strong> a Claude Skill that builds end-to-end Google Search Ads campaigns from your codebase + ICP data + PostHog conversion attribution.</li>
+      <li><strong>Why it's exemplary:</strong>
+        <ul>
+          <li>Treats the codebase + ICP file + PostHog as the source of truth, not the ad platform.</li>
+          <li>Bypasses Google's read-only MCP by generating import-ready CSVs and letting the human be the write API.</li>
+          <li>Optimizes against the company's own definition of value (e.g. <code>subscription_active_30d</code>), not Google's surface metric.</li>
+        </ul>
+      </li>
+      <li><strong>GTM-Engineering principles I'm extracting:</strong>
+        <ul>
+          <li><strong>Own your conversion definition</strong> — never let the ad platform decide what "good" means.</li>
+          <li><strong>Human-in-the-loop write paths</strong> — pause-by-default, ship CSVs, let a person flip the switch.</li>
+          <li><strong>Composability over integration</strong> — PostHog + Clay + a model + a CSV beats a single suite.</li>
+        </ul>
+      </li>
+    </ul>
+    <p class="reference">Link: <a href="https://github.com/piersonmarks/google-search-ads-builder" target="_blank" rel="noopener">github.com/piersonmarks/google-search-ads-builder</a></p>
+
+    <h3>7.2 The CV as an ICP filter</h3>
+    <p>I use my own CV the way GTM Engineers use a buyer-persona doc, except inverted. Where most GTM specs describe who the customer is, mine describes what I bring &mdash; the themes, the wins, the network. That document becomes the filter I run roles through: which jobs actually fit the value I ship?</p>
+    <p><a class="btn btn-sm" href="/" rel="noopener">CV on danimim.xyz &rarr;</a></p>
+
+    <h3>7.3 The artifact stack</h3>
+    <p>The artifact I built side-by-side with this guide is essentially a small CRM, structured the way a Clay table would be &mdash; built in a spreadsheet until I have a Clay seat to port it to. Four tabs:</p>
+    <ul>
+      <li><strong>APPLY NOW (filtered)</strong> &mdash; open roles, region-eligible, posted recently (the "critical filter" view)</li>
+      <li><strong>Targets</strong> &mdash; the full database with status (New / Applied / Rejected)</li>
+      <li><strong>Boards to mine</strong> &mdash; VC portfolio + region-focused VC boards, with search prompts</li>
+      <li><strong>Summary</strong> &mdash; pipeline counts</li>
+    </ul>
+    <p>On top of that, a Clay enrichment pass on the highest-fit accounts &mdash; contacts surfaced, task IDs persistent so I can re-open and extend the workflow. And a list of direct posting links (the canonical URL on each ATS, not the company landing page) so the apply step is one click.</p>
+
+    <h3>7.4 ATS / board patterns I learned to ingest</h3>
+    <p>Every one of these taught me something about how a real GTM pipeline ingests "open role" data.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>ATS / Board</th><th>What it taught me about ingest</th></tr></thead>
+      <tbody>
+        <tr><td>Lever</td><td>Clean direct-posting URLs (/&lt;company&gt;/&lt;uuid&gt;) &rarr; easy to scrape.</td></tr>
+        <tr><td>Applicant AI</td><td>Page reliably reports "no open jobs" &rarr; good as a closed-detector.</td></tr>
+        <tr><td>Ashby</td><td>JS-rendered &rarr; need a browser tool, not <code>fetch</code>.</td></tr>
+        <tr><td>Greenhouse (often wrapped)</td><td><code>gh_jid</code> is the canonical job ID; many companies wrap Greenhouse on their careers page.</td></tr>
+        <tr><td>Getro (VC portfolio boards)</td><td>Most VC portfolio boards are Getro &rarr; same DOM &rarr; one scraper hits dozens.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="article-section" id="g-sec-8">
+    <h2>8. Tools — the stack I'm building literacy in</h2>
+
+    <h3>8.1 Core (must be fluent)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tool</th><th>Role in the stack</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Clay</td><td>The orchestration table — accounts/contacts/enrichments/outputs</td><td>Learning, MCP wired in this session</td></tr>
+        <tr><td>LinkedIn Sales Navigator</td><td>The richest people-data source for B2B</td><td>Have access, need to script with Clay</td></tr>
+        <tr><td>Apollo / Clearbit / ZoomInfo</td><td>Enrichment APIs</td><td>Background — used through Clay</td></tr>
+        <tr><td>HubSpot / Salesforce</td><td>System of record</td><td>Familiar from Moonwell / Balancer</td></tr>
+        <tr><td>Slack</td><td>Activation + alerting endpoint</td><td>Daily-driver</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.2 Engineering layer (the "engineer" half of the role)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tool</th><th>Role</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>OpenAI / Anthropic APIs (Claude, GPT)</td><td>Inline AI columns, summarization, classification</td><td>Replaces 80% of manual research</td></tr>
+        <tr><td>MCP servers (Model Context Protocol)</td><td>Standardized tool layer for LLM-driven workflows</td><td>The future of agentic GTM</td></tr>
+        <tr><td>n8n / Zapier / Make</td><td>Glue between systems when Clay isn't enough</td><td>Used as escape hatch</td></tr>
+        <tr><td>PostHog / Mixpanel / Amplitude</td><td>Product-side truth on what "value" really means</td><td>Pairs with Clay for full-funnel</td></tr>
+        <tr><td>GitHub</td><td>Where serious GTM-Eng workflows now live (see Pierson's skill)</td><td>Source-controlled GTM is the trend</td></tr>
+        <tr><td>Notion / Coda</td><td>Workflow docs + dashboards</td><td>Documentation layer</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>8.3 Job-search-specific tools (this session's stack)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tool</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td>Clay (MCP)</td><td>Enriching target companies + surfacing contacts</td></tr>
+        <tr><td>Web search + web fetch</td><td>Job board mining, posting validation</td></tr>
+        <tr><td>VC portfolio job boards</td><td>Polychain / a16z crypto / Valor / TheVentureCity portfolio boards as a source for accounts</td></tr>
+        <tr><td>Google Drive (read/index)</td><td>Locating CVs, cover letters, contracts</td></tr>
+        <tr><td>Excel / openpyxl</td><td>Building the tracker until I port it to Clay</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="article-section" id="g-sec-9">
+    <h2>9. Questions I keep open for the role</h2>
+    <p>These are the ones I'll bring to the first cohort instructor / mentor.</p>
+    <ol>
+      <li><strong>How do GTM Engineers split work with RevOps?</strong> Where does one start and the other end inside a 50–200-person crypto company?</li>
+      <li><strong>How is the role priced?</strong> Salary band, equity, contract-vs-FTE — especially for senior people coming from Growth, not from engineering.</li>
+      <li><strong>What's the right portfolio?</strong> Is it 3 polished Clay tables? A weekly Loom of a workflow? A public GitHub of skills?</li>
+      <li><strong>Where does the role land in DeFi specifically?</strong> Most case studies are SaaS B2B — I want to be the one writing the DeFi/institutional case study.</li>
+      <li><strong>How agentic should the workflow be?</strong> Where does "human-in-the-loop" stay, and where do agents fully own a column?</li>
+    </ol>
+  </section>
+
+  <section class="article-section" id="g-sec-10">
+    <h2>10. The 30-day plan</h2>
+    <p>A concrete, finishable horizon.</p>
+
+    <h3>Week 1 — orient</h3>
+    <ul>
+      <li>Finish Clay 101.</li>
+      <li>Read Clay's GTM Engineering post twice (content + craft).</li>
+      <li>Skim The GTM Index and bookmark 3 newsletters.</li>
+    </ul>
+
+    <h3>Week 2 — build #1</h3>
+    <ul>
+      <li>Build the first real Clay table: my target-companies list, ported from the spreadsheet.</li>
+      <li>Add enrichment columns: headcount, funding, recent news, growth team contact.</li>
+      <li>Output: a Slack alert when a target company opens a remote Growth/governance/security role.</li>
+    </ul>
+
+    <h3>Week 3 — build #2</h3>
+    <ul>
+      <li>Build a second Clay table: warm-intro radar — people I know within 2 degrees of any target company.</li>
+      <li>AI column: draft a 5-sentence warm-intro request.</li>
+      <li>Output: weekly digest of best 3 intro candidates.</li>
+    </ul>
+
+    <h3>Week 4 — commit</h3>
+    <ul>
+      <li>Apply to one cohort (Maven GTM Engineer Foundations is the leading pick).</li>
+      <li>Publish a write-up of the two Clay tables on my danimim.xyz — that's the portfolio.</li>
+      <li>Bring the writeup to interviews.</li>
+    </ul>
+  </section>
+
+  <section class="article-section" id="g-sec-11">
+    <h2>11. Quick hyperlink index</h2>
+    <p>For copy-paste convenience.</p>
+
+    <h3>Clay</h3>
+    <ul>
+      <li><a href="https://clay.com" target="_blank" rel="noopener">Clay (product)</a></li>
+      <li><a href="https://university.clay.com" target="_blank" rel="noopener">Clay University (home)</a></li>
+      <li><a href="https://university.clay.com/courses/clay-101" target="_blank" rel="noopener">Clay 101 — free</a></li>
+      <li><a href="https://university.clay.com/cohorts" target="_blank" rel="noopener">Clay cohorts</a></li>
+      <li><a href="https://claybootcamp.com" target="_blank" rel="noopener">Clay Bootcamp (premium)</a></li>
+      <li><a href="https://clay.com/blog/gtm-engineering" target="_blank" rel="noopener">Clay blog — GTM Engineering</a></li>
+    </ul>
+
+    <h3>Courses</h3>
+    <ul>
+      <li><a href="https://maven.com/atrium-academy/gtm-engineer-foundations" target="_blank" rel="noopener">Maven — GTM Engineer Foundations</a></li>
+      <li><a href="https://maven.com/courses/for-gtm-engineers" target="_blank" rel="noopener">Maven — For GTM Engineers (course index)</a></li>
+      <li><a href="https://maven.com/ai-with-3plus1-ai/ai-gtm-eng-bootcamp" target="_blank" rel="noopener">Maven — AI GTM Engineering Bootcamp</a></li>
+      <li><a href="https://maven.com/theaiinternship/gtm-engineering-certification" target="_blank" rel="noopener">Maven — AI GTM Engineering Certification</a></li>
+      <li><a href="https://gtm-engineer-school.com" target="_blank" rel="noopener">GTM Engineer School</a></li>
+      <li><a href="https://udemy.com/course/the-gtm-engineering-b2b-playbook-learn-clay-gui-stetelle" target="_blank" rel="noopener">Udemy — GTM Engineering B2B Playbook</a></li>
+    </ul>
+
+    <h3>Reading</h3>
+    <ul>
+      <li><a href="https://thegtmindex.com/gtm-engineers" target="_blank" rel="noopener">The GTM Index — Best Resources for GTM Engineers</a></li>
+      <li><a href="https://thesignal.club/p/how-to-become-a-gtm-engineer-8-resources" target="_blank" rel="noopener">The Signal — How to become a GTM Engineer (8 resources)</a></li>
+      <li><a href="https://syncgtm.com/blog/best-gtm-courses-2026" target="_blank" rel="noopener">syncGTM — Best GTM Courses 2026</a></li>
+      <li><a href="https://youtube.com/watch?v=HIrhiAJY3XU" target="_blank" rel="noopener">YouTube — Become a GTM Engineer (Clay)</a></li>
+    </ul>
+
+    <h3>Reference implementations from this conversation</h3>
+    <ul>
+      <li><a href="https://github.com/piersonmarks/google-search-ads-builder" target="_blank" rel="noopener">Pierson Marks — google-search-ads-builder (Claude Skill)</a></li>
+      <li>Polychain Capital — portfolio job board (Getro)</li>
+      <li>a16z crypto — portfolio jobs</li>
+      <li>Valor Capital — LATAM-focused board</li>
+    </ul>
+  </section>
+
+  <section class="article-section" id="g-sec-12">
+    <h2>12. The principle behind the whole thing</h2>
+    <blockquote class="callout">"Treat go-to-market as a system, not a personality."</blockquote>
+    <p>Tools change every quarter. The discipline of writing down the ICP, instrumenting the signals, owning the enrichment schema, and shipping the activation loop — that's the durable skill. GTM Engineering is what you get when an operator who already understands Growth picks up a keyboard.</p>
+    <p>That's where I'm going.</p>
+    <p class="reference"><em>Last edit: end of a long session where the spreadsheet artifact and this guide were built side-by-side &mdash; the spreadsheet is the proof, this doc is the plan.</em></p>
+  </section>
+</article>
+                `
+            }
+        ],
+
+        upcoming: [
+            { title: "Clay table #1 — target-companies write-up", summary: "Once the first portfolio table ships, the write-up lands here." },
+            { title: "Clay table #2 — warm-intro radar", summary: "AI-drafted intro requests, ranked by signal." }
+        ],
+
+        resourcesIntro: "The curriculum I'm working through. Free first, paid once the free tier feels easy.",
+        resources: [
+            {
+                category: "Free — start here",
+                items: [
+                    { title: "Clay 101 (Clay University)", desc: "The canonical free intro. How Clay (and the role) sees the world.", url: "https://university.clay.com/courses/clay-101" },
+                    { title: "Clay blog — GTM Engineering: What It Is and How to Hire in 2026", desc: "Read it once for content, twice for the category-design craft.", url: "https://clay.com/blog/gtm-engineering" },
+                    { title: "The GTM Index — Best Resources for GTM Engineers", desc: "Hand-curated, updated quarterly.", url: "https://thegtmindex.com/gtm-engineers" },
+                    { title: "YouTube — Become a GTM Engineer (Clay)", desc: "1-hour overview before committing money.", url: "https://youtube.com/watch?v=HIrhiAJY3XU" },
+                    { title: "The Signal — How to Become a GTM Engineer (8 resources)", desc: "Compact reading list.", url: "https://thesignal.club/p/how-to-become-a-gtm-engineer-8-resources" },
+                    { title: "syncGTM — Best GTM Courses in 2026", desc: "Comparison piece — useful before paying.", url: "https://syncgtm.com/blog/best-gtm-courses-2026" }
+                ]
+            },
+            {
+                category: "Paid — once the free tier feels easy",
+                items: [
+                    { title: "Maven — GTM Engineer Foundations", desc: "6-week live cohort. Strongest portfolio artifact.", url: "https://maven.com/atrium-academy/gtm-engineer-foundations" },
+                    { title: "Maven — For GTM Engineers (course index)", desc: "Cohort calendar.", url: "https://maven.com/courses/for-gtm-engineers" },
+                    { title: "Maven — AI GTM Engineering Bootcamp", desc: "Targets first GTM Engineering job.", url: "https://maven.com/ai-with-3plus1-ai/ai-gtm-eng-bootcamp" },
+                    { title: "Maven — AI GTM Engineering Certification", desc: "Weekly project format → agentic GTM workflows.", url: "https://maven.com/theaiinternship/gtm-engineering-certification" },
+                    { title: "Clay Bootcamp — Full Stack GTM Engineers", desc: "Premium 1:1 mentorship from top agency CEOs.", url: "https://claybootcamp.com" },
+                    { title: "Clay Cohorts (Clay University)", desc: "Official Clay-led cohorts — closest to 'from the source'.", url: "https://university.clay.com/cohorts" },
+                    { title: "GTM Engineer School", desc: "Smaller community alternative.", url: "https://gtm-engineer-school.com" },
+                    { title: "Udemy — GTM Engineering B2B Playbook", desc: "Self-paced, cheap, hands-on.", url: "https://udemy.com/course/the-gtm-engineering-b2b-playbook-learn-clay-gui-stetelle" }
+                ]
+            },
+            {
+                category: "Reference implementations",
+                items: [
+                    { title: "Pierson Marks — google-search-ads-builder (Claude Skill)", desc: "A clean example of MCP-driven GTM engineering applied to paid acquisition.", url: "https://github.com/piersonmarks/google-search-ads-builder" }
+                ]
+            }
+        ],
+
+        toolstackIntro: "The stack I'm building literacy in — split into core, engineering layer, and the job-search loadout.",
+        toolstack: [
+            {
+                category: "Core (must be fluent)",
+                items: [
+                    { tool: "Clay", role: "Orchestration table — accounts, contacts, enrichments, outputs", note: "Learning, MCP wired in." },
+                    { tool: "LinkedIn Sales Navigator", role: "Richest B2B people-data source", note: "Have access, need to script with Clay." },
+                    { tool: "Apollo / Clearbit / ZoomInfo", role: "Enrichment APIs", note: "Background — used through Clay." },
+                    { tool: "HubSpot / Salesforce", role: "System of record", note: "Familiar from Moonwell / Balancer." },
+                    { tool: "Slack", role: "Activation + alerting endpoint", note: "Daily driver." }
+                ]
+            },
+            {
+                category: "Engineering layer",
+                items: [
+                    { tool: "Anthropic Claude / OpenAI", role: "Inline AI columns, summarization, classification", note: "Replaces 80% of manual research." },
+                    { tool: "MCP servers (Model Context Protocol)", role: "Standardized tool layer for LLM-driven workflows", note: "The future of agentic GTM." },
+                    { tool: "n8n / Zapier / Make", role: "Glue between systems", note: "Escape hatch when Clay isn't enough." },
+                    { tool: "PostHog / Mixpanel / Amplitude", role: "Product-side truth on what 'value' really means", note: "Pairs with Clay for full-funnel." },
+                    { tool: "GitHub", role: "Where serious GTM-Eng workflows now live", note: "Source-controlled GTM is the trend." },
+                    { tool: "Notion / Coda", role: "Workflow docs + dashboards", note: "Documentation layer." }
+                ]
+            },
+            {
+                category: "Job-search loadout (this session)",
+                items: [
+                    { tool: "Clay (MCP)", role: "Enriching target companies + surfacing contacts" },
+                    { tool: "Web search + web fetch", role: "Job board mining, posting validation" },
+                    { tool: "VC portfolio job boards", role: "Polychain / a16z / Valor / TheVentureCity → Getro, Lever, Greenhouse, Ashby" },
+                    { tool: "Google Drive (read/index)", role: "Locating CVs, cover letters, contracts" },
+                    { tool: "Excel / openpyxl", role: "Tracker until I port it to Clay" }
+                ]
+            }
+        ],
+
+        donate: {
+            intro: "If anything on this page is useful to you, support more writing like it. Every contribution funds independent growth-engineering research and content.",
+            address: "0x81091b9E5D49e264C051d3aeb3023A4C170c6888",
+            note: "I accept donations on any EVM-compatible chain — Ethereum, Base, Arbitrum, Optimism, and more."
+        }
+    },
+
     // ===== RESUME / CV =====
     // PDF downloaded when the "hire me" desktop icon is clicked
     RESUME: "assets/cv_daniela_zschaber.pdf"

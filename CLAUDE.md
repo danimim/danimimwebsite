@@ -72,6 +72,39 @@ windows — Videos, Newsletter, Vinyl, Playlist — are populated from
 `groove` data block and in `groove/index.html` are root-absolute (`/assets/...`,
 `/icons/...`) so they resolve correctly from `/groove/`.
 
+### Third page: Growth (Frutiger Aero / Vista Explorer theme)
+
+`growth/` is a third standalone page served at `/growth/`, linked from the
+"Growth" desktop icon above the Groove icon on the main page. **Unlike the
+Win95 main page and Groove, this page is themed Frutiger Aero / Windows
+Vista** — a single glassy translucent Explorer-style window centered on a
+sky/grass aurora background, with a left sidebar for navigation and the
+GTM Engineering article filling the main pane.
+
+It does NOT load `assets/css/style.css`; `growth/growth.css` is fully
+self-contained. The class is `GrowthPage` (not `GrowthDesktop`) in
+`growth/growth.js` — there is no windowing logic, just sidebar smooth-scroll,
+tab-active-on-scroll, a clock, and the Donate copy-to-clipboard button.
+
+The page renders one article (the GTM Engineering guide) inline into
+`#article-gtm-content`, followed by an in-page Donate panel
+(`<section id="g-donate">`). Content is read from `SITE_DATA.growth` in
+`assets/js/data.js`:
+
+- `articles[]` — `{ windowId, title, status, date, summary, html }`. Only
+  the entry with `windowId === 'article-gtm'` is rendered. Future articles
+  can live alongside it; the page just needs another `<section>` and a
+  sidebar link.
+- `donate` — `{ intro, address, note }` rendered into the Donate panel.
+  Reuses the same EVM wallet as Groove.
+
+The `about`, `articlesIntro`, `upcoming`, `resources`, and `toolstack`
+keys in `SITE_DATA.growth` are kept for forward-compatibility but are not
+currently rendered — the article speaks for itself.
+
+The main-page `/icons/growth.png` icon is the Vista Explorer icon dropped
+into `/icons/` (with a 📈 emoji fallback while it isn't present).
+
 ## Conventions
 
 - UI text, code comments, and `console.log` debug strings are all in English.

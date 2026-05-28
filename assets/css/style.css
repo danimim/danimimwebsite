@@ -802,10 +802,10 @@ body {
   }
 }
 
-/* Groove Crypto Club desktop shortcut (sits above the Recycle Bin) */
-.groove-icon {
+/* Groove Crypto Club + Growth desktop shortcuts (sit above the Recycle Bin) */
+.groove-icon,
+.growth-icon {
   position: absolute;
-  bottom: 185px;
   right: 20px;
   display: flex;
   flex-direction: column;
@@ -825,16 +825,22 @@ body {
   text-decoration: none;
 }
 
-.groove-icon:hover {
+.groove-icon { bottom: 185px; }
+.growth-icon { bottom: 320px; }
+
+.groove-icon:hover,
+.growth-icon:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.groove-icon:focus {
+.groove-icon:focus,
+.growth-icon:focus {
   outline: 1px dotted white;
   outline-offset: 2px;
 }
 
-.groove-icon img {
+.groove-icon img,
+.growth-icon img {
   margin-bottom: 8px;
   filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.5));
   width: 80px !important;
@@ -845,7 +851,8 @@ body {
   min-height: 80px !important;
 }
 
-.groove-icon span {
+.groove-icon span,
+.growth-icon span {
   word-wrap: break-word;
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
   font-weight: normal;
@@ -854,17 +861,21 @@ body {
 }
 
 @media (max-width: 768px) {
-  .groove-icon {
+  .groove-icon,
+  .growth-icon {
       width: 100px;
       height: auto;
       min-height: 100px;
-      bottom: 160px;
       right: 15px;
       font-size: 11px;
       padding: 8px;
   }
 
-  .groove-icon img {
+  .groove-icon { bottom: 160px; }
+  .growth-icon { bottom: 275px; }
+
+  .groove-icon img,
+  .growth-icon img {
       width: 65px !important;
       height: 65px !important;
       max-width: 65px !important;
