@@ -132,14 +132,22 @@
         </div>
 
         <!-- Status bar at the bottom -->
-        <div class="explorer-statusbar" aria-hidden="true">
+        <div class="explorer-statusbar">
             <span class="status-left">1 item</span>
+            <button type="button" class="music-toggle" id="music-toggle" aria-label="Toggle background music">
+                <span class="music-icon" aria-hidden="true">&#9835;</span>
+                <span class="music-label">Play music</span>
+            </button>
             <span class="status-right" id="clock"></span>
         </div>
     </div>
 
+    <!-- Hidden YouTube audio engine -->
+    <div id="yt-audio" aria-hidden="true"></div>
+
     <!-- Scripts -->
     <script src="/assets/js/data.js"></script>
     <script src="/growth/growth.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
