@@ -459,6 +459,13 @@ a:hover { color: var(--aero-link-hover); text-decoration: underline; }
 
 .article-section { margin-top: 14px; }
 .article-header { margin-bottom: 16px; }
+.article-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--aero-blue-deep);
+  margin: 8px 0 10px;
+}
 .article-meta {
   display: flex;
   flex-wrap: wrap;
