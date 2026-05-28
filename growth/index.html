@@ -15,12 +15,12 @@
     <meta property="og:url" content="https://danimim.xyz/growth/">
     <meta property="og:title" content="How I'm learning GTM Engineering while job-hunting">
     <meta property="og:description" content="A meta-document. The premise: my own job search is the first GTM Engineering project.">
-    <meta property="og:image" content="https://danimim.xyz/assets/img/og-2.png">
-    <meta property="og:image:alt" content="Growth — danimim.xyz">
+    <meta property="og:image" content="https://danimim.xyz/assets/img/og-growth.png">
+    <meta property="og:image:alt" content="Growth Learnings — danimim.xyz/growth">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="How I'm learning GTM Engineering while job-hunting">
     <meta name="twitter:description" content="A meta-document. The premise: my own job search is the first GTM Engineering project.">
-    <meta name="twitter:image" content="https://danimim.xyz/assets/img/og-2.png">
+    <meta name="twitter:image" content="https://danimim.xyz/assets/img/og-growth.png">
 </head>
 <body>
     <!-- Aero atmosphere: sky + grass + aurora ribbons + bokeh -->
@@ -132,14 +132,22 @@
         </div>
 
         <!-- Status bar at the bottom -->
-        <div class="explorer-statusbar" aria-hidden="true">
+        <div class="explorer-statusbar">
             <span class="status-left">1 item</span>
+            <button type="button" class="music-toggle" id="music-toggle" aria-label="Toggle background music">
+                <span class="music-icon" aria-hidden="true">&#9835;</span>
+                <span class="music-label">Play music</span>
+            </button>
             <span class="status-right" id="clock"></span>
         </div>
     </div>
 
+    <!-- Hidden YouTube audio engine -->
+    <div id="yt-audio" aria-hidden="true"></div>
+
     <!-- Scripts -->
     <script src="/assets/js/data.js"></script>
     <script src="/growth/growth.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>

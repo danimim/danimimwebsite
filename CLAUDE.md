@@ -88,7 +88,11 @@ tab-active-on-scroll, a clock, and the Donate copy-to-clipboard button.
 
 The page renders one article (the GTM Engineering guide) inline into
 `#article-gtm-content`, followed by an in-page Donate panel
-(`<section id="g-donate">`). Content is read from `SITE_DATA.growth` in
+(`<section id="g-donate">`). A hidden YouTube IFrame player provides
+optional background music at 30% volume — the status-bar `Play music`
+button toggles it. Track is YouTube's auto-mix radio
+(`RDDP3rDP02lE0`); change the `MUSIC_RADIO` field on `GrowthPage` to
+swap it. Content is read from `SITE_DATA.growth` in
 `assets/js/data.js`:
 
 - `articles[]` — `{ windowId, title, status, date, summary, html }`. Only
