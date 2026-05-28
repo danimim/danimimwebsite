@@ -436,6 +436,11 @@ const SITE_DATA = {
     <p class="article-subtitle">A meta-document. The premise: my own job search is the first GTM Engineering project. I run an ICP filter on myself, build a real CRM of target companies, enrich them in Clay, identify signals, and ship outbound, while learning the role on the way in.</p>
   </header>
 
+  <aside class="article-lead">
+    <p class="article-lead-eyebrow">Where I'm strongest</p>
+    <p>What I bring that other GTM operators can't easily copy: <strong>local distribution across LATAM</strong>, cultural fluency, and direct lines to the people on the ground, in their own context. I bring the LATAM market to the companies and big techs that need it. Ten years operating across Brazil and the wider region; my address book and the way I read those rooms is the moat.</p>
+  </aside>
+
   <nav class="article-toc">
     <strong>Contents</strong>
     <ol>

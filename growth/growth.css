@@ -482,6 +482,40 @@ a:hover { color: var(--aero-link-hover); text-decoration: underline; }
   margin-bottom: 8px;
 }
 
+/* "Where I'm strongest" lead/positioning block — sits between the
+   article header and the body. Blue → green Frutiger Aero gradient
+   to echo the OG card. */
+.article-lead {
+  margin: 8px 0 20px;
+  padding: 14px 20px 16px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(120deg, #d8ebfa 0%, #d6ebe8 55%, #d6efd2 100%);
+  border: 1px solid rgba(40, 120, 100, 0.35);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 6px 14px rgba(15, 99, 130, 0.15);
+}
+.article-lead .article-lead-eyebrow {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--aero-green-deep);
+}
+.article-lead > p:not(.article-lead-eyebrow) {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--aero-blue-deep);
+}
+.article-lead strong {
+  color: var(--aero-blue);
+  font-weight: 700;
+}
+
 /* Meta pill */
 .meta-pill {
   display: inline-block;
@@ -839,61 +873,7 @@ a:hover { color: var(--aero-link-hover); text-decoration: underline; }
   margin: 6px 0 12px;
 }
 
-/* ===== Donate section (in-page, not a separate window) ===== */
-.donate-section {
-  margin-top: 36px;
-  padding: 20px 22px 22px;
-  background:
-    linear-gradient(180deg, #f4faf0, #e3f1d6);
-  border: 1px solid rgba(123, 194, 75, 0.45);
-  border-radius: 12px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    0 4px 12px rgba(60, 120, 40, 0.18);
-}
-.donate-section h2 {
-  border-bottom: none;
-  margin: 0 0 8px;
-  color: var(--aero-green-deep);
-}
-.donate-intro { margin-bottom: 12px; font-size: 13px; }
-.wallet-item {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(123, 194, 75, 0.4);
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
-}
-.wallet-chain {
-  font-weight: 600;
-  color: var(--aero-green-deep);
-  margin-bottom: 4px;
-}
-.wallet-note {
-  font-size: 11px;
-  color: var(--aero-text-soft);
-  margin-bottom: 8px;
-}
-.wallet-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.wallet-address {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  background: #ffffff;
-  border: 1px solid rgba(120, 180, 140, 0.55);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
-  font-size: 11px;
-  box-shadow: inset 0 1px 2px rgba(0, 60, 30, 0.1);
-  color: var(--aero-text);
-}
-
-/* Vista glossy pill button (green for Copy) */
+/* Vista glossy pill button (used by the CV link inside the article) */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -919,12 +899,6 @@ a:hover { color: var(--aero-link-hover); text-decoration: underline; }
 }
 .btn:hover { filter: brightness(1.08); }
 .btn:active { transform: translateY(1px); }
-.btn.btn-green {
-  border-color: rgba(40, 80, 20, 0.55);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15) 100%),
-    linear-gradient(180deg, #b2e57c 0%, #6cba2e 60%, #3b7913 100%);
-}
 
 /* ===== Status bar ===== */
 .explorer-statusbar {
