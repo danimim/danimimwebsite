@@ -978,27 +978,81 @@ a:hover { color: var(--aero-link-hover); text-decoration: underline; }
 
 /* ===== Mobile ===== */
 @media (max-width: 800px) {
+  /* The explorer chrome stops trying to look like a centered window
+     and just fills the viewport. Use dvh where supported so iOS
+     Safari doesn't leave a strip under the address bar. */
   .explorer-window {
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     border-radius: 0;
     top: 0; left: 0;
     transform: none;
+    box-shadow: none;
   }
-  .explorer-addressbar { padding: 0 8px; gap: 6px; }
-  .search-input { display: none; }
-  .explorer-tabs { padding: 0 4px; }
-  .tab { padding: 0 10px; margin: 0 2px; font-size: 11px; }
+
+  /* Compact title bar — keep the close (×) so back to home still works. */
+  .explorer-titlebar { height: 30px; font-size: 10px; }
+  .window-controls { top: 4px; right: 4px; gap: 2px; }
+  .window-btn { width: 26px; height: 20px; font-size: 9px; }
+
+  /* The address bar is decorative ornament; drop it on mobile to claim
+     the real estate for the article. */
+  .explorer-addressbar { display: none; }
+
+  /* Tabs row stays, but tighter and without the dropdown chevrons. */
+  .explorer-tabs { padding: 0 6px; height: 30px; }
+  .tab { padding: 0 10px; margin: 0; font-size: 11px; }
+  .tab-chev { display: none; }
+
+  /* Sidebar is removed on mobile; the inline TOC inside the article
+     takes its place so navigation stays one tap away. */
+  .explorer-sidebar { display: none; }
   .explorer-body { flex-direction: column; }
-  .explorer-sidebar {
-    width: 100%;
-    max-height: 200px;
-    border-right: none;
-    border-bottom: 1px solid rgba(140, 180, 130, 0.35);
-    padding: 10px 0;
+
+  /* Re-enable the inline TOC (hidden on desktop because the sidebar
+     covers it). */
+  .article-toc {
+    display: block;
+    margin: 4px 0 14px;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(220, 240, 252, 0.6));
+    border: 1px solid rgba(15, 99, 176, 0.18);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
   }
-  .sidebar-list li { padding: 2px 18px 2px 38px; }
-  .explorer-main { padding: 16px 18px 28px; }
-  .explorer-main h1 { font-size: 20px; }
+  .article-toc strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--aero-blue-deep);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .article-toc ol {
+    columns: 1;
+    -webkit-columns: 1;
+    margin: 0 0 0 18px;
+    font-size: 12px;
+  }
+  .article-toc li { margin: 2px 0; }
+
+  /* Tighter article typography. */
+  .explorer-main { padding: 14px 16px 24px; }
+  .article-title { font-size: 22px; line-height: 1.2; }
+  .explorer-main h1 { font-size: 22px; }
   .explorer-main h2 { font-size: 16px; }
+  .article-meta { font-size: 10px; gap: 4px 8px; }
+  .article-subtitle { font-size: 13px; }
+
+  /* Lead positioning block: smaller padding so it doesn't dominate. */
+  .article-lead { margin: 4px 0 14px; padding: 12px 14px; border-radius: 10px; }
+  .article-lead > p:not(.article-lead-eyebrow) { font-size: 13px; line-height: 1.5; }
+
+  /* Status bar: hide "1 item" decorative label so the music toggle and
+     clock have room. */
+  .status-left { display: none; }
+  .explorer-statusbar { padding: 0 10px; gap: 8px; height: 32px; }
+  .music-toggle { font-size: 10px; padding: 3px 10px; }
+  .status-right { font-size: 10px; }
 }
