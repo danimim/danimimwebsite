@@ -504,18 +504,38 @@ const SITE_DATA = {
 
     <h3>2.3 What Clay (the product) actually does</h3>
     <p>A compact mental model:</p>
-    <pre class="ascii-diagram">                       ┌──────────────────────────┐
-   Trigger / Intent ──▶│        Clay table        │──▶ Enriched record
-   (list of companies,  │   ┌─────────┬────────┐   │   ▶ outbound email
-    domains, contacts,  │   │ inputs  │ recipe │   │   ▶ CRM update
-    LinkedIn URLs, RSS, │   ├─────────┼────────┤   │   ▶ Slack alert
-    intent signals)     │   │ HTTP    │ AI     │   │   ▶ Hubspot/Salesforce
-                       │   │ Apollo  │ Prompt │   │   ▶ Notion / Sheet
-                       │   │ Clearbit│ Find-  │   │   ▶ another Clay table
-                       │   │ ZoomInfo│ Person │   │
-                       │   │ ...     │ ...    │   │
-                       │   └─────────┴────────┘   │
-                       └──────────────────────────┘</pre>
+    <div class="aero-pipeline">
+      <div class="aero-pipeline-input">
+        <div class="aero-pipeline-title">Trigger / Intent</div>
+        <ul>
+          <li>companies, domains, contacts</li>
+          <li>LinkedIn URLs, RSS</li>
+          <li>intent signals</li>
+        </ul>
+      </div>
+      <div class="aero-pipeline-arrow" aria-hidden="true">&rarr;</div>
+      <div class="aero-pipeline-engine">
+        <div class="aero-pipeline-engine-title">Clay table</div>
+        <div class="aero-pipeline-engine-grid">
+          <div class="cell-head">inputs</div>
+          <div class="cell-head">recipe</div>
+          <div>HTTP &middot; Apollo &middot; Clearbit &middot; ZoomInfo</div>
+          <div>AI Prompt &middot; Find-Person</div>
+        </div>
+      </div>
+      <div class="aero-pipeline-arrow" aria-hidden="true">&rarr;</div>
+      <div class="aero-pipeline-output">
+        <div class="aero-pipeline-title">Enriched record</div>
+        <ul>
+          <li>outbound email</li>
+          <li>CRM update</li>
+          <li>Slack alert</li>
+          <li>HubSpot / Salesforce</li>
+          <li>Notion / Sheet</li>
+          <li>another Clay table</li>
+        </ul>
+      </div>
+    </div>
     <p>The unit of work is a Clay table where every row is an entity (account, person, deal) and every column is either an input, an enrichment, an AI step, or an output destination. Hundreds of integrations sit behind those columns.</p>
     <p><strong>Why it matters for the role:</strong> Clay isn't only the tool — it's the schema that GTM Engineers use to think. Once you internalize <em>table-as-pipeline</em>, the entire job becomes designing tables that compose into systems.</p>
     <p>→ Live: <a href="https://clay.com" target="_blank" rel="noopener">clay.com</a> · <a href="https://university.clay.com" target="_blank" rel="noopener">Clay University</a> · <a href="https://university.clay.com/courses/clay-101" target="_blank" rel="noopener">Clay 101 (free)</a></p>
@@ -524,29 +544,28 @@ const SITE_DATA = {
   <section class="article-section" id="g-sec-3">
     <h2>3. The mental model — the four loops of GTM Engineering</h2>
     <p>The role lives at the intersection of four feedback loops. Mastering the role = being fluent in all four.</p>
-    <pre class="ascii-diagram">            ┌───────────────────────┐
-            │   ICP definition      │  ◀── strategy, marketing, founder
-            └──────────┬────────────┘
-                       │  who counts as a target?
-                       ▼
-            ┌───────────────────────┐
-            │   Signal detection    │  ◀── intent data, hiring posts, news,
-            │   &amp; sourcing          │      open-source contributions, funding
-            └──────────┬────────────┘
-                       │  who is in-market RIGHT NOW?
-                       ▼
-            ┌───────────────────────┐
-            │   Enrichment &amp; scoring│  ◀── Clay, Apollo, Clearbit, AI prompts,
-            │                       │      proprietary heuristics
-            └──────────┬────────────┘
-                       │  who deserves a touch THIS WEEK?
-                       ▼
-            ┌───────────────────────┐
-            │   Action / activation │  ◀── outbound email, ABM ad, BD intro,
-            │                       │      partnership note, calendar invite
-            └──────────┬────────────┘
-                       │  measure → attribute → learn
-                       └────────────▶ feedback into ICP and Signals</pre>
+    <div class="aero-flow">
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">ICP definition</div>
+        <div class="aero-flow-note">strategy, marketing, founder</div>
+      </div>
+      <div class="aero-flow-arrow"><span>who counts as a target?</span></div>
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">Signal detection &amp; sourcing</div>
+        <div class="aero-flow-note">intent data, hiring posts, news, open-source contributions, funding</div>
+      </div>
+      <div class="aero-flow-arrow"><span>who is in-market right now?</span></div>
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">Enrichment &amp; scoring</div>
+        <div class="aero-flow-note">Clay, Apollo, Clearbit, AI prompts, proprietary heuristics</div>
+      </div>
+      <div class="aero-flow-arrow"><span>who deserves a touch this week?</span></div>
+      <div class="aero-flow-card">
+        <div class="aero-flow-title">Action / activation</div>
+        <div class="aero-flow-note">outbound email, ABM ad, BD intro, partnership note, calendar invite</div>
+      </div>
+      <div class="aero-flow-arrow"><span>measure &rarr; attribute &rarr; learn &rarr; loop back to ICP &amp; Signals</span></div>
+    </div>
     <p>Each loop has its own discipline:</p>
     <ul>
       <li><strong>ICP</strong> — the marketing/strategy mind: who, why, value, segment.</li>
@@ -565,50 +584,88 @@ const SITE_DATA = {
       <tbody>
         <tr><td>Define what a fit role looks like (remote, LATAM-eligible, Growth/governance/security, DeFi/institutional)</td><td>Define the ICP</td><td>a spec doc; my own CV as the buyer-persona inverse</td></tr>
         <tr><td>Pull a list of crypto companies hiring</td><td>Build an account list</td><td>Web search across job boards + VC portfolio boards</td></tr>
-        <tr><td>Filter to "open NOW, LATAM-eligible, posted &lt; 30 days, role fit"</td><td>Apply ICP signals + intent filters</td><td>A spreadsheet (<em>Crypto_Growth_Target_List.xlsx</em>) with an APPLY NOW (filtered) view</td></tr>
+        <tr><td>Filter to "open NOW, region-eligible, posted &lt; 30 days, role fit"</td><td>Apply ICP signals + intent filters</td><td>A spreadsheet with an APPLY NOW (filtered) view</td></tr>
         <tr><td>Enrich each company (size, funding, growth team, key contacts)</td><td>Clay enrichment pass</td><td>Clay find-and-enrich-company for ~11 highest-fit targets</td></tr>
-        <tr><td>Identify decision-makers and warm intros</td><td>Build the contact layer</td><td>Clay contacts response (e.g. Maple's Head of Growth, OZ's Head of Partnerships)</td></tr>
+        <tr><td>Identify decision-makers and warm intros</td><td>Build the contact layer</td><td>Clay contacts response &mdash; names, titles, and likely warm-intro paths</td></tr>
         <tr><td>Apply / send a warm note</td><td>Activation</td><td>Direct vaga links + LinkedIn warm intros</td></tr>
         <tr><td>Track status (Applied / Rejected / Watch / Closed)</td><td>CRM-like pipeline</td><td>Tracker tab Targets + the filtered tab + posting recency</td></tr>
         <tr><td>Re-run weekly with fresh openings</td><td>Build the routine</td><td>Schedulable task; eventually a Clay → Slack flow</td></tr>
       </tbody>
     </table></div>
-    <p><strong>The artifact:</strong> the <em>Crypto_Growth_Target_List.xlsx</em> I built during this session — with APPLY NOW (filtered), Targets, Boards to mine, and Summary tabs — is literally a small Clay-style GTM pipeline, built in Excel because I don't have a Clay seat yet. When I get one, I'll port it. That's my first GTM-Engineering portfolio piece.</p>
+    <p><strong>The artifact:</strong> the spreadsheet I built during this session &mdash; with APPLY NOW (filtered), Targets, Boards to mine, and Summary tabs &mdash; is literally a small Clay-style GTM pipeline, built in a spreadsheet because I don't have a Clay seat yet. When I get one, I'll port it. That's my first GTM-Engineering portfolio piece.</p>
   </section>
 
   <section class="article-section" id="g-sec-5">
     <h2>5. Schemas — three diagrams I keep in mind</h2>
 
     <h3>5.1 GTM Engineer competency stack</h3>
-    <pre class="ascii-diagram">         ┌────────────────────────────────────────────┐
-LEVEL 4  │   Category design · cross-functional GTM    │  (where Clay itself plays)
-         ├────────────────────────────────────────────┤
-LEVEL 3  │   Orchestration &amp; agents (MCP, n8n, Claude) │  (the "engineer" verb)
-         ├────────────────────────────────────────────┤
-LEVEL 2  │   Data plumbing: enrichment, scoring, dedup │  (Clay, Apollo, Clearbit)
-         ├────────────────────────────────────────────┤
-LEVEL 1  │   GTM literacy: ICP, segments, funnels,     │  (decade of Growth = covered)
-         │   messaging, attribution                    │
-         └────────────────────────────────────────────┘</pre>
+    <div class="aero-stack">
+      <div class="aero-stack-row level-4">
+        <span class="level-label">LEVEL 4</span>
+        <span class="level-title">Category design &middot; cross-functional GTM</span>
+        <span class="level-note">where Clay itself plays</span>
+      </div>
+      <div class="aero-stack-row level-3">
+        <span class="level-label">LEVEL 3</span>
+        <span class="level-title">Orchestration &amp; agents (MCP, n8n, Claude)</span>
+        <span class="level-note">the "engineer" verb</span>
+      </div>
+      <div class="aero-stack-row level-2">
+        <span class="level-label">LEVEL 2</span>
+        <span class="level-title">Data plumbing: enrichment, scoring, dedup</span>
+        <span class="level-note">Clay, Apollo, Clearbit</span>
+      </div>
+      <div class="aero-stack-row level-1">
+        <span class="level-label">LEVEL 1</span>
+        <span class="level-title">GTM literacy: ICP, segments, funnels, messaging, attribution</span>
+        <span class="level-note">decade of Growth = covered</span>
+      </div>
+    </div>
     <p>My honest self-assessment: Level 1 strong, Level 2 intermediate, Level 3 actively learning, Level 4 strategic understanding. The leverage is in Levels 2–3.</p>
 
     <h3>5.2 The "Clay row" mental schema</h3>
-    <pre class="ascii-diagram">ROW = ENTITY
-│
-├── input columns      → domain, LinkedIn URL, name, segment
-├── enrichment columns → headcount, funding, tech stack, open jobs, news
-├── derived columns    → score, fit-tier, AI summary, sequence-pick
-└── output columns     → write to CRM, send email, post to Slack, branch to next table</pre>
+    <div class="aero-tree">
+      <div class="aero-tree-root">ROW = ENTITY</div>
+      <ul class="aero-tree-branches">
+        <li><strong>input columns</strong> &rarr; domain, LinkedIn URL, name, segment</li>
+        <li><strong>enrichment columns</strong> &rarr; headcount, funding, tech stack, open jobs, news</li>
+        <li><strong>derived columns</strong> &rarr; score, fit-tier, AI summary, sequence-pick</li>
+        <li><strong>output columns</strong> &rarr; write to CRM, send email, post to Slack, branch to next table</li>
+      </ul>
+    </div>
     <p>Every workflow I design from now on, I sketch it as a table first.</p>
 
     <h3>5.3 Weekly cadence (where the discipline lives)</h3>
-    <pre class="ascii-diagram">Mon  · refresh signal feed: new job posts, funding news, hiring posts
-Tue  · enrich any new accounts; score; promote top 10
-Wed  · build/refine one new automation (Clay table, prompt, or agent)
-Thu  · ship activation: 25 outbound touches OR 3 warm intros
-Fri  · audit: what worked, what didn't, what to delete
-Sat  · learn: one Clay University module or one Maven session
-Sun  · rest, or read GTM Index</pre>
+    <div class="aero-week">
+      <div class="aero-day">
+        <div class="aero-day-name">Mon</div>
+        <div class="aero-day-task">refresh signal feed: new job posts, funding news, hiring posts</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Tue</div>
+        <div class="aero-day-task">enrich any new accounts; score; promote top 10</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Wed</div>
+        <div class="aero-day-task">build/refine one new automation (Clay table, prompt, or agent)</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Thu</div>
+        <div class="aero-day-task">ship activation: 25 outbound touches OR 3 warm intros</div>
+      </div>
+      <div class="aero-day">
+        <div class="aero-day-name">Fri</div>
+        <div class="aero-day-task">audit: what worked, what didn't, what to delete</div>
+      </div>
+      <div class="aero-day weekend">
+        <div class="aero-day-name">Sat</div>
+        <div class="aero-day-task">learn: one Clay University module or one Maven session</div>
+      </div>
+      <div class="aero-day weekend">
+        <div class="aero-day-name">Sun</div>
+        <div class="aero-day-task">rest, or read GTM Index</div>
+      </div>
+    </div>
   </section>
 
   <section class="article-section" id="g-sec-6">
@@ -670,33 +727,30 @@ Sun  · rest, or read GTM Index</pre>
     </ul>
     <p class="reference">Link: <a href="https://github.com/piersonmarks/google-search-ads-builder" target="_blank" rel="noopener">github.com/piersonmarks/google-search-ads-builder</a></p>
 
-    <h3>7.2 My CV</h3>
-    <p><em>CV_Daniela Zschaber.pdf</em> — the buyer-persona-inverse for my own search. I use the bullets to define what I bring (institutional DeFi + governance + LATAM + ecosystem) and let that be the ICP filter on roles.</p>
+    <h3>7.2 The CV as an ICP filter</h3>
+    <p>I use my own CV the way GTM Engineers use a buyer-persona doc, except inverted. Where most GTM specs describe who the customer is, mine describes what I bring &mdash; the themes, the wins, the network. That document becomes the filter I run roles through: which jobs actually fit the value I ship?</p>
+    <p><a class="btn btn-sm" href="/" rel="noopener">CV on danimim.xyz &rarr;</a></p>
 
-    <h3>7.3 The job-search artifacts (built during this session)</h3>
+    <h3>7.3 The artifact stack</h3>
+    <p>The artifact I built side-by-side with this guide is essentially a small CRM, structured the way a Clay table would be &mdash; built in a spreadsheet until I have a Clay seat to port it to. Four tabs:</p>
     <ul>
-      <li><strong>Crypto_Growth_Target_List.xlsx</strong> — the live tracker. It's a small CRM with four tabs:
-        <ul>
-          <li><strong>APPLY NOW (filtered)</strong> — open, LATAM-eligible, recent vagas (the "critical filter" view)</li>
-          <li><strong>Targets</strong> — the full database with status (New / Applied / Rejected)</li>
-          <li><strong>Boards to mine</strong> — VC portfolio + LATAM-focused VC boards, with search prompts</li>
-          <li><strong>Summary</strong> — pipeline counts</li>
-        </ul>
-      </li>
-      <li><strong>Clay enrichment</strong> — 11 highest-fit companies pushed into Clay with contacts surfaced. The Clay task IDs are persistent so I can re-open and extend the workflow.</li>
-      <li><strong>Direct vaga links I validated</strong> (not protocol pages): OpenZeppelin, Bitso, Gauntlet, Maple, Tail, Boardroom, LayerZero, Interop/Axelar, Cyfrin, M^0, DappRadar, Etherfi, Stripe, Block, PayPal.</li>
+      <li><strong>APPLY NOW (filtered)</strong> &mdash; open roles, region-eligible, posted recently (the "critical filter" view)</li>
+      <li><strong>Targets</strong> &mdash; the full database with status (New / Applied / Rejected)</li>
+      <li><strong>Boards to mine</strong> &mdash; VC portfolio + region-focused VC boards, with search prompts</li>
+      <li><strong>Summary</strong> &mdash; pipeline counts</li>
     </ul>
+    <p>On top of that, a Clay enrichment pass on the highest-fit accounts &mdash; contacts surfaced, task IDs persistent so I can re-open and extend the workflow. And a list of direct posting links (the canonical URL on each ATS, not the company landing page) so the apply step is one click.</p>
 
-    <h3>7.4 Job posting links I want to remember</h3>
-    <p>Every one of these taught me something about how a real GTM pipeline ingests "open vaga" data.</p>
+    <h3>7.4 ATS / board patterns I learned to ingest</h3>
+    <p>Every one of these taught me something about how a real GTM pipeline ingests "open role" data.</p>
     <div class="table-wrap"><table>
-      <thead><tr><th>Link</th><th>Board type</th><th>What I learned</th></tr></thead>
+      <thead><tr><th>ATS / Board</th><th>What it taught me about ingest</th></tr></thead>
       <tbody>
-        <tr><td>Maple — Lever posting</td><td>Lever</td><td>Lever has clean direct-posting URLs (/&lt;company&gt;/&lt;uuid&gt;) → easy to scrape</td></tr>
-        <tr><td>SideShift — Applicant AI</td><td>Applicant AI</td><td>Page reliably reports "no open jobs" → good as a closed-detector</td></tr>
-        <tr><td>Etherfi — Ashby</td><td>Ashby</td><td>Ashby is JS-rendered → need a browser tool, not fetch</td></tr>
-        <tr><td>M^0 — Greenhouse via cryptocurrencyjobs</td><td>Greenhouse + careers site</td><td><code>gh_jid</code> is the canonical job ID; many companies wrap Greenhouse</td></tr>
-        <tr><td>Polychain — Getro portfolio board</td><td>Getro</td><td>Most VC portfolio boards are Getro → same DOM → one scraper hits dozens</td></tr>
+        <tr><td>Lever</td><td>Clean direct-posting URLs (/&lt;company&gt;/&lt;uuid&gt;) &rarr; easy to scrape.</td></tr>
+        <tr><td>Applicant AI</td><td>Page reliably reports "no open jobs" &rarr; good as a closed-detector.</td></tr>
+        <tr><td>Ashby</td><td>JS-rendered &rarr; need a browser tool, not <code>fetch</code>.</td></tr>
+        <tr><td>Greenhouse (often wrapped)</td><td><code>gh_jid</code> is the canonical job ID; many companies wrap Greenhouse on their careers page.</td></tr>
+        <tr><td>Getro (VC portfolio boards)</td><td>Most VC portfolio boards are Getro &rarr; same DOM &rarr; one scraper hits dozens.</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -735,7 +789,7 @@ Sun  · rest, or read GTM Index</pre>
       <tbody>
         <tr><td>Clay (MCP)</td><td>Enriching target companies + surfacing contacts</td></tr>
         <tr><td>Web search + web fetch</td><td>Job board mining, posting validation</td></tr>
-        <tr><td>VC portfolio job boards</td><td>Anchorage, Ava Labs, Maple, Sherlock etc. via Polychain / a16z / Valor / TheVentureCity</td></tr>
+        <tr><td>VC portfolio job boards</td><td>Polychain / a16z crypto / Valor / TheVentureCity portfolio boards as a source for accounts</td></tr>
         <tr><td>Google Drive (read/index)</td><td>Locating CVs, cover letters, contracts</td></tr>
         <tr><td>Excel / openpyxl</td><td>Building the tracker until I port it to Clay</td></tr>
       </tbody>
@@ -767,7 +821,7 @@ Sun  · rest, or read GTM Index</pre>
 
     <h3>Week 2 — build #1</h3>
     <ul>
-      <li>Build the first real Clay table: my target-companies list, ported from <em>Crypto_Growth_Target_List.xlsx</em>.</li>
+      <li>Build the first real Clay table: my target-companies list, ported from the spreadsheet.</li>
       <li>Add enrichment columns: headcount, funding, recent news, growth team contact.</li>
       <li>Output: a Slack alert when a target company opens a remote Growth/governance/security role.</li>
     </ul>
@@ -833,7 +887,7 @@ Sun  · rest, or read GTM Index</pre>
     <blockquote class="callout">"Treat go-to-market as a system, not a personality."</blockquote>
     <p>Tools change every quarter. The discipline of writing down the ICP, instrumenting the signals, owning the enrichment schema, and shipping the activation loop — that's the durable skill. GTM Engineering is what you get when an operator who already understands Growth picks up a keyboard.</p>
     <p>That's where I'm going.</p>
-    <p class="reference"><em>Last edit: end of a long session where the artifact</em> Crypto_Growth_Target_List.xlsx <em>and this guide were built side-by-side — the spreadsheet is the proof, this doc is the plan.</em></p>
+    <p class="reference"><em>Last edit: end of a long session where the spreadsheet artifact and this guide were built side-by-side &mdash; the spreadsheet is the proof, this doc is the plan.</em></p>
   </section>
 </article>
                 `
