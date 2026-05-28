@@ -72,6 +72,39 @@ windows — Videos, Newsletter, Vinyl, Playlist — are populated from
 `groove` data block and in `groove/index.html` are root-absolute (`/assets/...`,
 `/icons/...`) so they resolve correctly from `/groove/`.
 
+### Third page: Growth (Frutiger Aero / Windows Vista theme)
+
+`growth/` is a third standalone page served at `/growth/`, linked from the
+"Growth" desktop icon above the Groove icon on the main page. **Unlike the
+Win95 main page and Groove, this page is themed Frutiger Aero / Windows
+Vista** — glassy translucent windows, rounded corners, aurora/sky background,
+glossy orb buttons, Segoe UI typography. It therefore does NOT load
+`assets/css/style.css`; `growth/growth.css` is fully self-contained.
+
+The class is `GrowthDesktop` in `growth/growth.js`. Content is read from
+`SITE_DATA.growth` in `assets/js/data.js`, with these top-level keys:
+
+- `about` — HTML intro for the About window.
+- `articlesIntro` — short line above the Articles list.
+- `articles` — array of `{ id, windowId, title, status, date, summary, html }`.
+  Each article has a dedicated window in `growth/index.html` whose content
+  div id is `<windowId>-content`. Clicking an article card opens that window.
+- `upcoming` — array of `{ title, summary }` placeholders shown after the
+  real article list.
+- `resources` / `toolstack` — categorized blocks rendered into the
+  Resources and Tool stack windows.
+- `donate` — `{ intro, address, note }` rendered in the Donate window with
+  a copy-to-clipboard button. Reuses the same EVM wallet as Groove.
+
+Adding a new article means: (1) push a new entry to `SITE_DATA.growth.articles`
+with a unique `windowId`, and (2) add a matching window shell in
+`growth/index.html` (`<div class="window" id="<windowId>">` with
+`<div id="<windowId>-content">` inside).
+
+Per-page icons live in `/icons/growth-*.png` and degrade to emoji via
+`onerror` like the other pages. The main-page `/icons/growth.png` icon is the
+one to drop into the repo's `/icons/` folder.
+
 ## Conventions
 
 - UI text, code comments, and `console.log` debug strings are all in English.
