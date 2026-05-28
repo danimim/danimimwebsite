@@ -72,38 +72,38 @@ windows — Videos, Newsletter, Vinyl, Playlist — are populated from
 `groove` data block and in `groove/index.html` are root-absolute (`/assets/...`,
 `/icons/...`) so they resolve correctly from `/groove/`.
 
-### Third page: Growth (Frutiger Aero / Windows Vista theme)
+### Third page: Growth (Frutiger Aero / Vista Explorer theme)
 
 `growth/` is a third standalone page served at `/growth/`, linked from the
 "Growth" desktop icon above the Groove icon on the main page. **Unlike the
 Win95 main page and Groove, this page is themed Frutiger Aero / Windows
-Vista** — glassy translucent windows, rounded corners, aurora/sky background,
-glossy orb buttons, Segoe UI typography. It therefore does NOT load
-`assets/css/style.css`; `growth/growth.css` is fully self-contained.
+Vista** — a single glassy translucent Explorer-style window centered on a
+sky/grass aurora background, with a left sidebar for navigation and the
+GTM Engineering article filling the main pane.
 
-The class is `GrowthDesktop` in `growth/growth.js`. Content is read from
-`SITE_DATA.growth` in `assets/js/data.js`, with these top-level keys:
+It does NOT load `assets/css/style.css`; `growth/growth.css` is fully
+self-contained. The class is `GrowthPage` (not `GrowthDesktop`) in
+`growth/growth.js` — there is no windowing logic, just sidebar smooth-scroll,
+tab-active-on-scroll, a clock, and the Donate copy-to-clipboard button.
 
-- `about` — HTML intro for the About window.
-- `articlesIntro` — short line above the Articles list.
-- `articles` — array of `{ id, windowId, title, status, date, summary, html }`.
-  Each article has a dedicated window in `growth/index.html` whose content
-  div id is `<windowId>-content`. Clicking an article card opens that window.
-- `upcoming` — array of `{ title, summary }` placeholders shown after the
-  real article list.
-- `resources` / `toolstack` — categorized blocks rendered into the
-  Resources and Tool stack windows.
-- `donate` — `{ intro, address, note }` rendered in the Donate window with
-  a copy-to-clipboard button. Reuses the same EVM wallet as Groove.
+The page renders one article (the GTM Engineering guide) inline into
+`#article-gtm-content`, followed by an in-page Donate panel
+(`<section id="g-donate">`). Content is read from `SITE_DATA.growth` in
+`assets/js/data.js`:
 
-Adding a new article means: (1) push a new entry to `SITE_DATA.growth.articles`
-with a unique `windowId`, and (2) add a matching window shell in
-`growth/index.html` (`<div class="window" id="<windowId>">` with
-`<div id="<windowId>-content">` inside).
+- `articles[]` — `{ windowId, title, status, date, summary, html }`. Only
+  the entry with `windowId === 'article-gtm'` is rendered. Future articles
+  can live alongside it; the page just needs another `<section>` and a
+  sidebar link.
+- `donate` — `{ intro, address, note }` rendered into the Donate panel.
+  Reuses the same EVM wallet as Groove.
 
-Per-page icons live in `/icons/growth-*.png` and degrade to emoji via
-`onerror` like the other pages. The main-page `/icons/growth.png` icon is the
-one to drop into the repo's `/icons/` folder.
+The `about`, `articlesIntro`, `upcoming`, `resources`, and `toolstack`
+keys in `SITE_DATA.growth` are kept for forward-compatibility but are not
+currently rendered — the article speaks for itself.
+
+The main-page `/icons/growth.png` icon is the Vista Explorer icon dropped
+into `/icons/` (with a 📈 emoji fallback while it isn't present).
 
 ## Conventions
 

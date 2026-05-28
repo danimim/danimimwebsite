@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Growth — danimim.xyz</title>
-    <meta name="description" content="Where I learn GTM Engineering in public. Articles, experiments, and notes from a 10-year Growth operator picking up the keyboard.">
+    <meta name="description" content="How I'm learning GTM Engineering while job-hunting — a living document by danimim.eth.">
     <link rel="stylesheet" href="/growth/growth.css">
 
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="/favicon.png">
 
     <!-- Open Graph / Twitter -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://danimim.xyz/growth/">
-    <meta property="og:title" content="Growth — danimim.xyz">
-    <meta property="og:description" content="Where I learn GTM Engineering in public. Articles, experiments, and notes from a 10-year Growth operator picking up the keyboard.">
+    <meta property="og:title" content="How I'm learning GTM Engineering while job-hunting">
+    <meta property="og:description" content="A meta-document. The premise: my own job search is the first GTM Engineering project.">
     <meta property="og:image" content="https://danimim.xyz/assets/img/og-2.png">
     <meta property="og:image:alt" content="Growth — danimim.xyz">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Growth — danimim.xyz">
-    <meta name="twitter:description" content="Where I learn GTM Engineering in public.">
+    <meta name="twitter:title" content="How I'm learning GTM Engineering while job-hunting">
+    <meta name="twitter:description" content="A meta-document. The premise: my own job search is the first GTM Engineering project.">
     <meta name="twitter:image" content="https://danimim.xyz/assets/img/og-2.png">
 </head>
 <body>
-    <!-- Aero atmosphere: sky + aurora ribbons + bokeh -->
+    <!-- Aero atmosphere: sky + grass + aurora ribbons + bokeh -->
     <div class="aero-sky" aria-hidden="true">
         <div class="aero-aurora aurora-1"></div>
         <div class="aero-aurora aurora-2"></div>
@@ -34,180 +34,108 @@
         <div class="aero-grass" aria-hidden="true"></div>
     </div>
 
-    <!-- Desktop -->
-    <div class="desktop">
-        <!-- Desktop Icons -->
-        <div class="desktop-icons">
-            <button class="desktop-icon" data-window="about" aria-label="About this page">
-                <img src="/icons/growth-about.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#127759;</span>'">
-                <span>About</span>
-            </button>
-
-            <button class="desktop-icon" data-window="articles" aria-label="Articles">
-                <img src="/icons/growth-articles.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#128218;</span>'">
-                <span>Articles</span>
-            </button>
-
-            <button class="desktop-icon" data-window="article-gtm" aria-label="GTM Engineering guide">
-                <img src="/icons/growth-gtm.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#128202;</span>'">
-                <span>GTM Engineering</span>
-            </button>
-
-            <button class="desktop-icon" data-window="resources" aria-label="Resources">
-                <img src="/icons/growth-resources.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#128194;</span>'">
-                <span>Resources</span>
-            </button>
-
-            <button class="desktop-icon" data-window="toolstack" aria-label="Tools">
-                <img src="/icons/growth-tools.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#9881;&#65039;</span>'">
-                <span>Tool stack</span>
-            </button>
-        </div>
-
-        <!-- Side icons (right side, highlighted call-to-action) -->
-        <div class="side-icons">
-            <button class="desktop-icon side" data-window="donate" aria-label="Donate">
-                <img src="/icons/growth-donate.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#129534;</span>'">
-                <span>Donate</span>
-            </button>
-
-            <a class="desktop-icon side" href="/" aria-label="Back to danimim.xyz">
-                <img src="/favicon.png" alt="" width="80" height="80" onerror="this.outerHTML='<span class=icon-fallback aria-hidden=true>&#127968;</span>'">
-                <span>danimim.xyz</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- Windows -->
-
-    <!-- About Window -->
-    <div class="window" id="about" role="dialog" aria-labelledby="about-title">
-        <div class="window-header">
-            <span id="about-title">About — Growth</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>&#9472;</span></button>
-                <button class="window-btn close" aria-label="Close"><span>&#10005;</span></button>
+    <!-- The whole page is a single Vista Explorer-style window -->
+    <div class="explorer-window" role="document">
+        <!-- Title bar -->
+        <div class="explorer-titlebar">
+            <span class="explorer-title">danimim.xyz / growth</span>
+            <div class="window-controls" aria-hidden="true">
+                <button class="window-btn min" tabindex="-1" aria-label="Minimize"><span>&#9472;</span></button>
+                <button class="window-btn max" tabindex="-1" aria-label="Maximize"><span>&#9633;</span></button>
+                <a class="window-btn close" href="/" aria-label="Close (back to danimim.xyz)"><span>&#10005;</span></a>
             </div>
         </div>
-        <div class="window-content">
-            <div id="about-content"></div>
-        </div>
-    </div>
 
-    <!-- Articles Window -->
-    <div class="window" id="articles" role="dialog" aria-labelledby="articles-title">
-        <div class="window-header">
-            <span id="articles-title">Articles</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>&#9472;</span></button>
-                <button class="window-btn close" aria-label="Close"><span>&#10005;</span></button>
+        <!-- Address bar with back / forward orbs and breadcrumb -->
+        <div class="explorer-addressbar">
+            <div class="orb-group">
+                <button class="orb-btn orb-back" aria-label="Back" onclick="history.back()"><span>&#10094;</span></button>
+                <button class="orb-btn orb-forward" aria-label="Forward" onclick="history.forward()"><span>&#10095;</span></button>
+                <button class="orb-dropdown" aria-label="Recent" tabindex="-1"><span>&#9662;</span></button>
+            </div>
+            <div class="address-input" role="presentation">
+                <span class="address-favicon" aria-hidden="true">&#127759;</span>
+                <span class="address-crumb"><a href="/">danimim.xyz</a></span>
+                <span class="address-sep" aria-hidden="true">&rsaquo;</span>
+                <span class="address-crumb address-current">growth</span>
+                <span class="address-spacer"></span>
+                <span class="address-chev" aria-hidden="true">&#9662;</span>
+            </div>
+            <div class="search-input" role="presentation">
+                <span class="search-text">Last updated 2026-05-23</span>
+                <span class="search-icon" aria-hidden="true">&#128269;</span>
             </div>
         </div>
-        <div class="window-content">
-            <div id="articles-content"></div>
-        </div>
-    </div>
 
-    <!-- GTM Engineering Article Window -->
-    <div class="window window-wide" id="article-gtm" role="dialog" aria-labelledby="article-gtm-title">
-        <div class="window-header">
-            <span id="article-gtm-title">How I'm learning GTM Engineering while job-hunting</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>&#9472;</span></button>
-                <button class="window-btn close" aria-label="Close"><span>&#10005;</span></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div id="article-gtm-content"></div>
-        </div>
-    </div>
-
-    <!-- Resources Window -->
-    <div class="window" id="resources" role="dialog" aria-labelledby="resources-title">
-        <div class="window-header">
-            <span id="resources-title">Resources</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>&#9472;</span></button>
-                <button class="window-btn close" aria-label="Close"><span>&#10005;</span></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div id="resources-content"></div>
-        </div>
-    </div>
-
-    <!-- Tool Stack Window -->
-    <div class="window" id="toolstack" role="dialog" aria-labelledby="toolstack-title">
-        <div class="window-header">
-            <span id="toolstack-title">Tool stack</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>&#9472;</span></button>
-                <button class="window-btn close" aria-label="Close"><span>&#10005;</span></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div id="toolstack-content"></div>
-        </div>
-    </div>
-
-    <!-- Donate Window -->
-    <div class="window" id="donate" role="dialog" aria-labelledby="donate-title">
-        <div class="window-header">
-            <span id="donate-title">Donate — Support more writing</span>
-            <div class="window-controls">
-                <button class="window-btn minimize" aria-label="Minimize"><span>&#9472;</span></button>
-                <button class="window-btn close" aria-label="Close"><span>&#10005;</span></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div id="donate-content"></div>
-        </div>
-    </div>
-
-    <!-- Taskbar -->
-    <div class="taskbar">
-        <button class="start-button" id="start-btn" aria-label="Start menu">
-            <span class="start-orb" aria-hidden="true"></span>
-        </button>
-
-        <!-- Start Menu -->
-        <div class="start-menu" id="start-menu">
-            <div class="start-menu-header">
-                <div class="start-menu-avatar" aria-hidden="true">&#127759;</div>
-                <div class="start-menu-name">Growth lab<br><small>danimim.xyz</small></div>
-            </div>
-            <div class="start-menu-items">
-                <button class="start-menu-item" data-window="about">
-                    <span class="menu-icon"><img src="/icons/growth-about.png" alt="" width="32" height="32" onerror="this.outerHTML='&#127759;'"></span>
-                    <span>About</span>
-                </button>
-                <button class="start-menu-item" data-window="articles">
-                    <span class="menu-icon"><img src="/icons/growth-articles.png" alt="" width="32" height="32" onerror="this.outerHTML='&#128218;'"></span>
-                    <span>Articles</span>
-                </button>
-                <button class="start-menu-item" data-window="article-gtm">
-                    <span class="menu-icon"><img src="/icons/growth-gtm.png" alt="" width="32" height="32" onerror="this.outerHTML='&#128202;'"></span>
-                    <span>GTM Engineering guide</span>
-                </button>
-                <button class="start-menu-item" data-window="resources">
-                    <span class="menu-icon"><img src="/icons/growth-resources.png" alt="" width="32" height="32" onerror="this.outerHTML='&#128194;'"></span>
-                    <span>Resources</span>
-                </button>
-                <button class="start-menu-item" data-window="toolstack">
-                    <span class="menu-icon"><img src="/icons/growth-tools.png" alt="" width="32" height="32" onerror="this.outerHTML='&#9881;&#65039;'"></span>
-                    <span>Tool stack</span>
-                </button>
-                <button class="start-menu-item start-menu-accent" data-window="donate">
-                    <span class="menu-icon"><img src="/icons/growth-donate.png" alt="" width="32" height="32" onerror="this.outerHTML='&#129534;'"></span>
-                    <span>Donate</span>
-                </button>
-            </div>
-            <a class="start-menu-back" href="/">
-                <span aria-hidden="true">&#8629;</span> Back to danimim.xyz
-            </a>
+        <!-- Tabs / section header (decorative-with-anchors) -->
+        <div class="explorer-tabs" role="navigation" aria-label="Section">
+            <a class="tab active" href="#g-sec-0">Guide <span class="tab-chev">&#9662;</span></a>
+            <a class="tab" href="#g-donate">Donate <span class="tab-chev">&#9662;</span></a>
+            <a class="tab tab-home" href="/">danimim.xyz <span class="tab-chev">&#9662;</span></a>
         </div>
 
-        <div class="taskbar-clock" id="clock"></div>
+        <!-- Body: sidebar + main -->
+        <div class="explorer-body">
+            <aside class="explorer-sidebar" aria-label="Sections">
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">
+                        <span class="sidebar-icon icon-blue" aria-hidden="true">&#9432;</span>
+                        <span>Guide</span>
+                    </div>
+                    <ul class="sidebar-list">
+                        <li><a href="#g-sec-0">Why this doc exists</a></li>
+                        <li><a href="#g-sec-1">The big questions</a></li>
+                        <li><a href="#g-sec-2">What GTM Engineering is</a></li>
+                        <li><a href="#g-sec-3">The four loops</a></li>
+                        <li><a href="#g-sec-4">Job search as GTM</a></li>
+                        <li><a href="#g-sec-5">Three schemas</a></li>
+                        <li><a href="#g-sec-6">Curriculum</a></li>
+                        <li><a href="#g-sec-7">Materials collected</a></li>
+                        <li><a href="#g-sec-8">Tool stack</a></li>
+                        <li><a href="#g-sec-9">Open questions</a></li>
+                        <li><a href="#g-sec-10">30-day plan</a></li>
+                        <li><a href="#g-sec-11">Hyperlink index</a></li>
+                        <li><a href="#g-sec-12">The principle</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">
+                        <span class="sidebar-icon icon-mail" aria-hidden="true">&#9993;</span>
+                        <span>Support</span>
+                    </div>
+                    <ul class="sidebar-list">
+                        <li><a href="#g-donate">Donate</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">
+                        <span class="sidebar-icon icon-globe" aria-hidden="true">&#127760;</span>
+                        <span>Links</span>
+                    </div>
+                    <ul class="sidebar-list">
+                        <li><a href="/">danimim.xyz</a></li>
+                        <li><a href="/groove/">Groove Crypto Club</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="explorer-main" id="main">
+                <article id="article-gtm-content"></article>
+
+                <section class="donate-section" id="g-donate">
+                    <h2>Donate</h2>
+                    <div id="donate-content"></div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Status bar at the bottom -->
+        <div class="explorer-statusbar" aria-hidden="true">
+            <span class="status-left">1 item</span>
+            <span class="status-right" id="clock"></span>
+        </div>
     </div>
 
     <!-- Scripts -->
