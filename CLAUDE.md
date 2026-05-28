@@ -84,30 +84,25 @@ GTM Engineering article filling the main pane.
 It does NOT load `assets/css/style.css`; `growth/growth.css` is fully
 self-contained. The class is `GrowthPage` (not `GrowthDesktop`) in
 `growth/growth.js` — there is no windowing logic, just sidebar smooth-scroll,
-tab-active-on-scroll, a clock, and the Donate copy-to-clipboard button.
+a clock, and the hidden YouTube IFrame audio player.
 
 The page renders one article (the GTM Engineering guide) inline into
-`#article-gtm-content`, followed by an in-page Donate panel
-(`<section id="g-donate">`). A hidden YouTube IFrame player provides
-optional background music at 30% volume — the status-bar `Play music`
-button toggles it. Track is YouTube's auto-mix radio
-(`RDDP3rDP02lE0`); change the `MUSIC_RADIO` field on `GrowthPage` to
-swap it. Content is read from `SITE_DATA.growth` in
-`assets/js/data.js`:
+`#article-gtm-content` and nothing else in the main pane — no donate
+panel, no resource lists. A hidden YouTube IFrame player provides
+optional background music at 30% volume; the status-bar `Play music`
+button toggles it. Track is YouTube's auto-mix radio (`RDDP3rDP02lE0`);
+change the `MUSIC_RADIO` field on `GrowthPage` to swap it. Content is
+read from `SITE_DATA.growth` in `assets/js/data.js`:
 
 - `articles[]` — `{ windowId, title, status, date, summary, html }`. Only
-  the entry with `windowId === 'article-gtm'` is rendered. Future articles
-  can live alongside it; the page just needs another `<section>` and a
-  sidebar link.
-- `donate` — `{ intro, address, note }` rendered into the Donate panel.
-  Reuses the same EVM wallet as Groove.
+  the entry with `windowId === 'article-gtm'` is rendered.
 
-The `about`, `articlesIntro`, `upcoming`, `resources`, and `toolstack`
-keys in `SITE_DATA.growth` are kept for forward-compatibility but are not
-currently rendered — the article speaks for itself.
+The `about`, `articlesIntro`, `upcoming`, `resources`, `toolstack`, and
+`donate` keys in `SITE_DATA.growth` are kept for forward-compatibility
+but are not currently rendered.
 
-The main-page `/icons/growth.png` icon is the Vista Explorer icon dropped
-into `/icons/` (with a 📈 emoji fallback while it isn't present).
+The main-page `/icons/growth.png` icon (an IE-style "e") sits above the
+Groove icon on `danimim.xyz/`.
 
 ## Conventions
 
